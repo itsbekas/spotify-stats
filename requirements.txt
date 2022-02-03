@@ -1,0 +1,2 @@
+Spotipy==2.19.0
+firebase==3.0.1
