@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from common import *
+from common import SpotifyStats
 
 if __name__ == "__main__":
-    spotify = get_client()
+    spotify = SpotifyStats()
