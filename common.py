@@ -3,6 +3,16 @@ import spotipy
 import database
 from spotipy.oauth2 import SpotifyPKCE
 
+ranges = ["short_term", "medium_term", "long_term"]
+
+def __extract_track(track):
+    '''Extracts the relevant info from a track'''
+    return {
+        "id": track["id"],
+        "name": track["name"],
+        "artists": [artist["id"] for artist in track["artists"]]
+    }
+
 class SpotifyStats:
 
     def __init__(self):
@@ -20,20 +30,20 @@ class SpotifyStats:
         auth = SpotifyPKCE(scope=scope, open_browser=False)
         auth.get_access_token()
         return spotipy.Spotify(auth_manager=auth)
-        
+
     def __update_tracks(self):
-        pass
+        for range in ranges:
+            tracks = self.__sp.current_user_top_tracks(limit=50, offset=0, time_range=range)["items"]
+            for track in tracks:
+                print(__extract_track(track))
 
     def __update_artists(self):
         pass
 
-    def __update_genres(self):
-        pass
 
     def update(self):
         self.__update_tracks()
         self.__update_artists()
-        self.__update_genres()
 
 
     def test(self):
