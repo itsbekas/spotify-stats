@@ -19,6 +19,9 @@ class Database:
             "name": name,
             "artists": artists,
         }
+        
+        if (track):
+            pass
 
         self.__tracks.insert_one(track)
 

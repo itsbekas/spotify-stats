@@ -1,16 +1,23 @@
 import os 
 import spotipy
-import database
+import database as database
 from spotipy.oauth2 import SpotifyPKCE
 
 ranges = ["short_term", "medium_term", "long_term"]
 
-def __extract_track(track):
+def _extract_track(track):
     '''Extracts the relevant info from a track'''
     return {
         "id": track["id"],
         "name": track["name"],
         "artists": [artist["id"] for artist in track["artists"]]
+    }
+
+def _extract_artist(artist):
+    '''Extracts the relevant info from an artist'''
+    return {
+        "id": artist["id"],
+        "name": artist["name"]
     }
 
 class SpotifyStats:
@@ -31,11 +38,19 @@ class SpotifyStats:
         auth.get_access_token()
         return spotipy.Spotify(auth_manager=auth)
 
+    def __update_track(self, track):
+        self.__db.add_track(track["id"], track["name"], track["artists"])
+
     def __update_tracks(self):
+        artists = []
         for range in ranges:
             tracks = self.__sp.current_user_top_tracks(limit=50, offset=0, time_range=range)["items"]
             for track in tracks:
-                print(__extract_track(track))
+                self.__db.add_track(track["id"], track["name"], track["artists"])
+                for artist in track["artists"]:
+                    if artist["id"] not in artists:
+                        artists.append(artist["id"])
+                        self.__update_artists(artist)
 
     def __update_artists(self):
         pass
