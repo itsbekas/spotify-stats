@@ -1,8 +1,9 @@
 from math import floor
 from os import environ
-from time import time, strptime
+from time import sleep, time
 
 import spotipy
+from dateutil.parser import parse
 from spotipy.oauth2 import SpotifyPKCE
 
 import database as database
@@ -56,7 +57,6 @@ class SpotifyStats:
     def __get_recently_played(self):
         timestamp = self.__timestamp*1000 # Timestamp must be in milliseconds
         tracks = self.__sp.current_user_recently_played(limit=50, after=timestamp)["items"]
-        print(tracks[0]["played_at"])
         return [{
                 "track": _extract_track(track["track"]),
                 "last_listened": track["played_at"]
@@ -80,7 +80,6 @@ class SpotifyStats:
             top_tracks = self.__get_top_tracks(range)
             self.__update_history(top_tracks, "tracks", range)
             for track in top_tracks:
-                print(track["artists"])
                 self.__update_track(track)
                 for artist in track["artists"]:
                     self.__update_artist(artist)
@@ -95,20 +94,15 @@ class SpotifyStats:
     def __update_play_count(self):
         tracks = self.__get_recently_played()
         for track in tracks:
-            last_listened = strptime(track["last_listened"], "")
+            last_listened = floor(parse(track["last_listened"], "").timestamp())
             self.__update_track(track["track"], track["last_listened"])
 
     def update(self):
         # check connection and skip+log if unavailable
         
-        self.__update_play_count()
+        #self.__update_play_count()
         
         self.__timestamp = floor(time())
         self.__create_history()
-
         self.__update_tracks()
         self.__update_artists()
-
-
-    def test(self):
-        print(self.__sp.current_user_top_tracks())

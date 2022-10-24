@@ -1,29 +1,40 @@
 from pymongo import MongoClient
 from log import logger
+from os import environ
 
-collections = ["artists", "tracks", "song-count", "history"]
+collections = ["spotifystats"]
+documents = ["artists", "tracks", "song-count", "history"]
+
+def _valid_collection(collection):
+    return collection in collections
+
+def _valid_document(document):
+    return document in documents
 
 class Database:
     
     def __init__(self):
         #logger.info("Initializing Database")
-        client = MongoClient("mongodb://localhost:27017/")
+        client = MongoClient(environ["SPOTIFYSTATS_MONGODB_URI"])
         self.__db = client["spotify-stats"]
 
-    def get_collection(self, collection):
-        if collection not in collections:
-            raise ValueError("Invalid Collection: {}".format(collection))
-        return self.__db[collection]
+    def __get_collection(self):
+        return self.__db["spotifystats"]
 
-    def get_item(self, collection, id):
+    def __add_item(self, document, item):
+        # check if collection is valid (assert)
+        self.__get_collection().insert_one({"$push": {document: item}})
+
+    def __get_item(self, document, id):
         # log/raise error if doesn't exist
-        
-        a = self.get_collection(collection).find_one("_id", id)
-        print(a)
+        return self.__get_collection().find_one({document: {"_id": id}})
+
+    def __update_item(self, collection, query, item):
+        self.__get_collection().update_one({collection: query}, item)
 
     def item_exists(self, id, collection):
         """Given an id, checks if corresponding object already exists in a given collection"""
-        return self.get_collection(collection).count_documents({"_id": id}, limit=1) != 0 
+        return self.__get_collection().count_documents({collection: {"_id": id}}, limit=1) != 0 
 
     def add_track(self, id, name, artists):
         if isinstance(artists, str):
@@ -41,16 +52,17 @@ class Database:
             # log: Database.add_track: Track {id} already exists. Skipping.
             return
 
-        self.get_collection("tracks").insert_one(track)
+        self.__add_item("tracks", track)
     
     def update_track(self, id, timestamp):
-        count = self.get_item("tracks", id)["count"] + 1
+        count = self.__get_item("tracks", id)["count"] + 1
         track = {
             "$set": {
                 "count": count,
                 "last_listened": timestamp
             }
         }
+        self.__update_item("tracks", {"_id": id}, track)
 
     def add_artist(self, id, name):
         artist = {
@@ -62,20 +74,16 @@ class Database:
             # log: add_artist
             return
 
-        self.get_collection("artists").insert_one(artist)
+        self.__add_item("artists", artist)
 
     def create_history(self, timestamp):
         history = {
-            "_id": timestamp,
+            "timestamp": timestamp,
         }
 
-        self.get_collection("history").insert_one(history)
+        self.__add_item("history", history)
 
     def add_history(self, timestamp, ids, collection, range):
-        # To find the existing record
-        query = {
-            "_id": timestamp
-        }
         # New info to be added
         entry = {
             "$set": {
@@ -83,5 +91,4 @@ class Database:
             }
         }
 
-        self.get_collection("history").update_one({"_id"}, entry)
-    
+        self.__update_item("history", {"_id": timestamp}, entry)
