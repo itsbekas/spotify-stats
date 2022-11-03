@@ -21,34 +21,34 @@ class Database:
     def __get_collection(self):
         return self.__db["spotifystats"]
 
-    def __add_item(self, document, item):
+    def __add_item(self, document, item, filter={}):
         # check if collection is valid (assert)
-        self.__get_collection().insert_one({"$push": {document: item}})
+        self.__get_collection().update_one(filter, {"$push": {document: item}}, upsert=True)
 
     def __get_item(self, document, id):
         # log/raise error if doesn't exist
-        return self.__get_collection().find_one({document: {"_id": id}})
+        return self.__get_collection().find_one({document: {"id": id}})
 
     def __update_item(self, collection, query, item):
         self.__get_collection().update_one({collection: query}, item)
 
-    def item_exists(self, id, collection):
+    def __item_exists(self, id, collection):
         """Given an id, checks if corresponding object already exists in a given collection"""
-        return self.__get_collection().count_documents({collection: {"_id": id}}, limit=1) != 0 
+        return self.__get_collection().count_documents({collection: {"ids": {"$in": id}}}, limit=1) != 0 
 
     def add_track(self, id, name, artists):
         if isinstance(artists, str):
             artists = [artists]
 
         track = {
-            "_id": id,
+            "id": id,
             "name": name,
             "artists": artists,
             "count": 0,
             "last_listened": 0
         }
         
-        if (self.item_exists(id, "tracks")):
+        if (self.__item_exists(id, "tracks")):
             # log: Database.add_track: Track {id} already exists. Skipping.
             return
 
@@ -62,33 +62,34 @@ class Database:
                 "last_listened": timestamp
             }
         }
-        self.__update_item("tracks", {"_id": id}, track)
+        self.__update_item("tracks", {"id": id}, track)
 
     def add_artist(self, id, name):
         artist = {
-            "_id": id,
+            "id": id,
             "name": name
         }
         
-        if (self.item_exists(id, "artists")):
+        if (self.__item_exists(id, "artists")):
             # log: add_artist
             return
 
         self.__add_item("artists", artist)
 
-    def create_history(self, timestamp):
-        history = {
+    def create_ranking(self, timestamp):
+        ranking = {
             "timestamp": timestamp,
         }
 
-        self.__add_item("history", history)
+        self.__add_item("ranking", ranking)
 
-    def add_history(self, timestamp, ids, collection, range):
-        # New info to be added
-        entry = {
-            "$set": {
-                "{}.{}".format(collection, range): ids
-            }
+    def add_ranking(self, timestamp, ids, collection, range):
+        filter = {
+            "timestamp": timestamp
         }
 
-        self.__update_item("history", {"_id": timestamp}, entry)
+        ranking = {
+            f"{collection}-{range}": ids + ["bruh"]
+        }
+
+        self.__add_item("ranking", ranking)

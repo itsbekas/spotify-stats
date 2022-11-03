@@ -43,9 +43,6 @@ class SpotifyStats:
         auth.get_access_token()
         return spotipy.Spotify(auth_manager=auth)
 
-    def __create_history(self):
-        self.__db.create_history(self.__timestamp)
-
     def __get_top_tracks(self, range):
         tracks = self.__sp.current_user_top_tracks(limit=50, offset=0, time_range=range)["items"]
         return [_extract_track(track) for track in tracks]
@@ -62,6 +59,9 @@ class SpotifyStats:
                 "last_listened": track["played_at"]
             } for track in tracks]
 
+    def __create_ranking(self):
+        self.__db.create_ranking(self.__timestamp)
+
     def __update_track(self, track, timestamp=0):
         artists = [artist["id"] for artist in track["artists"]]
         self.__db.add_track(track["id"], track["name"], artists)
@@ -71,14 +71,14 @@ class SpotifyStats:
     def __update_artist(self, artist):
         self.__db.add_artist(artist["id"], artist["name"])
 
-    def __update_history(self, items, collection, range):
+    def __update_ranking(self, items, collection, range):
         ids = [item["id"] for item in items]
-        self.__db.add_history(self.__timestamp, ids, collection, range)
+        self.__db.add_ranking(self.__timestamp, ids, collection, range)
 
     def __update_tracks(self):
         for range in ranges:
             top_tracks = self.__get_top_tracks(range)
-            self.__update_history(top_tracks, "tracks", range)
+            self.__update_ranking(top_tracks, "tracks", range)
             for track in top_tracks:
                 self.__update_track(track)
                 for artist in track["artists"]:
@@ -87,7 +87,7 @@ class SpotifyStats:
     def __update_artists(self):
         for range in ranges:
             top_artists = self.__get_top_artists(range)
-            self.__update_history(top_artists, "artists", range)
+            self.__update_ranking(top_artists, "artists", range)
             for artist in top_artists:
                 self.__update_artist(artist)
 
@@ -103,6 +103,6 @@ class SpotifyStats:
         #self.__update_play_count()
         
         self.__timestamp = floor(time())
-        self.__create_history()
+        self.__create_ranking()
         self.__update_tracks()
         self.__update_artists()
