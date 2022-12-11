@@ -1,10 +1,9 @@
 #!/usr/bin/python
 
 from stats import SpotifyStats
-from log import init_logger, logger
+from util import init
 
 if __name__ == "__main__":
-    # init_logger()
-    # logger.warning("boas")
+    init()
     stats = SpotifyStats()
     stats.update()

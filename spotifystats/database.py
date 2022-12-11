@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from log import logger
 from os import environ
 
-collections = ["spotifystats"]
+collections = ["artists", "tracks", "song-count", "history"]
 documents = ["artists", "tracks", "song-count", "history"]
 
 def _valid_collection(collection):
@@ -18,12 +18,12 @@ class Database:
         client = MongoClient(environ["SPOTIFYSTATS_MONGODB_URI"])
         self.__db = client["spotify-stats"]
 
-    def __get_collection(self):
-        return self.__db["spotifystats"]
+    def __get_collection(self, collection):
+        return self.__db[collection]
 
     def __add_item(self, document, item, filter={}):
         # check if collection is valid (assert)
-        self.__get_collection().update_one(filter, {"$push": {document: item}}, upsert=True)
+        self.__get_collection(document).update_one(filter, {"$push": {document: item}}, upsert=True)
 
     def __get_item(self, document, id):
         # log/raise error if doesn't exist
