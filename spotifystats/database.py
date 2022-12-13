@@ -21,9 +21,9 @@ class Database:
     def __get_collection(self, collection):
         return self.__db[collection]
 
-    def __add_item(self, document, item, filter={}):
+    def __add_item(self, document, item):
         # check if collection is valid (assert)
-        self.__get_collection(document).update_one(filter, {"$push": {document: item}}, upsert=True)
+        self.__get_collection(document).insert_one(item)
 
     def __get_item(self, document, id):
         # log/raise error if doesn't exist
@@ -34,7 +34,7 @@ class Database:
 
     def __item_exists(self, id, collection):
         """Given an id, checks if corresponding object already exists in a given collection"""
-        return self.__get_collection().count_documents({collection: {"ids": {"$in": id}}}, limit=1) != 0 
+        return self.__get_collection(collection).count_documents({"_id": id}, limit=1) != 0 
 
     def add_track(self, id, name, artists):
         if isinstance(artists, str):
@@ -67,7 +67,9 @@ class Database:
     def add_artist(self, id, name):
         artist = {
             "id": id,
-            "name": name
+            "name": name,
+            "count": 0,
+            "last_listened": 0
         }
         
         if (self.__item_exists(id, "artists")):
@@ -75,6 +77,15 @@ class Database:
             return
 
         self.__add_item("artists", artist)
+
+    def update_artist(self, id, timestamp):
+        count = self.__get_item("tracks", id)["count"] + 1
+        artist = {
+            "$set": {
+                "count": count,
+                "last_listened": timestamp
+            }
+        }
 
     def create_ranking(self, timestamp):
         ranking = {
