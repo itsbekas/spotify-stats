@@ -32,7 +32,7 @@ class SpotifyStats:
         scope = ["user-top-read", "user-read-recently-played"]
         self.__timestamp = 0
         self.__sp = self.__auth(scope)
-        self.__db = database.Database()
+        self.__db = database.Database("spotify-stats")
 
     def __auth(self, scope):
         # Make sure credentials are set

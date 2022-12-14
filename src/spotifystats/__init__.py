@@ -3,7 +3,7 @@
 from stats import SpotifyStats
 from util import init
 
-if __name__ == "__main__":
+def main():
     init()
     stats = SpotifyStats()
     stats.update()

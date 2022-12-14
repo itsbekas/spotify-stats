@@ -13,10 +13,10 @@ def _valid_document(document):
 
 class Database:
     
-    def __init__(self):
+    def __init__(self, dbname):
         #logger.info("Initializing Database")
         client = MongoClient(environ["SPOTIFYSTATS_MONGODB_URI"])
-        self.__db = client["spotify-stats"]
+        self.__db = client[dbname]
 
     def __get_collection(self, collection):
         return self.__db[collection]
