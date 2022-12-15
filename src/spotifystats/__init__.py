@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-from stats import SpotifyStats
-from util import init
+from spotifystats.stats import SpotifyStats
+from spotifystats.util import init
 
 def main():
     init()

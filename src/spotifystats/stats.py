@@ -6,8 +6,7 @@ import spotipy
 from dateutil.parser import parse
 from spotipy.oauth2 import SpotifyPKCE
 
-import database as database
-from log import logger
+import spotifystats.database as database
 
 ranges = ["short_term", "medium_term", "long_term"]
 

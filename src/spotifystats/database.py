@@ -1,5 +1,4 @@
 from pymongo import MongoClient
-from log import logger
 from os import environ
 
 collections = ["artists", "tracks", "song-count", "history"]
@@ -21,20 +20,32 @@ class Database:
     def __get_collection(self, collection):
         return self.__db[collection]
 
-    def __add_item(self, document, item):
+    def __add_item(self, collection, item):
         # check if collection is valid (assert)
-        self.__get_collection(document).insert_one(item)
+        self.__get_collection(collection).insert_one(item)
 
-    def __get_item(self, document, id):
+    def __get_item(self, collection, id):
         # log/raise error if doesn't exist
-        return self.__get_collection().find_one({document: {"id": id}})
+        return self.__get_collection(collection).find_one({"id": id})
 
-    def __update_item(self, collection, query, item):
-        self.__get_collection().update_one({collection: query}, item)
+    def __update_item(self, collection, id, item):
+        self.__get_collection(collection).update_one({"id": id}, {"$set": item})
 
     def __item_exists(self, id, collection):
         """Given an id, checks if corresponding object already exists in a given collection"""
-        return self.__get_collection(collection).count_documents({"_id": id}, limit=1) != 0 
+        return self.__get_collection(collection).count_documents({"id": id}, limit=1) != 0
+
+    def __get_item_count(self, collection):
+        return self.__get_collection(collection).count_documents({})
+
+    def get_artist_count(self):
+        return self.__get_item_count("artists")
+
+    def get_track_count(self):
+        return self.__get_item_count("tracks")
+
+    def get_listened_count(self, id, collection):
+        return self.__get_item(collection, id)["count"]
 
     def add_track(self, id, name, artists):
         if isinstance(artists, str):
@@ -56,13 +67,12 @@ class Database:
     
     def update_track(self, id, timestamp):
         count = self.__get_item("tracks", id)["count"] + 1
-        track = {
-            "$set": {
-                "count": count,
-                "last_listened": timestamp
-            }
+        update = {
+            "count": count,
+            "last_listened": timestamp
         }
-        self.__update_item("tracks", {"id": id}, track)
+
+        self.__update_item("tracks", id, update)
 
     def add_artist(self, id, name):
         artist = {
@@ -79,13 +89,12 @@ class Database:
         self.__add_item("artists", artist)
 
     def update_artist(self, id, timestamp):
-        count = self.__get_item("tracks", id)["count"] + 1
-        artist = {
-            "$set": {
-                "count": count,
-                "last_listened": timestamp
-            }
+        count = self.__get_item("artists", id)["count"] + 1
+        update = {
+            "count": count,
+            "last_listened": timestamp
         }
+        self.__update_item("artists", id, update)
 
     def create_ranking(self, timestamp):
         ranking = {
@@ -100,7 +109,7 @@ class Database:
         }
 
         ranking = {
-            f"{collection}-{range}": ids + ["bruh"]
+            f"{collection}-{range}": ids
         }
 
         self.__add_item("ranking", ranking)
