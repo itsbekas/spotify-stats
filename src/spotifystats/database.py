@@ -31,10 +31,13 @@ class Database:
         # log/raise error if doesn't exist
         return self._get_item(collection, {"id": id})
 
-    def _update_item(self, collection, id, item):
+    def _get_item_field(self, collection, id, field):
+        return self._get_collection(collection).find_one_by_id(id)
+
+    def _add_field(self, collection, id, item):
         self._get_collection(collection).update_one({"id": id}, {"$set": item})
 
-    def _item_exists(self, id, collection):
+    def _item_exists(self, collection, id):
         """Given a query, checks if corresponding object already exists in a given collection"""
         return self._get_collection(collection).count_documents({"id": id}, limit=1) != 0
 
@@ -68,7 +71,7 @@ class Database:
             "last_listened": 0
         }
         
-        if (self._item_exists(id, Collection.TRACKS.value)):
+        if (self._item_exists(Collection.TRACKS.value, id)):
             # log: Database.add_track: Track {id} already exists. Skipping.
             return
 
@@ -81,7 +84,7 @@ class Database:
             "last_listened": timestamp
         }
 
-        self._update_item(Collection.TRACKS.value, id, update)
+        self._add_field(Collection.TRACKS.value, id, update)
 
     def add_artist(self, id, name):
         artist = {
@@ -91,7 +94,7 @@ class Database:
             "last_listened": 0
         }
         
-        if (self._item_exists(id, Collection.ARTISTS.value)):
+        if (self._item_exists(Collection.ARTISTS.value, id)):
             # log: add_artist
             return
 
@@ -103,22 +106,21 @@ class Database:
             "count": count,
             "last_listened": timestamp
         }
-        self._update_item(Collection.ARTISTS.value, id, update)
+        self._add_field(Collection.ARTISTS.value, id, update)
 
     def create_ranking(self, timestamp):
         ranking = {
             "id": timestamp,
         }
-        if (self._item_exists(timestamp, Collection.RANKINGS.value)):
+        if (self._item_exists(Collection.RANKINGS.value, timestamp)):
             return
 
         self._add_item(Collection.RANKINGS.value, ranking)
 
     def add_ranking(self, timestamp, ids, collection, range):
-        filter = { "id": timestamp }
         ranking = { f"{collection}-{range}": ids }
 
-        self._update_item(Collection.RANKINGS.value, filter, ranking)
+        self._add_field(Collection.RANKINGS.value, timestamp, ranking)
 
     def get_ranking(self, timestamp, range):
-        return self._get_item(Collection.RANKINGS.value, {"id": timestamp })
+        return self._get_item(Collection.RANKINGS.value, timestamp)

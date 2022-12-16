@@ -17,6 +17,29 @@ class DatabaseTest(unittest.TestCase):
         client = MongoClient(environ["SPOTIFYSTATS_MONGODB_URI"])
         client.drop_database(TESTDB)
 
+class TestDatabase(DatabaseTest):
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        super().setUpClass()
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        super().tearDownClass()
+
+    def tearDown(cls):
+        client = MongoClient(environ["SPOTIFYSTATS_MONGODB_URI"])
+        client[TESTDB]["A"].drop()
+    
+    def testAddItem(cls):
+        cls.db._add_item("A", {})
+        cls.assertEqual(cls.db._get_item_count("A"), 1)
+
+    def testAddField(cls):
+        cls.db._add_item("A", {"id": 1})
+        cls.db._add_field("A", 1, {"field": "value"})
+        cls.assertEqual(cls.db._get_item_by_id("A", 1)["field"], "value")
+
 class TestArtists(DatabaseTest):
 
     @classmethod
@@ -121,8 +144,9 @@ class TestRankings(DatabaseTest):
 
     def test_addRanking(cls):
         cls.db.create_ranking(1)
-        cls.db.add_ranking(1, ["1"], Collection.ARTISTS.value, "short-term")
-        cls.assertEqual(cls.db._get_item(Collection.RANKINGS.value, "1")[Collection.ARTISTS+"_short-term"])
+        artists = ["1", "2", "3"]
+        cls.db.add_ranking(1, artists, Collection.ARTISTS.value, "short_term")
+        cls.assertEqual(cls.db._get_item_by_id(Collection.RANKINGS.value, 1)[Collection.ARTISTS.value+"-short_term"], artists)
 
 if __name__ == "__main__":
     unittest.main()

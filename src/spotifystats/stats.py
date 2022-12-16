@@ -6,7 +6,8 @@ import spotipy
 from dateutil.parser import parse
 from spotipy.oauth2 import SpotifyPKCE
 
-import spotifystats.database as database
+from spotifystats.database import Database, Collection
+
 
 ranges = ["short_term", "medium_term", "long_term"]
 
@@ -29,11 +30,11 @@ class SpotifyStats:
 
     def __init__(self):
         scope = ["user-top-read", "user-read-recently-played"]
-        self.__timestamp = 0
-        self.__sp = self.__auth(scope)
-        self.__db = database.Database("spotify-stats")
+        self._timestamp = 0
+        self._sp = self._auth(scope)
+        self._db = Database("spotify-stats")
 
-    def __auth(self, scope):
+    def _auth(self, scope):
         # Make sure credentials are set
         if not all(env in environ for env in ["SPOTIPY_CLIENT_ID", "SPOTIPY_CLIENT_SECRET", "SPOTIPY_REDIRECT_URI"]):
             raise Exception("Make sure SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET and SPOTIPY_REDIRECT_URI are defined in your environment!")
@@ -42,66 +43,66 @@ class SpotifyStats:
         auth.get_access_token()
         return spotipy.Spotify(auth_manager=auth)
 
-    def __get_top_tracks(self, range):
-        tracks = self.__sp.current_user_top_tracks(limit=50, offset=0, time_range=range)["items"]
+    def _get_top_tracks(self, range):
+        tracks = self._sp.current_user_top_tracks(limit=50, offset=0, time_range=range)["items"]
         return [_extract_track(track) for track in tracks]
 
-    def __get_top_artists(self, range):
-        artists = self.__sp.current_user_top_artists(limit=50, offset=0, time_range=range)["items"]
+    def _get_top_artists(self, range):
+        artists = self._sp.current_user_top_artists(limit=50, offset=0, time_range=range)["items"]
         return [_extract_artist(artist) for artist in artists]
 
-    def __get_recently_played(self):
-        timestamp = self.__timestamp*1000 # Timestamp must be in milliseconds
-        tracks = self.__sp.current_user_recently_played(limit=50, after=timestamp)["items"]
+    def _get_recently_played(self):
+        timestamp = self._timestamp*1000 # Timestamp must be in milliseconds
+        tracks = self._sp.current_user_recently_played(limit=50, after=timestamp)["items"]
         return [{
                 "track": _extract_track(track["track"]),
                 "last_listened": track["played_at"]
             } for track in tracks]
 
-    def __create_ranking(self):
-        self.__db.create_ranking(self.__timestamp)
+    def _create_ranking(self):
+        self._db.create_ranking(self._timestamp)
 
-    def __update_track(self, track, timestamp=0):
+    def _update_track(self, track, timestamp=0):
         artists = [artist["id"] for artist in track["artists"]]
-        self.__db.add_track(track["id"], track["name"], artists)
+        self._db.add_track(track["id"], track["name"], artists)
         if (timestamp):
-            self.__db.update_track(track["id"], timestamp)
+            self._db.update_track(track["id"], timestamp)
 
-    def __update_artist(self, artist):
-        self.__db.add_artist(artist["id"], artist["name"])
+    def _update_artist(self, artist):
+        self._db.add_artist(artist["id"], artist["name"])
 
-    def __update_ranking(self, items, collection, range):
+    def _update_ranking(self, items, collection, range):
         ids = [item["id"] for item in items]
-        self.__db.add_ranking(self.__timestamp, ids, collection, range)
+        self._db.add_ranking(self._timestamp, ids, collection, range)
 
-    def __update_tracks(self):
+    def _update_tracks(self):
         for range in ranges:
-            top_tracks = self.__get_top_tracks(range)
-            self.__update_ranking(top_tracks, "tracks", range)
+            top_tracks = self._get_top_tracks(range)
+            self._update_ranking(top_tracks, Collection.TRACKS.value, range)
             for track in top_tracks:
-                self.__update_track(track)
+                self._update_track(track)
                 for artist in track["artists"]:
-                    self.__update_artist(artist)
+                    self._update_artist(artist)
 
-    def __update_artists(self):
+    def _update_artists(self):
         for range in ranges:
-            top_artists = self.__get_top_artists(range)
-            self.__update_ranking(top_artists, "artists", range)
+            top_artists = self._get_top_artists(range)
+            self._update_ranking(top_artists, Collection.ARTISTS.value, range)
             for artist in top_artists:
-                self.__update_artist(artist)
+                self._update_artist(artist)
 
-    def __update_play_count(self):
-        tracks = self.__get_recently_played()
+    def _update_play_count(self):
+        tracks = self._get_recently_played()
         for track in tracks:
             last_listened = floor(parse(track["last_listened"], "").timestamp())
-            self.__update_track(track["track"], track["last_listened"])
+            self._update_track(track["track"], track["last_listened"])
 
     def update(self):
         # check connection and skip+log if unavailable
         
-        #self.__update_play_count()
+        #self._update_play_count()
         
-        self.__timestamp = floor(time())
-        self.__create_ranking()
-        self.__update_tracks()
-        self.__update_artists()
+        self._timestamp = floor(time())
+        self._create_ranking()
+        self._update_tracks()
+        self._update_artists()
