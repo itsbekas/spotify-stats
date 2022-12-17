@@ -62,13 +62,11 @@ class SpotifyStats:
     def _create_ranking(self):
         self._db.create_ranking(self._timestamp)
 
-    def _update_track(self, track, timestamp=0):
+    def _add_track(self, track, timestamp=0):
         artists = [artist["id"] for artist in track["artists"]]
         self._db.add_track(track["id"], track["name"], artists)
-        if (timestamp):
-            self._db.update_track(track["id"], timestamp)
 
-    def _update_artist(self, artist):
+    def _add_artist(self, artist):
         self._db.add_artist(artist["id"], artist["name"])
 
     def _update_ranking(self, items, collection, range):
@@ -91,11 +89,14 @@ class SpotifyStats:
             for artist in top_artists:
                 self._update_artist(artist)
 
-    def _update_play_count(self):
+    def _update_recently_played(self):
         tracks = self._get_recently_played()
         for track in tracks:
             last_listened = floor(parse(track["last_listened"], "").timestamp())
             self._update_track(track["track"], track["last_listened"])
+
+    def _update_timestamp(self):
+        self._db._set_timestamp(self._timestamp)
 
     def update(self):
         # check connection and skip+log if unavailable
@@ -103,6 +104,9 @@ class SpotifyStats:
         #self._update_play_count()
         
         self._timestamp = floor(time())
+        self._update_timestamp()
         self._create_ranking()
         self._update_tracks()
         self._update_artists()
+        self._update_recently_played()
+        self._update_timestamp()

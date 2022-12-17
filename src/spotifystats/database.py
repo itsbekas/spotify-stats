@@ -6,6 +6,7 @@ class Collection(Enum):
     ARTISTS = "artists"
     TRACKS = "tracks"
     RANKINGS = "rankings"
+    COMMON = "common"
 
 def _valid_collection(collection):
     return collection in [collection.value for collection in Collection]
@@ -34,8 +35,11 @@ class Database:
     def _get_item_field(self, collection, id, field):
         return self._get_collection(collection).find_one_by_id(id)
 
-    def _add_field(self, collection, id, item):
-        self._get_collection(collection).update_one({"id": id}, {"$set": item})
+    def _update_item(self, collection, query, item):
+        self._get_collection(collection).update_one(query, {"$set": item})
+
+    def update_item_by_id(self, collection, id, item):
+        self._update_item(collection, {"id": id}, item)
 
     def _item_exists(self, collection, id):
         """Given a query, checks if corresponding object already exists in a given collection"""
@@ -43,6 +47,9 @@ class Database:
 
     def _get_item_count(self, collection):
         return self._get_collection(collection).count_documents({})
+
+    def _set_timestamp(self, timestamp):
+        return self.update_item(Collection.COMMON.value, {"timestamp": timestamp})
 
     def get_artist_count(self):
         return self._get_item_count(Collection.ARTISTS.value)
@@ -84,7 +91,7 @@ class Database:
             "last_listened": timestamp
         }
 
-        self._add_field(Collection.TRACKS.value, id, update)
+        self.update_item_by_id(Collection.TRACKS.value, id, update)
 
     def add_artist(self, id, name):
         artist = {
@@ -106,7 +113,7 @@ class Database:
             "count": count,
             "last_listened": timestamp
         }
-        self._add_field(Collection.ARTISTS.value, id, update)
+        self.update_item_by_id(Collection.ARTISTS.value, id, update)
 
     def create_ranking(self, timestamp):
         ranking = {
@@ -120,7 +127,7 @@ class Database:
     def add_ranking(self, timestamp, ids, collection, range):
         ranking = { f"{collection}-{range}": ids }
 
-        self._add_field(Collection.RANKINGS.value, timestamp, ranking)
+        self.update_item_by_id(Collection.RANKINGS.value, timestamp, ranking)
 
     def get_ranking(self, timestamp, range):
         return self._get_item(Collection.RANKINGS.value, timestamp)
