@@ -15,7 +15,9 @@ setup (
     ],
     entry_points={
         "console_scripts": [
-            "spotifystats = spotifystats:main"
+            "spotifystats = spotifystats:main",
+            "spotifystats-clear = spotifystats.clear:main",
+            "spotifystats-setup = spotifystats.setup:main"
         ]
     }
 )

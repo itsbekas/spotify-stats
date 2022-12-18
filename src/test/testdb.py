@@ -32,12 +32,12 @@ class TestDatabase(DatabaseTest):
         client[TESTDB]["A"].drop()
     
     def testAddItem(cls):
-        cls.db._add_item("A", {})
+        cls.db._add_item("A", {"id": 1})
         cls.assertEqual(cls.db._get_item_count("A"), 1)
 
     def testAddField(cls):
         cls.db._add_item("A", {"id": 1})
-        cls.db._add_field("A", 1, {"field": "value"})
+        cls.db._update_item_by_id("A", 1, {"field": "value"})
         cls.assertEqual(cls.db._get_item_by_id("A", 1)["field"], "value")
 
 class TestArtists(DatabaseTest):
@@ -47,6 +47,7 @@ class TestArtists(DatabaseTest):
         super().setUpClass()
         cls.artist1 = {"id": '1', "name": 'A'}
         cls.artist2 = {"id": '2', "name": 'B'}
+        cls.timestamp = 1
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -73,8 +74,9 @@ class TestArtists(DatabaseTest):
 
     def test_updateArtist(cls):
         cls.db.add_artist(cls.artist1["id"], cls.artist1["name"])
-        cls.db.update_artist(cls.artist1["id"], 100)
+        cls.db.update_artist(cls.artist1["id"], cls.timestamp)
         cls.assertEqual(cls.db.get_artist_listened_count(cls.artist1["id"]), 1)
+        cls.assertEqual(cls.db.get_artist_last_listened(cls.artist1["id"]), cls.timestamp)
 
 class TestTracks(DatabaseTest):
     @classmethod
@@ -82,6 +84,7 @@ class TestTracks(DatabaseTest):
         super().setUpClass()
         cls.track1 = {"id": '1', "name": 'A', "artists": ['11']}
         cls.track2 = {"id": '2', "name": 'B', "artists": ['22']}
+        cls.timestamp = 1
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -108,8 +111,9 @@ class TestTracks(DatabaseTest):
 
     def test_updateTrack(cls):
         cls.db.add_track(cls.track1["id"], cls.track1["name"], cls.track1["artists"])
-        cls.db.update_track(cls.track1["id"], 100)
+        cls.db.update_track(cls.track1["id"], cls.timestamp)
         cls.assertEqual(cls.db.get_track_listened_count(cls.track1["id"]), 1)
+        cls.assertEqual(cls.db.get_track_last_listened(cls.track1["id"]), cls.timestamp)
 
 class TestRankings(DatabaseTest):
     @classmethod

@@ -26,6 +26,9 @@ def _extract_artist(artist):
         "name": artist["name"]
     }
 
+def _timestamp_to_int(timestamp):
+    return floor(parse(timestamp, "").timestamp())
+
 class SpotifyStats:
 
     def __init__(self):
@@ -52,7 +55,7 @@ class SpotifyStats:
         return [_extract_artist(artist) for artist in artists]
 
     def _get_recently_played(self):
-        timestamp = self._timestamp*1000 # Timestamp must be in milliseconds
+        timestamp = self._db.get_timestamp()*1000 # Timestamp must be in milliseconds
         tracks = self._sp.current_user_recently_played(limit=50, after=timestamp)["items"]
         return [{
                 "track": _extract_track(track["track"]),
@@ -69,44 +72,51 @@ class SpotifyStats:
     def _add_artist(self, artist):
         self._db.add_artist(artist["id"], artist["name"])
 
+    def _update_artist(self, artist, timestamp):
+        self._db.update_artist(artist["id"], timestamp)
+
     def _update_ranking(self, items, collection, range):
         ids = [item["id"] for item in items]
         self._db.add_ranking(self._timestamp, ids, collection, range)
 
-    def _update_tracks(self):
+    def _update_track_rankings(self):
         for range in ranges:
             top_tracks = self._get_top_tracks(range)
             self._update_ranking(top_tracks, Collection.TRACKS.value, range)
             for track in top_tracks:
-                self._update_track(track)
+                self._add_track(track)
                 for artist in track["artists"]:
-                    self._update_artist(artist)
+                    self._add_artist(artist)
 
-    def _update_artists(self):
+    def _update_artist_rankings(self):
         for range in ranges:
             top_artists = self._get_top_artists(range)
             self._update_ranking(top_artists, Collection.ARTISTS.value, range)
             for artist in top_artists:
-                self._update_artist(artist)
+                self._add_artist(artist)
 
     def _update_recently_played(self):
-        tracks = self._get_recently_played()
-        for track in tracks:
-            last_listened = floor(parse(track["last_listened"], "").timestamp())
-            self._update_track(track["track"], track["last_listened"])
+        recently_played = reversed(self._get_recently_played())
+        
+        for play in recently_played:
+            track = play["track"]
+            timestamp = _timestamp_to_int(play["last_listened"])
+            self._add_track(track)
+            print(track["name"])
+            for artist in track["artists"]:
+                self._add_artist(artist)
+                self._update_artist(artist, timestamp)
+            self._db.update_track(track["id"], timestamp)
 
     def _update_timestamp(self):
-        self._db._set_timestamp(self._timestamp)
+        self._db.set_timestamp(self._timestamp)
 
     def update(self):
         # check connection and skip+log if unavailable
         
-        #self._update_play_count()
-        
         self._timestamp = floor(time())
-        self._update_timestamp()
         self._create_ranking()
-        self._update_tracks()
-        self._update_artists()
+        self._update_track_rankings()
+        self._update_artist_rankings()
         self._update_recently_played()
         self._update_timestamp()

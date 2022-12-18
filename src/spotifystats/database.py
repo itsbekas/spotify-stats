@@ -17,12 +17,15 @@ class Database:
         #logger.info("Initializing Database")
         client = MongoClient(environ["SPOTIFYSTATS_MONGODB_URI"])
         self._db = client[dbname]
+        self._add_item(Collection.COMMON.value, {"id": Collection.COMMON.value})
+        #self.set_timestamp(0)
 
     def _get_collection(self, collection):
         return self._db[collection]
 
     def _add_item(self, collection, item):
-        # check if collection is valid (assert)
+        if self._get_item_by_id(collection, item["id"]) != None:
+            return
         self._get_collection(collection).insert_one(item)
 
     def _get_item(self, collection, query):
@@ -38,7 +41,7 @@ class Database:
     def _update_item(self, collection, query, item):
         self._get_collection(collection).update_one(query, {"$set": item})
 
-    def update_item_by_id(self, collection, id, item):
+    def _update_item_by_id(self, collection, id, item):
         self._update_item(collection, {"id": id}, item)
 
     def _item_exists(self, collection, id):
@@ -48,8 +51,11 @@ class Database:
     def _get_item_count(self, collection):
         return self._get_collection(collection).count_documents({})
 
-    def _set_timestamp(self, timestamp):
-        return self.update_item(Collection.COMMON.value, {"timestamp": timestamp})
+    def get_timestamp(self):
+        return self._get_item_by_id(Collection.COMMON.value, Collection.COMMON.value)["timestamp"]
+
+    def set_timestamp(self, timestamp):
+        return self._update_item_by_id(Collection.COMMON.value, Collection.COMMON.value, {"timestamp": timestamp})
 
     def get_artist_count(self):
         return self._get_item_count(Collection.ARTISTS.value)
@@ -63,8 +69,14 @@ class Database:
     def get_artist_listened_count(self, id):
         return self._get_item_by_id(Collection.ARTISTS.value, id)["count"]
 
+    def get_artist_last_listened(self, id):
+        return self._get_item_by_id(Collection.ARTISTS.value, id)["last_listened"]
+
     def get_track_listened_count(self, id):
         return self._get_item_by_id(Collection.TRACKS.value, id)["count"]
+
+    def get_track_last_listened(self, id):
+        return self._get_item_by_id(Collection.TRACKS.value, id)["last_listened"]
 
     def add_track(self, id, name, artists):
         if isinstance(artists, str):
@@ -77,21 +89,20 @@ class Database:
             "count": 0,
             "last_listened": 0
         }
-        
-        if (self._item_exists(Collection.TRACKS.value, id)):
-            # log: Database.add_track: Track {id} already exists. Skipping.
-            return
 
         self._add_item(Collection.TRACKS.value, track)
     
     def update_track(self, id, timestamp):
+        if (self.get_track_last_listened(id) >= timestamp):
+            return
+        
         count = self._get_item_by_id(Collection.TRACKS.value, id)["count"] + 1
         update = {
             "count": count,
             "last_listened": timestamp
         }
 
-        self.update_item_by_id(Collection.TRACKS.value, id, update)
+        self._update_item_by_id(Collection.TRACKS.value, id, update)
 
     def add_artist(self, id, name):
         artist = {
@@ -100,34 +111,31 @@ class Database:
             "count": 0,
             "last_listened": 0
         }
-        
-        if (self._item_exists(Collection.ARTISTS.value, id)):
-            # log: add_artist
-            return
 
         self._add_item(Collection.ARTISTS.value, artist)
 
-    def update_artist(self, id, timestamp):
+    def update_artist(self, id: str, timestamp: int) -> None:
+        if (self.get_artist_last_listened(id) >= timestamp):
+            return
+
         count = self._get_item_by_id(Collection.ARTISTS.value, id)["count"] + 1
         update = {
             "count": count,
             "last_listened": timestamp
         }
-        self.update_item_by_id(Collection.ARTISTS.value, id, update)
+        self._update_item_by_id(Collection.ARTISTS.value, id, update)
 
-    def create_ranking(self, timestamp):
+    def create_ranking(self, timestamp: int):
         ranking = {
             "id": timestamp,
         }
-        if (self._item_exists(Collection.RANKINGS.value, timestamp)):
-            return
 
         self._add_item(Collection.RANKINGS.value, ranking)
 
     def add_ranking(self, timestamp, ids, collection, range):
         ranking = { f"{collection}-{range}": ids }
 
-        self.update_item_by_id(Collection.RANKINGS.value, timestamp, ranking)
+        self._update_item_by_id(Collection.RANKINGS.value, timestamp, ranking)
 
     def get_ranking(self, timestamp, range):
         return self._get_item(Collection.RANKINGS.value, timestamp)
