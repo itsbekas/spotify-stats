@@ -5,6 +5,7 @@ from time import sleep, time
 import spotipy
 from dateutil.parser import parse
 from spotipy.oauth2 import SpotifyPKCE
+from spotipy.cache_handler import CacheFileHandler
 
 from spotifystats.database import Database, Collection
 
@@ -42,7 +43,8 @@ class SpotifyStats:
         if not all(env in environ for env in ["SPOTIPY_CLIENT_ID", "SPOTIPY_CLIENT_SECRET", "SPOTIPY_REDIRECT_URI"]):
             raise Exception("Make sure SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET and SPOTIPY_REDIRECT_URI are defined in your environment!")
 
-        auth = SpotifyPKCE(scope=scope, open_browser=False)
+        cache_handler = CacheFileHandler(cache_path="/home/bekas/Projects/spotify-stats/.cache")
+        auth = SpotifyPKCE(scope=scope, open_browser=False, cache_handler=cache_handler)
         auth.get_access_token()
         return spotipy.Spotify(auth_manager=auth)
 
