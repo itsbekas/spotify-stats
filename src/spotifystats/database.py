@@ -7,6 +7,7 @@ class Collection(Enum):
     TRACKS = "tracks"
     RANKINGS = "rankings"
     COMMON = "common"
+    HISTORY = "history"
 
 def _valid_collection(collection):
     return collection in [collection.value for collection in Collection]
@@ -139,3 +140,11 @@ class Database:
 
     def get_ranking(self, timestamp, range):
         return self._get_item(Collection.RANKINGS.value, timestamp)
+
+    def add_history(self, history, timestamp):
+        db_history = {
+            "id": timestamp,
+            "history": history
+        }
+
+        self._add_item(Collection.HISTORY.value, db_history)
