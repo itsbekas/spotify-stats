@@ -11,14 +11,16 @@
 
 <section>
     <table>
-        <!-- <tr>
+        <tr>
             <th>Name</th>
             <th>Artist</th>
             <th>Listen Count</th>
             <th>Last Listened</th>
-        </tr> -->
+        </tr>
         {#each [tracks[0]] as track}
-            <Track track={track}/>
+            <tr>
+                <Track track={track}/>
+            </tr>
         {/each}
     </table>
 </section>
