@@ -1,4 +1,5 @@
-# spotify-stats
+# Spotify Stats
 
-Program meant to run on Azure Functions with CosmoDB integration for MongoDB.
-Every 30 minutes, it retrieves a user's stats from Spotify and saves them in the database.
+Save and visualize your Spotify Data. Meant to run as a cronjob, ideally every 30 minutes or so. Saves listening history, artists, tracks and rankings.
+
+Website built in Svelte allows the user to visualize their data.
