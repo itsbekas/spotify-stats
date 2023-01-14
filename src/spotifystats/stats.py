@@ -8,11 +8,11 @@ from spotipy.oauth2 import SpotifyPKCE
 from spotipy.cache_handler import CacheFileHandler
 
 from spotifystats.database import Database, Collection
-
+from spotifystats.model import Artist, Track, Play, History
 
 ranges = ["short_term", "medium_term", "long_term"]
 
-def _extract_track(track: dict) -> dict:
+def _extract_track(track: dict) -> Track:
     """Extracts the relevant info from a track"""
     return {
         "id": track["id"],
@@ -27,8 +27,8 @@ def _extract_artist(artist: dict) -> dict:
         "name": artist["name"]
     }
 
-def _extract_play(play: dict) -> dict:
-    """Extracts the relevant info from a play"""
+def _extract_play(play: dict) -> Play:
+    """Creates a Play object from a Spotify response dictionary"""
     return {
         "track": _extract_track(play["track"]),
         "artists": [_extract_artist(artist) for artist in play["track"]["artists"]],
@@ -36,7 +36,7 @@ def _extract_play(play: dict) -> dict:
         "popularity": play["track"]["popularity"]
     }
 
-def _plays_to_history(plays: list[dict]) -> list[dict]:
+def _plays_to_history(plays: list[Play]) -> History:
     """Converts plays created by _extract_play to an history array"""
     return [{
         "track": play["track"]["id"],
@@ -45,18 +45,18 @@ def _plays_to_history(plays: list[dict]) -> list[dict]:
         "popularity": play["popularity"]
     } for play in plays]
 
-def _timestamp_to_int(timestamp):
+def _timestamp_to_int(timestamp: str) -> int:
     return floor(parse(timestamp, "").timestamp())
 
 class SpotifyStats:
 
-    def __init__(self):
+    def __init__(self) -> None:
         scope = ["user-top-read", "user-read-recently-played"]
         self._timestamp = 0
         self._sp = self._auth(scope)
         self._db = Database("spotify-stats")
 
-    def _auth(self, scope):
+    def _auth(self, scope: list[str] | str) -> None:
         # Make sure credentials are set
         if not all(env in environ for env in ["SPOTIPY_CLIENT_ID", "SPOTIPY_CLIENT_SECRET", "SPOTIPY_REDIRECT_URI"]):
             raise Exception("Make sure SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET and SPOTIPY_REDIRECT_URI are defined in your environment!")
@@ -66,62 +66,62 @@ class SpotifyStats:
         auth.get_access_token()
         return spotipy.Spotify(auth_manager=auth)
 
-    def _get_top_tracks(self, range):
+    def _get_top_tracks(self, range) -> None:
         tracks = self._sp.current_user_top_tracks(limit=50, offset=0, time_range=range)["items"]
         return [_extract_track(track) for track in tracks]
 
-    def _get_top_artists(self, range):
+    def _get_top_artists(self, range) -> None:
         artists = self._sp.current_user_top_artists(limit=50, offset=0, time_range=range)["items"]
         return [_extract_artist(artist) for artist in artists]
 
-    def _get_recently_played(self):
+    def _get_recently_played(self) -> None:
         timestamp = self._db.get_timestamp()*1000 # Timestamp must be in milliseconds
         tracks = self._sp.current_user_recently_played(limit=50, after=timestamp)["items"]
         return list(reversed([_extract_play(track) for track in tracks]))
 
-    def _create_ranking(self):
+    def _create_ranking(self) -> None:
         self._db.create_ranking(self._timestamp)
 
-    def _add_track(self, track, timestamp=0):
+    def _add_track(self, track: Track, timestamp: int = 0) -> None:
         artists = [artist["id"] for artist in track["artists"]]
         self._db.add_track(track["id"], track["name"], artists)
 
-    def _add_tracks(self, tracks):
+    def _add_tracks(self, tracks: list[Track]) -> None:
         for track in tracks:
             self._add_track(track)
             for artist in track["artists"]:
                 self._add_artist(artist)
 
-    def _add_artist(self, artist):
+    def _add_artist(self, artist: Artist) -> None:
         self._db.add_artist(artist["id"], artist["name"])
 
-    def _add_artists(self, artists):
+    def _add_artists(self, artists: Artist) -> None:
         for artist in artists:
             self._add_artist(artist)
 
-    def _update_artist(self, artist, timestamp):
+    def _update_artist(self, artist: Artist, timestamp) -> None:
         self._db.update_artist(artist["id"], timestamp)
 
-    def _update_track(self, track, timestamp):
+    def _update_track(self, track: Track, timestamp) -> None:
         self._db.update_track(track["id"], timestamp)
 
-    def _update_track_rankings(self):
+    def _update_track_rankings(self) -> None:
         for range in ranges:
             top_tracks = self._get_top_tracks(range)
             self._update_ranking(top_tracks, Collection.TRACKS.value, range)
             self._add_tracks(top_tracks)
 
-    def _update_ranking(self, items, collection, range):
+    def _update_ranking(self, items, collection, range) -> None:
         ids = [item["id"] for item in items]
         self._db.add_ranking(self._timestamp, ids, collection, range)
 
-    def _update_artist_rankings(self):
+    def _update_artist_rankings(self) -> None:
         for range in ranges:
             top_artists = self._get_top_artists(range)
             self._update_ranking(top_artists, Collection.ARTISTS.value, range)
             self._add_artists(top_artists)
 
-    def _update_play(self, play):
+    def _update_play(self, play: Play) -> None:
         track = play["track"]
         timestamp = play["played_at"]
         self._add_track(track)
@@ -130,20 +130,20 @@ class SpotifyStats:
             self._add_artist(artist)
             self._update_artist(artist, timestamp)
 
-    def _add_history(self, history):
+    def _add_history(self, history) -> None:
         self._db.add_history(history, self._timestamp)
 
-    def _update_recently_played(self):
+    def _update_recently_played(self) -> None:
         recently_played = self._get_recently_played()
         history = _plays_to_history(recently_played)
         self._add_history(history)
         for play in recently_played:
             self._update_play(play)
 
-    def _update_timestamp(self):
+    def _update_timestamp(self) -> None:
         self._db.set_timestamp(self._timestamp)
 
-    def update(self):
+    def update(self) -> None:
         # check connection and skip+log if unavailable
         
         self._timestamp = floor(time())

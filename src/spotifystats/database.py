@@ -9,22 +9,19 @@ class Collection(Enum):
     COMMON = "common"
     HISTORY = "history"
 
-def _valid_collection(collection):
+def _valid_collection(collection) -> bool:
     return collection in [collection.value for collection in Collection]
 
 class Database:
     
-    def __init__(self, dbname):
-        #logger.info("Initializing Database")
-        client = MongoClient(environ["SPOTIFYSTATS_MONGODB_URI"])
+    def __init__(self, dbname: str) -> None:
+        client: MongoClient = MongoClient(environ["SPOTIFYSTATS_MONGODB_URI"])
         self._db = client[dbname]
-        self._add_item(Collection.COMMON.value, {"id": Collection.COMMON.value})
-        #self.set_timestamp(0)
 
     def _get_collection(self, collection):
         return self._db[collection]
 
-    def _add_item(self, collection, item):
+    def _add_item(self, collection, item) -> None:
         if self._get_item_by_id(collection, item["id"]) != None:
             return
         self._get_collection(collection).insert_one(item)
@@ -79,7 +76,7 @@ class Database:
     def get_track_last_listened(self, id):
         return self._get_item_by_id(Collection.TRACKS.value, id)["last_listened"]
 
-    def add_track(self, id, name, artists):
+    def add_track(self, id, name, artists) -> None:
         if isinstance(artists, str):
             artists = [artists]
 
@@ -93,7 +90,7 @@ class Database:
 
         self._add_item(Collection.TRACKS.value, track)
     
-    def update_track(self, id, timestamp):
+    def update_track(self, id, timestamp) -> None:
         if (self.get_track_last_listened(id) >= timestamp):
             return
         
@@ -105,7 +102,7 @@ class Database:
 
         self._update_item_by_id(Collection.TRACKS.value, id, update)
 
-    def add_artist(self, id, name):
+    def add_artist(self, id, name) -> None:
         artist = {
             "id": id,
             "name": name,
@@ -126,22 +123,22 @@ class Database:
         }
         self._update_item_by_id(Collection.ARTISTS.value, id, update)
 
-    def create_ranking(self, timestamp: int):
+    def create_ranking(self, timestamp: int) -> None:
         ranking = {
             "id": timestamp,
         }
 
         self._add_item(Collection.RANKINGS.value, ranking)
 
-    def add_ranking(self, timestamp, ids, collection, range):
+    def add_ranking(self, timestamp, ids, collection, range) -> None:
         ranking = { f"{collection}-{range}": ids }
 
         self._update_item_by_id(Collection.RANKINGS.value, timestamp, ranking)
 
-    def get_ranking(self, timestamp, range):
+    def get_ranking(self, timestamp, range) -> None:
         return self._get_item(Collection.RANKINGS.value, timestamp)
 
-    def add_history(self, history, timestamp):
+    def add_history(self, history, timestamp) -> None:
         db_history = {
             "id": timestamp,
             "history": history
