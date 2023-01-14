@@ -32,7 +32,7 @@ def _extract_play(play: dict) -> dict:
     return {
         "track": _extract_track(play["track"]),
         "artists": [_extract_artist(artist) for artist in play["track"]["artists"]],
-        "played_at": play["played_at"],
+        "played_at": _timestamp_to_int(play["played_at"]),
         "popularity": play["track"]["popularity"]
     }
 
@@ -41,7 +41,7 @@ def _plays_to_history(plays: list[dict]) -> list[dict]:
     return [{
         "track": play["track"]["id"],
         "artists": [artist["id"] for artist in play["artists"]],
-        "played_at": _timestamp_to_int(play["played_at"]),
+        "played_at": play["played_at"],
         "popularity": play["popularity"]
     } for play in plays]
 
@@ -77,7 +77,7 @@ class SpotifyStats:
     def _get_recently_played(self):
         timestamp = self._db.get_timestamp()*1000 # Timestamp must be in milliseconds
         tracks = self._sp.current_user_recently_played(limit=50, after=timestamp)["items"]
-        return [_extract_play(track) for track in tracks]
+        return list(reversed([_extract_play(track) for track in tracks]))
 
     def _create_ranking(self):
         self._db.create_ranking(self._timestamp)
@@ -123,7 +123,7 @@ class SpotifyStats:
 
     def _update_play(self, play):
         track = play["track"]
-        timestamp = _timestamp_to_int(play["played_at"])
+        timestamp = play["played_at"]
         self._add_track(track)
         self._update_track(track, timestamp)
         for artist in play["artists"]:
@@ -134,7 +134,7 @@ class SpotifyStats:
         self._db.add_history(history, self._timestamp)
 
     def _update_recently_played(self):
-        recently_played = reversed(self._get_recently_played())
+        recently_played = self._get_recently_played()
         history = _plays_to_history(recently_played)
         self._add_history(history)
         for play in recently_played:
