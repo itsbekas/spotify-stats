@@ -8,7 +8,10 @@ from spotipy.oauth2 import SpotifyPKCE
 from spotipy.cache_handler import CacheFileHandler
 
 from spotifystats.database import Database, Collection
-from spotifystats.model import Artist, Track, Play, History
+from spotifystats.model.artist import Artist
+from spotifystats.model.track import Track
+from spotifystats.model.play import Play
+from spotifystats.model.history import History
 
 ranges = ["short_term", "medium_term", "long_term"]
 
@@ -54,7 +57,7 @@ class SpotifyStats:
         scope = ["user-top-read", "user-read-recently-played"]
         self._timestamp = 0
         self._sp = self._auth(scope)
-        self._db = Database("spotify-stats")
+        self._db = Database(environ["SPOTIFYSTATS_MONGODB_DB_NAME"])
 
     def _auth(self, scope: list[str] | str) -> None:
         # Make sure credentials are set

@@ -8,7 +8,7 @@ class Track:
         self._name = track["name"],
         self._artist = [Artist(artist) for artist in track["artists"]]
     
-    def __init__(self, id: str, name: str, artists: list(str)) -> None:
+    def __init__(self, id: str, name: str, artists: list[str]) -> None:
         self._id = id
         self._name = name
         self._artists = artists
@@ -19,5 +19,5 @@ class Track:
     def get_name(self) -> str:
         return self._name
 
-    def get_artists(self) -> list(str):
+    def get_artists(self) -> list[str]:
         return self._artists

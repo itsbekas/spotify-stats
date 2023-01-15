@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { timestampToDate } from "$lib/util";
+	import { getArtistFromId } from "$lib/server/spotify-stats";
 	import type { PageData } from "./$types";
 
     import Track from './Track.svelte'
@@ -17,10 +17,8 @@
             <th>Listen Count</th>
             <th>Last Listened</th>
         </tr>
-        {#each [tracks[0]] as track}
-            <tr>
-                <Track track={track}/>
-            </tr>
+        {#each tracks as track}
+            <Track track={track}/>
         {/each}
     </table>
 </section>

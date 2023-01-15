@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { timestampToDate } from "$lib/util";
 	import type { PageData } from "./$types";
 
     export let data: PageData
@@ -18,7 +17,7 @@
             <tr>
                 <td>{artist.name}</td>
                 <td>{artist.count}</td>
-                <td>{timestampToDate(artist.last_listened)}</td>
+                <td>{artist.last_listened}</td>
             </tr>
         {/each}
     </table>

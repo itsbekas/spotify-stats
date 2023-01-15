@@ -1,13 +1,13 @@
 <!-- Track.svelte -->
 
 <script lang="ts">
-    import { getArtistFromId } from "$lib/spotify-stats";
-    export let track: Document;
+    import type Track from "$lib/model/track";
+    export let track: Track;
 </script>
 
-<div>
-    <tl>{track.name}</tl>
-    <tl>{getArtistFromId(track.artist[0]).name}</tl>
-    <tl>{track.count}</tl>
-    <tl>{track.last_listened}</tl>
-</div>
+<tr>
+    <td>{track.name}</td>
+    <td>{track.artists[0].name}</td>
+    <td>{track.count}</td>
+    <td>{track.lastListened}</td>
+</tr>

@@ -1,4 +1,4 @@
-import { spotify_stats } from "$lib/spotify-stats"
+import { spotify_stats } from "$lib/server/spotify-stats"
 
 import type { PageServerLoad } from "./$types"
 
