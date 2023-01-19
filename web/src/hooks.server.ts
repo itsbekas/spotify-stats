@@ -1,5 +1,5 @@
-import { start_mongo } from "$lib/server/mongo";
+import { connectToDatabase } from "$lib/server/services/database.service";
 
-start_mongo().then(() => {
+connectToDatabase().then(() => {
 	console.log('Mongo started');
 }).catch(e => {console.error(e)})

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { getArtistFromId } from "$lib/server/spotify-stats";
 	import type { PageData } from "./$types";
 
     import Track from './Track.svelte'
