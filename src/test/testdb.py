@@ -1,7 +1,8 @@
 #!/usr/bin/python
 
 import unittest
-from spotifystats.database import Database, MongoClient, environ, Collection
+from spotifystats.database.base import Database, MongoClient, environ, Collection
+from spotifystats.model import Artist
 from spotifystats.util import load_dotenv
 
 TESTDB = "spotify-stats-test"

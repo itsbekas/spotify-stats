@@ -1,13 +1,13 @@
 from math import floor
 from os import environ
-from time import sleep, time
+from time import time
 
 import spotipy
 from dateutil.parser import parse
 from spotipy.oauth2 import SpotifyPKCE
 from spotipy.cache_handler import CacheFileHandler
 
-from spotifystats.database import Database, Collection
+from spotifystats.database.base import Database, Collection
 from spotifystats.model.artist import Artist
 from spotifystats.model.track import Track
 from spotifystats.model.play import Play
