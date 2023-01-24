@@ -5,10 +5,10 @@ class TrackDatabase(Database):
     def __init__(self, dbname: str) -> None:
         super().__init__(dbname, Collection.TRACKS.value)
 
-    def get_listened_count(self, id:str ):
+    def get_listened_count(self, id: str) -> int:
         return self._get_item_by_id(id)["count"]
 
-    def get_last_listened(self, id: str):
+    def get_last_listened(self, id: str) -> int:
         return self._get_item_by_id(id)["last_listened"]
 
     def add_track(self, id: str, name: str, artists: list) -> None:

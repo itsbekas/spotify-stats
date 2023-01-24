@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import unittest
-from spotifystats.database.base import Database, MongoClient, environ, Collection
+from spotifystats.database.base import Database, MongoClient, environ
 from spotifystats.model import Artist
 from spotifystats.util import load_dotenv
 
@@ -46,7 +46,7 @@ class TestArtists(DatabaseTest):
     @classmethod
     def setUpClass(cls) -> None:
         super().setUpClass()
-        cls.artist1 = {"id": '1', "name": 'A'}
+        cls.artist1 = Artist("id1", "Name" 
         cls.artist2 = {"id": '2', "name": 'B'}
         cls.timestamp = 1
 

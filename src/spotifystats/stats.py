@@ -15,21 +15,6 @@ from spotifystats.model.history import History
 
 ranges = ["short_term", "medium_term", "long_term"]
 
-def _extract_track(track: dict) -> Track:
-    """Extracts the relevant info from a track"""
-    return {
-        "id": track["id"],
-        "name": track["name"],
-        "artists": [{"id": artist["id"], "name": artist["name"]} for artist in track["artists"]]
-    }
-
-def _extract_artist(artist: dict) -> dict:
-    """Extracts the relevant info from an artist"""
-    return {
-        "id": artist["id"],
-        "name": artist["name"]
-    }
-
 def _extract_play(play: dict) -> Play:
     """Creates a Play object from a Spotify response dictionary"""
     return {
