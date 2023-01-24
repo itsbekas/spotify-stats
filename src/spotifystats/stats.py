@@ -15,29 +15,35 @@ from spotifystats.model.history import History
 
 ranges = ["short_term", "medium_term", "long_term"]
 
+
 def _extract_play(play: dict) -> Play:
     """Creates a Play object from a Spotify response dictionary"""
     return {
         "track": _extract_track(play["track"]),
         "artists": [_extract_artist(artist) for artist in play["track"]["artists"]],
         "played_at": _timestamp_to_int(play["played_at"]),
-        "popularity": play["track"]["popularity"]
+        "popularity": play["track"]["popularity"],
     }
+
 
 def _plays_to_history(plays: list[Play]) -> History:
     """Converts plays created by _extract_play to an history array"""
-    return [{
-        "track": play["track"]["id"],
-        "artists": [artist["id"] for artist in play["artists"]],
-        "played_at": play["played_at"],
-        "popularity": play["popularity"]
-    } for play in plays]
+    return [
+        {
+            "track": play["track"]["id"],
+            "artists": [artist["id"] for artist in play["artists"]],
+            "played_at": play["played_at"],
+            "popularity": play["popularity"],
+        }
+        for play in plays
+    ]
+
 
 def _timestamp_to_int(timestamp: str) -> int:
     return floor(parse(timestamp, "").timestamp())
 
-class SpotifyStats:
 
+class SpotifyStats:
     def __init__(self) -> None:
         scope = ["user-top-read", "user-read-recently-played"]
         self._timestamp = 0
@@ -46,8 +52,17 @@ class SpotifyStats:
 
     def _auth(self, scope: list[str] | str) -> None:
         # Make sure credentials are set
-        if not all(env in environ for env in ["SPOTIPY_CLIENT_ID", "SPOTIPY_CLIENT_SECRET", "SPOTIPY_REDIRECT_URI"]):
-            raise Exception("Make sure SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET and SPOTIPY_REDIRECT_URI are defined in your environment!")
+        if not all(
+            env in environ
+            for env in [
+                "SPOTIPY_CLIENT_ID",
+                "SPOTIPY_CLIENT_SECRET",
+                "SPOTIPY_REDIRECT_URI",
+            ]
+        ):
+            raise Exception(
+                "Make sure SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET and SPOTIPY_REDIRECT_URI are defined in your environment!"
+            )
 
         cache_handler = CacheFileHandler(cache_path=environ["SPOTIPY_CACHE_PATH"])
         auth = SpotifyPKCE(scope=scope, open_browser=False, cache_handler=cache_handler)
@@ -55,16 +70,22 @@ class SpotifyStats:
         return spotipy.Spotify(auth_manager=auth)
 
     def _get_top_tracks(self, range) -> None:
-        tracks = self._sp.current_user_top_tracks(limit=50, offset=0, time_range=range)["items"]
+        tracks = self._sp.current_user_top_tracks(limit=50, offset=0, time_range=range)[
+            "items"
+        ]
         return [_extract_track(track) for track in tracks]
 
     def _get_top_artists(self, range) -> None:
-        artists = self._sp.current_user_top_artists(limit=50, offset=0, time_range=range)["items"]
+        artists = self._sp.current_user_top_artists(
+            limit=50, offset=0, time_range=range
+        )["items"]
         return [_extract_artist(artist) for artist in artists]
 
     def _get_recently_played(self) -> None:
-        timestamp = self._db.get_timestamp()*1000 # Timestamp must be in milliseconds
-        tracks = self._sp.current_user_recently_played(limit=50, after=timestamp)["items"]
+        timestamp = self._db.get_timestamp() * 1000  # Timestamp must be in milliseconds
+        tracks = self._sp.current_user_recently_played(limit=50, after=timestamp)[
+            "items"
+        ]
         return list(reversed([_extract_play(track) for track in tracks]))
 
     def _create_ranking(self) -> None:
@@ -133,7 +154,7 @@ class SpotifyStats:
 
     def update(self) -> None:
         # check connection and skip+log if unavailable
-        
+
         self._timestamp = floor(time())
         self._create_ranking()
         self._update_track_rankings()

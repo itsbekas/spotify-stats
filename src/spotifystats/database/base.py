@@ -12,11 +12,12 @@ class Collection(Enum):
     COMMON = "common"
     HISTORY = "history"
 
+
 def _valid_collection(collection) -> bool:
     return collection in [collection.value for collection in Collection]
 
-class Database(ABC):
 
+class Database(ABC):
     def __init__(self, dbname: str, collection: str) -> None:
         client: MongoClient = MongoClient(environ["SPOTIFYSTATS_MONGODB_URI"])
         self._db: Database = client[dbname]
@@ -53,4 +54,3 @@ class Database(ABC):
 
     def count(self) -> int:
         return self._collection.count_documents({})
-    

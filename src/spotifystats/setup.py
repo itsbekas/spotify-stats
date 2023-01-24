@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 from spotifystats.database.base import Collection
 
+
 def main():
     load_dotenv()
     client = MongoClient(environ["SPOTIFYSTATS_MONGODB_URI"])

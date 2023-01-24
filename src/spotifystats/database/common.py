@@ -1,7 +1,7 @@
 from spotifystats.database.base import Database, Collection
 
-class CommonDatabase(Database):
 
+class CommonDatabase(Database):
     def __init__(self, dbname: str) -> None:
         super().__init__(dbname, Collection.COMMON.value)
 

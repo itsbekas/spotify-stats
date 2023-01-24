@@ -1,7 +1,7 @@
-from base import Database, Collection
+from spotifystats.database.base import Database, Collection
+
 
 class TrackDatabase(Database):
-
     def __init__(self, dbname: str) -> None:
         super().__init__(dbname, Collection.TRACKS.value)
 
@@ -20,19 +20,16 @@ class TrackDatabase(Database):
             "name": name,
             "artists": artists,
             "count": 0,
-            "last_listened": 0
+            "last_listened": 0,
         }
 
         self._add_item(track)
 
     def update_track(self, id: str, timestamp: int) -> None:
-        if (self.get_track_last_listened(id) >= timestamp):
+        if self.get_track_last_listened(id) >= timestamp:
             return
-        
+
         count = self._get_item_by_id(id)["count"] + 1
-        update = {
-            "count": count,
-            "last_listened": timestamp
-        }
+        update = {"count": count, "last_listened": timestamp}
 
         self._update_item_by_id(id, update)
