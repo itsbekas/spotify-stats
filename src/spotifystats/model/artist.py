@@ -1,7 +1,10 @@
-class Artist:
+from spotifystats.model.item import Item
+
+
+class Artist(Item):
     def __init__(self, artist: dict) -> None:
         """Create artist from a spotify response"""
-        self.id: str = artist["id"]
+        super().__init__(artist["id"])
         self.name: str = artist["name"]
         self.count: int = 0
         self.last_listened: int = 0

@@ -4,6 +4,8 @@ from os import environ
 
 from pymongo import MongoClient
 
+from spotifystats.model.item import Item
+
 
 class Collection(Enum):
     ARTISTS = "artists"
@@ -13,24 +15,20 @@ class Collection(Enum):
     HISTORY = "history"
 
 
-def _valid_collection(collection) -> bool:
-    return collection in [collection.value for collection in Collection]
-
-
 class Database(ABC):
     def __init__(self, dbname: str, collection: str) -> None:
         client: MongoClient = MongoClient(environ["SPOTIFYSTATS_MONGODB_URI"])
-        self._db: Database = client[dbname]
-        self._collection = self._db(collection)
+        self._db = client[dbname]
+        self._collection = self._db[collection]
 
     def _get_collection(self, collection: str):
         """Retrieves a collection from the database"""
         return self._db[collection]
 
-    def _add_item(self, item: dict) -> None:
-        if self._get_item_by_id(item["id"]) != None:
+    def _add_item(self, item: Item) -> None:
+        if self._get_item_by_id(item.id) != None:
             return
-        self._collection.insert_one(item)
+        self._collection.insert_one(item.to_dict())
 
     def _get_item(self, query: dict):
         return self._collection.find_one(query)
