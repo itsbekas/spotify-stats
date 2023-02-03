@@ -1,3 +1,6 @@
-class Play:
-    def __init__(self, id):
-        pass
+from mongoengine import Document, DateTimeField
+
+
+class Play(Document):
+
+    timestamp = DateTimeField(required=True, unique=True)

@@ -1,27 +1,9 @@
-from spotifystats.model.item import Item
+from mongoengine import Document, IntField, StringField
 
 
-class Artist(Item):
-    def __init__(self, artist: dict) -> None:
-        """Create artist from a spotify response"""
-        super().__init__(artist["id"])
-        self.name: str = artist["name"]
-        self.count: int = 0
-        self.last_listened: int = 0
+class Artist(Document):
 
-    def to_dict(self) -> dict:
-        return {
-            "id": self.id,
-            "name": self.name,
-            "count": self.count,
-            "last_listened": self.last_listened,
-        }
-
-    def __eq__(self, other) -> bool:
-        return (
-            type(self) == type(other)
-            and self.id == other.id
-            and self.name == other.name
-            and self.count == other.count
-            and self.last_listened == other.last_listened
-        )
+    id = StringField(required=True, unique=True, primary_key=True)
+    name = StringField(required=True)
+    count = IntField(required=True, default=0)
+    last_listened = IntField(required=True, default=0)

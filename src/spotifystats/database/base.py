@@ -2,9 +2,8 @@ from abc import ABC
 from enum import Enum
 from os import environ
 
+from mongoengine import connect
 from pymongo import MongoClient
-
-from spotifystats.model.item import Item
 
 
 class Collection(Enum):
@@ -17,8 +16,7 @@ class Collection(Enum):
 
 class Database(ABC):
     def __init__(self, dbname: str, collection: str) -> None:
-        client: MongoClient = MongoClient(environ["SPOTIFYSTATS_MONGODB_URI"])
-        self._db = client[dbname]
+        self._db = connect(dbname)
         self._collection = self._db[collection]
 
     def _get_collection(self, collection: str):

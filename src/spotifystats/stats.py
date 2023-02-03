@@ -11,7 +11,7 @@ from spotifystats.database.base import Database, Collection
 from spotifystats.model.artist import Artist
 from spotifystats.model.track import Track
 from spotifystats.model.play import Play
-from spotifystats.model.history import History
+from spotifystats.model.ranking import History
 
 ranges = ["short_term", "medium_term", "long_term"]
 
