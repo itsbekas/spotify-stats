@@ -86,7 +86,7 @@ class SpotifyStats:
         tracks = self._sp.current_user_recently_played(limit=50, after=timestamp)[
             "items"
         ]
-        return list(reversed([_extract_play(track) for track in tracks]))
+        return [reversed([_extract_play(track) for track in tracks])]
 
     def _create_ranking(self) -> None:
         self._db.create_ranking(self._timestamp)
