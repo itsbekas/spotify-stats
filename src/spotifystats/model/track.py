@@ -1,4 +1,11 @@
-from mongoengine import Document, StringField, ReferenceField, DateTimeField, IntField
+from mongoengine import Document
+from mongoengine.fields import (
+    DateTimeField,
+    IntField,
+    ListField,
+    ReferenceField,
+    StringField,
+)
 
 
 class Track(Document):

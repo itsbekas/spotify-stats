@@ -1,4 +1,5 @@
-from mongoengine import Document, StringField, ListField, ReferenceField
+from mongoengine import Document
+from mongoengine.fields import ListField, ReferenceField, StringField
 
 
 class Album(Document):
