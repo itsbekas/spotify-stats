@@ -1,9 +1,7 @@
-from mongoengine import Document, IntField, StringField
+from mongoengine import Document, StringField, ListField
 
 
 class Artist(Document):
-
-    id = StringField(required=True, unique=True, primary_key=True)
+    id = StringField(primary_key=True)
     name = StringField(required=True)
-    count = IntField(required=True, default=0)
-    last_listened = IntField(required=True, default=0)
+    tracks = ListField(StringField())

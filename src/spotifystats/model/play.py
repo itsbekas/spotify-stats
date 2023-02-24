@@ -1,7 +1,6 @@
-from mongoengine import Document, DateTimeField
+from mongoengine import Document, fields
 
 
 class Play(Document):
-
-    timestamp = DateTimeField(required=True, unique=True)
-    track = ReferenceField()
+    track = fields.ReferenceField("Track")
+    timestamp = fields.DateTimeField(primary_key=True)
