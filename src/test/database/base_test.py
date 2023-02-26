@@ -2,7 +2,7 @@ import pytest
 from dotenv import load_dotenv
 from mongomock import MongoClient
 
-from spotifystats.database.base import Database
+from spotifystats.repositories.base_repository import Database
 from spotifystats.model.item import Item
 
 

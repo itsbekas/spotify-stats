@@ -1,0 +1,6 @@
+from spotifystats.repositories.album_repository import AlbumRepository
+from spotifystats.repositories.artist_repository import ArtistRepository
+from spotifystats.repositories.config_repository import ConfigRepository
+from spotifystats.repositories.play_repository import PlayRepository
+from spotifystats.repositories.ranking_repository import RankingRepository
+from spotifystats.repositories.track_repository import TrackRepository

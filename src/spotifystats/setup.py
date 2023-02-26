@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from os import environ
 from dotenv import load_dotenv
 
-from spotifystats.database.base import Collection
+from spotifystats.repositories.base_repository import Collection
 
 
 def main():
