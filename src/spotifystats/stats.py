@@ -43,8 +43,8 @@ def _timestamp_to_int(timestamp: str) -> int:
     return floor(parse(timestamp, "").timestamp())
 
 
-class SpotifyStats:
-    def __init__(self) -> None:
+class SpotifyAPI:
+    def __init__(self):
         scope = ["user-top-read", "user-read-recently-played"]
         self._timestamp = 0
         self._sp = self._auth(scope)
@@ -69,13 +69,13 @@ class SpotifyStats:
         auth.get_access_token()
         return spotipy.Spotify(auth_manager=auth)
 
-    def _get_top_tracks(self, range) -> None:
+    def get_top_tracks(self, range) -> None:
         tracks = self._sp.current_user_top_tracks(limit=50, offset=0, time_range=range)[
             "items"
         ]
         return [_extract_track(track) for track in tracks]
 
-    def _get_top_artists(self, range) -> None:
+    def get_top_artists(self, range) -> None:
         artists = self._sp.current_user_top_artists(
             limit=50, offset=0, time_range=range
         )["items"]
