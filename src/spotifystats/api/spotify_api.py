@@ -1,11 +1,13 @@
-class SpotifyAPI:
-    # ... (other methods)
+from ..model import Artist, Track
 
-    def search_track(self, query):
-        result = self.sp.search(q=query, type="track")
-        tracks = [
-            Track.from_spotify_response(item) for item in result["tracks"]["items"]
-        ]
-        # store the tracks in the database using the data access layer
-        db.add_tracks(tracks)
+
+class SpotifyAPI:
+    def get_top_artists(self, range="medium_term"):
+        result = self.sp.current_user_top_artists(limit=50, time_range=range)
+        artists = [Artist.from_spotify_response(item) for item in result["items"]]
+        return artists
+
+    def get_top_tracks(self, range="medium_term"):
+        result = self.sp.current_user_top_tracks(limit=50, time_range=range)
+        tracks = [Track.from_spotify_response(item) for item in result["items"]]
         return tracks

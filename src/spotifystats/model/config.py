@@ -1,11 +1,6 @@
-from mongoengine import Document
-from mongoengine.fields import DateTimeField
-
-
-class Config(Document):
-    last_update = DateTimeField(primary_key=True)
 from mongoengine import Document, DateTimeField
 import datetime
+
 
 class Config(Document):
     last_updated = DateTimeField(required=True, default=datetime.datetime.now)
