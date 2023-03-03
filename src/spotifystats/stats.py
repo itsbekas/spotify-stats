@@ -50,7 +50,7 @@ class SpotifyAPI:
         self._sp = self._auth(scope)
         self._db = Database(environ["SPOTIFYSTATS_MONGODB_DB_NAME"])
 
-    def _auth(self, scope: list[str] | str) -> None:
+    def _auth(self, scope: list[str] | str):
         # Make sure credentials are set
         if not all(
             env in environ
