@@ -1,5 +1,6 @@
 from os import environ
-from typing import Any, Optional, Union
+from datetime import datetime
+from typing import Any, Dict
 
 from spotipy import Spotify
 from spotipy.cache_handler import CacheFileHandler
@@ -8,7 +9,7 @@ from spotipy.oauth2 import SpotifyPKCE
 
 class SpotifyAPI:
     def __init__(self, scope):
-        self.sp = self._auth(scope)
+        self._sp = self._auth(scope)
 
     def _auth(self, scope: list[str] | str) -> Spotify:
         """
@@ -42,20 +43,35 @@ class SpotifyAPI:
         auth.get_access_token()
         return Spotify(auth_manager=auth)
 
-    def get_user_history(self, after: int) -> Optional[dict[str, str]]:
+    def get_user_history(self, after):
         """
         Retrieves the user's listening history after the specified timestamp.
 
         Args:
-            after: The timestamp (in milliseconds) from which to retrieve the listening history.
+            after (datetime or str): The timestamp after which to retrieve listening history. This can be either a
+                datetime object or a string in ISO format (e.g. '2022-01-01T00:00:00Z').
 
         Returns:
-            A dictionary containing the user's listening history after the specified timestamp.
-            The dictionary has the following keys: 'items', 'next', 'cursors', and 'limit'.
-        """
-        pass  # TODO: Implement this method
+            A list of dictionaries representing the user's listening history.
+            Each dictionary has information about a single play, including its track and its timestamp
 
-    def get_user_top_artists(self, range_type: str) -> Optional[dict[str, str]]:
+        Raises:
+            ValueError: If the 'after' argument is not a valid datetime object or ISO string.
+        """
+
+        # Convert the 'after' argument to a datetime object if it's not already
+        if isinstance(after, str):
+            try:
+                after = datetime.fromisoformat(after)
+            except ValueError:
+                raise ValueError(f"'{after}' is not a valid ISO timestamp")
+
+        # Retrieve the user's listening history using the Spotify API
+        result = self._sp.current_user_recently_played(after=after.timestamp() * 1000)
+
+        return result.get("items", []) if result else {}
+
+    def get_user_top_artists(self, range_type: str) -> List[Dict[str, Any]]:
         """
         Retrieves the user's top artists for a specified time range.
 
@@ -64,13 +80,14 @@ class SpotifyAPI:
                 Must be one of 'short_term', 'medium_term', or 'long_term'.
 
         Returns:
-            A dictionary containing the user's top artists for the specified time range.
-            The dictionary has the following keys: 'items', 'total', 'limit', 'offset',
-            'previous', and 'next'.
+            A list of dictionaries containing the user's top artists for the specified time range.
+            Each dictionary has information about a single artist, including its name, Spotify ID, and popularity.
         """
-        return self.sp.current_user_top_artists(time_range=range_type)
+        result = self._sp.current_user_top_artists(time_range=range_type)
 
-    def get_user_top_tracks(self, range_type: str) -> Union[dict[str, Any], None]:
+        return result.get("items", []) if result else []
+
+    def get_user_top_tracks(self, range_type: str) -> List[Dict[str, Any]]:
         """
         Retrieves the user's top tracks for a specified time range.
 
@@ -79,8 +96,9 @@ class SpotifyAPI:
                 Must be one of 'short_term', 'medium_term', or 'long_term'.
 
         Returns:
-            A dictionary containing the user's top tracks for the specified time range.
-            The dictionary has the following keys: 'items', 'total', 'limit', 'offset',
-            'previous', and 'next'.
+            A list of dictionaries containing the user's top tracks for the specified time range.
+            Each dictionary has information about a single track, including its name, artist, Spotify ID, and popularity.
         """
-        return self.sp.current_user_top_tracks(time_range=range_type)
+        result = self._sp.current_user_top_tracks(time_range=range_type)
+
+        return result.get("items", []) if result else []
