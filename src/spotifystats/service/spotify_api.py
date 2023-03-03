@@ -1,6 +1,6 @@
-from os import environ
 from datetime import datetime
-from typing import Any, Dict
+from os import environ
+from typing import Any, Dict, List
 
 from spotipy import Spotify
 from spotipy.cache_handler import CacheFileHandler
