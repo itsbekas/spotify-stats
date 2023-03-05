@@ -6,6 +6,7 @@ from mongoengine.fields import (
     ReferenceField,
     StringField,
 )
+
 from spotifystats.model import Album, Artist
 
 

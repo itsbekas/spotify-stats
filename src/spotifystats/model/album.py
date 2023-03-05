@@ -1,5 +1,12 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 from mongoengine import Document
 from mongoengine.fields import ListField, ReferenceField, StringField
+
+if TYPE_CHECKING:
+    from spotifystats.model.track import Track
 
 
 class Album(Document):
@@ -10,10 +17,7 @@ class Album(Document):
 
     @classmethod
     def from_spotify_response(cls, response):
-        return cls(
-            id = response["id"],
-            name = response["name"]
-        )
-    
-    def add_track(self, track):
+        return cls(id=response["id"], name=response["name"])
+
+    def add_track(self, track: Track) -> None:
         self.tracks.append(track)
