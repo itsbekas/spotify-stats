@@ -6,7 +6,7 @@ from mongoengine.fields import (
     ReferenceField,
     StringField,
 )
-from ..model import Album, Artist
+from spotifystats.model import Album, Artist
 
 
 class Track(Document):

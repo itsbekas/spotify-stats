@@ -1,8 +1,6 @@
 from mongoengine import Document
 from mongoengine.fields import ListField, ReferenceField, StringField
 
-from ..model import Album, Track
-
 
 class Artist(Document):
     id = StringField(primary_key=True)
@@ -14,8 +12,8 @@ class Artist(Document):
     def from_spotify_response(cls, response):
         return cls(id=response["id"], name=response["name"])
 
-    def add_album(self, album: Album):
+    def add_album(self, album):
         self.albums.append(album)
 
-    def add_track(self, track: Track):
-        self.tracks.append(Track)
+    def add_track(self, track):
+        self.tracks.append(track)

@@ -1,8 +1,6 @@
 from mongoengine import Document
 from mongoengine.fields import ListField, ReferenceField, StringField
 
-from ..model import Track
-
 
 class Album(Document):
     id = StringField(primary_key=True)
@@ -15,8 +13,7 @@ class Album(Document):
         return cls(
             id = response["id"],
             name = response["name"]
-            artists = 
         )
     
-    def add_track(self, track: Track):
-        self.tracks.append(Track)
+    def add_track(self, track):
+        self.tracks.append(track)
