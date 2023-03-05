@@ -15,8 +15,8 @@ class Track(Document):
     album = ReferenceField("Album")
     artists = ListField(ReferenceField("Artist"))
     popularity = IntField()
-    listening_count = IntField(default=0)
-    last_time_listened = DateTimeField(default=0)
+    plays = ListField(ReferenceField("Play"))
+    rankings = ListField(ReferenceField("Ranking"))
 
     @classmethod
     def from_spotify_response(cls, response):

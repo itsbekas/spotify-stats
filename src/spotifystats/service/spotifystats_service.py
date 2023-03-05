@@ -1,4 +1,10 @@
+from ..service import SpotifyAPI
+
+
 class SpotifyStatsService:
+    def __init__(self, api: SpotifyAPI):
+        self.api = api
+
     def get_current_ranking(self, type, range):
         # get last ranking from db (sort by timestamp and limit=1)
         pass
