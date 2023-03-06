@@ -17,23 +17,23 @@ class Artist(NamedDocument):
     tracks = ListField(ReferenceField("Track"))
 
     @classmethod
-    def from_spotify_response(cls, response):
+    def from_spotify_response(cls, response) -> Artist:
         return cls(id=response["id"], name=response["name"])
 
     def get_id(self) -> str:
         return self.id
-    
+
     def get_name(self) -> str:
         return self.name
-    
+
     def get_albums(self) -> List[alb.Album]:
         return self.albums
-    
-    def add_album(self, album: alb.Album):
+
+    def add_album(self, album: alb.Album) -> None:
         self.albums.append(album)
 
     def get_tracks(self) -> List[trk.Track]:
         return self.tracks
 
-    def add_track(self, track: trk.Track):
+    def add_track(self, track: trk.Track) -> None:
         self.tracks.append(track)

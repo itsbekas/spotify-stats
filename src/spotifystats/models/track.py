@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     import spotifystats.models.album as alb
     import spotifystats.models.artist as art
 
+
 class Track(NamedDocument):
     album = ReferenceField("Album")
     artists = ListField(ReferenceField("Artist"))
@@ -18,7 +19,7 @@ class Track(NamedDocument):
     rankings = ListField(ReferenceField("Ranking"))
 
     @classmethod
-    def from_spotify_response(cls, response):
+    def from_spotify_response(cls, response) -> Track:
         album = Album.objects(id=response["album"]["id"]).first()
         artists = [
             Artist.objects(id=a["id"]).first() or Artist.from_spotify_response(a)
