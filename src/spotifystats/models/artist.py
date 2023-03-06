@@ -3,18 +3,16 @@ from __future__ import annotations
 import json
 from typing import TYPE_CHECKING, List
 
-from mongoengine.fields import ListField, ReferenceField, StringField
+from mongoengine.fields import ListField, ReferenceField
 
-from spotifystats.models.spotifystatsdocument import SpotifyStatsDocument
+from spotifystats.models.named_document import NamedDocument
 
 if TYPE_CHECKING:
     import spotifystats.models.album as alb
     import spotifystats.models.track as trk
 
 
-class Artist(SpotifyStatsDocument):
-    id = StringField(primary_key=True)
-    name = StringField(required=True)
+class Artist(NamedDocument):
     albums = ListField(ReferenceField("Album"))
     tracks = ListField(ReferenceField("Track"))
 

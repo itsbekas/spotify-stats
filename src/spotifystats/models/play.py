@@ -5,13 +5,12 @@ from typing import TYPE_CHECKING, List
 
 from mongoengine.fields import DateTimeField, ReferenceField
 
-from spotifystats.models.spotifystatsdocument import SpotifyStatsDocument
+from spotifystats.models.timed_document import TimedDocument
 
 if TYPE_CHECKING:
     import spotifystats.models.track as trk
 
-class Play(SpotifyStatsDocument):
-    timestamp = DateTimeField(primary_key=True)
+class Play(TimedDocument):
     track = ReferenceField("Track")
 
     def get_timestamp(self) -> dt.datetime:

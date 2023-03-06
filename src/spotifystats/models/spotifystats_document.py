@@ -1,12 +1,15 @@
 from mongoengine import Document
 from pprint import pformat
 
+from mongoengine.fields import DateTimeField
+
 class SpotifyStatsDocument(Document):
 
     meta = {
         'allow_inheritance': True
     }
-    
+
+    # inline
     def __repr__(self) -> str:
         fields = self.to_mongo().to_dict()
         return f"{type(self).__name__}({fields})"

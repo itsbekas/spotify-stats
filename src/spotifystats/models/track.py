@@ -4,15 +4,13 @@ from typing import TYPE_CHECKING
 
 from mongoengine.fields import IntField, ListField, ReferenceField, StringField
 
-from spotifystats.models.spotifystatsdocument import SpotifyStatsDocument
+from spotifystats.models.named_document import NamedDocument
 
 if TYPE_CHECKING:
     import spotifystats.models.album as alb
     import spotifystats.models.artist as art
 
-class Track(SpotifyStatsDocument):
-    id = StringField(primary_key=True)
-    name = StringField(required=True)
+class Track(NamedDocument):
     album = ReferenceField("Album")
     artists = ListField(ReferenceField("Artist"))
     popularity = IntField()
