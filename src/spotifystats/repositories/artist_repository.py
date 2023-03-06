@@ -1,5 +1,5 @@
 from .base_repository import BaseRepository
-from ..model import Artist
+from ..models import Artist
 
 
 class ArtistRepository(BaseRepository):

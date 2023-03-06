@@ -1,6 +1,6 @@
 import pytest
 
-from spotifystats.model import Artist
+from spotifystats.models import Artist
 
 from test.model.examples import track1
 

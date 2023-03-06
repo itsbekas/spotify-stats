@@ -1,5 +1,5 @@
 from .base_repository import BaseRepository
-from ..model import Config
+from ..models import Config
 
 
 class ConfigRepository(BaseRepository):

@@ -1,5 +1,5 @@
 from .base_repository import BaseRepository
-from ..model import Album
+from ..models import Album
 
 
 class AlbumRepository(BaseRepository):

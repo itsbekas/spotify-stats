@@ -1,5 +1,5 @@
 from .base_repository import BaseRepository
-from ..model.ranking import Ranking
+from ..models.ranking import Ranking
 
 
 class RankingRepository(BaseRepository):

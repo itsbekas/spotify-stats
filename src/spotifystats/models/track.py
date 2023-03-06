@@ -1,16 +1,16 @@
-from mongoengine import Document
-from mongoengine.fields import (
-    DateTimeField,
-    IntField,
-    ListField,
-    ReferenceField,
-    StringField,
-)
+from __future__ import annotations
 
-from spotifystats.model import Album, Artist
+from typing import TYPE_CHECKING
 
+from mongoengine.fields import IntField, ListField, ReferenceField, StringField
 
-class Track(Document):
+from spotifystats.models.spotifystatsdocument import SpotifyStatsDocument
+
+if TYPE_CHECKING:
+    import spotifystats.models.album as alb
+    import spotifystats.models.artist as art
+
+class Track(SpotifyStatsDocument):
     id = StringField(primary_key=True)
     name = StringField(required=True)
     album = ReferenceField("Album")

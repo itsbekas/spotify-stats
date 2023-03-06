@@ -1,8 +1,10 @@
-from mongoengine import Document
-from mongoengine.fields import DateTimeField, ListField, ReferenceField, StringField
+from mongoengine.fields import (DateTimeField, ListField, ReferenceField,
+                                StringField)
+
+from spotifystats.models.spotifystatsdocument import SpotifyStatsDocument
 
 
-class Ranking(Document):
+class Ranking(SpotifyStatsDocument):
     SHORT = "short"
     MEDIUM = "medium"
     LONG = "long"

@@ -8,10 +8,10 @@ from spotipy.oauth2 import SpotifyPKCE
 from spotipy.cache_handler import CacheFileHandler
 
 from spotifystats.repositories.base_repository import Database, Collection
-from spotifystats.model.artist import Artist
-from spotifystats.model.track import Track
-from spotifystats.model.play import Play
-from spotifystats.model.ranking import History
+from spotifystats.models.artist import Artist
+from spotifystats.models.track import Track
+from spotifystats.models.play import Play
+from spotifystats.models.ranking import History
 
 ranges = ["short_term", "medium_term", "long_term"]
 

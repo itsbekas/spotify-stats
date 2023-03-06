@@ -1,5 +1,5 @@
 from .base_repository import BaseRepository
-from ..model.track import Track
+from ..models.track import Track
 
 
 class TrackRepository(BaseRepository):

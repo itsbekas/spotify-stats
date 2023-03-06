@@ -1,8 +1,11 @@
-from mongoengine import Document, DateTimeField
 import datetime
 
+from mongoengine.fields import DateTimeField
 
-class Config(Document):
+from spotifystats.models.spotifystatsdocument import SpotifyStatsDocument
+
+
+class Config(SpotifyStatsDocument):
     last_updated = DateTimeField(required=True, default=datetime.datetime.now)
 
     @staticmethod

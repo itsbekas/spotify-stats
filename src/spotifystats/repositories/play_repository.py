@@ -1,5 +1,5 @@
 from .base_repository import BaseRepository
-from ..model import Play
+from ..models import Play
 
 
 class PlayRepository(BaseRepository):
