@@ -8,7 +8,8 @@ from spotipy.oauth2 import SpotifyPKCE
 
 
 class SpotifyAPI:
-    def __init__(self, scope):
+    def __init__(self):
+        scope = ["user-top-read", "user-read-recently-played"]
         self._sp = self._auth(scope)
 
     def _auth(self, scope: list[str] | str) -> Spotify:
