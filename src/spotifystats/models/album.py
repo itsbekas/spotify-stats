@@ -8,8 +8,6 @@ import spotifystats.models.artist as art
 from spotifystats.models.named_document import NamedDocument
 
 if TYPE_CHECKING:
-    from mongoengine.fields import StringField
-
     import spotifystats.models.track as trk
 
 

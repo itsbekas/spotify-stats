@@ -18,3 +18,9 @@ class Config(Document):
             config = Config()
             config.save()
         return config
+    
+    @staticmethod
+    def set_last_updated(timestamp: datetime) -> None:
+        cfg = Config.get_config()
+        cfg.last_updated = timestamp
+        cfg.save()
