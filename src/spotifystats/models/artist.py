@@ -17,7 +17,7 @@ class Artist(NamedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Artist:
-        return cls(id=response["id"], name=response["name"])
+        return cls(spotify_id=response["id"], name=response["name"])
 
     def get_id(self) -> str:
         return self.id
@@ -29,10 +29,12 @@ class Artist(NamedDocument):
         return self.albums
 
     def add_album(self, album: alb.Album) -> None:
-        self.albums.append(album)
+        if album not in self.get_albums():
+            self.albums.append(album)
 
     def get_tracks(self) -> List[trk.Track]:
         return self.tracks
 
     def add_track(self, track: trk.Track) -> None:
-        self.tracks.append(track)
+        if track not in self.get_tracks():
+            self.tracks.append(track)

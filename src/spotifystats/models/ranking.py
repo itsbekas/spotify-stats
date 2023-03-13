@@ -21,8 +21,8 @@ class Ranking(TimedDocument):
     TRACK = "track"
     TYPE_CHOICES = ((ARTIST, "Artist"), (TRACK, "Track"))
 
-    type = StringField(choices=TYPE_CHOICES)
-    time_range = StringField(choices=TIME_CHOICES)
+    type = StringField(required=True, choices=TYPE_CHOICES)
+    time_range = StringField(required=True, choices=TIME_CHOICES)
     tracks = ListField(ReferenceField("Track"))
 
     @classmethod

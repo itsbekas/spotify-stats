@@ -15,12 +15,12 @@ import spotifystats.util as util
 class Play(TimedDocument):
     track = ReferenceField("Track")
 
-    def get_tracks(self) -> List[trk.Track]:
-        return self.tracks
-    
+    def get_track(self) -> trk.Track:
+        return self.track
+
     @classmethod
     def from_spotify_response(cls, response) -> Play:
-        cls(
-            track = trk.Track.from_spotify_response(response["track"]),
-            timestamp = util.iso_to_datetime(response["played_at"])
+        return cls(
+            track=trk.Track.from_spotify_response(response["track"]),
+            timestamp=util.iso_to_datetime(response["played_at"]),
         )

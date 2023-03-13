@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-import spotifystats.models.config as cfg
-
 if TYPE_CHECKING:
     from datetime import datetime
+
+import spotifystats.models.config as cfg
 
 
 def get_current_timestamp() -> datetime:

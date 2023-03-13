@@ -23,10 +23,10 @@ class Album(NamedDocument):
         for artist_response in response["artists"]:
             artist = db.get_artist(artist_response["id"])
             if artist is None:
-                artist = art.Artist.from_spotify_response(artist)
+                artist = art.Artist.from_spotify_response(artist_response)
             artists.append(artist)
 
-        return cls(id=response["id"], name=response["name"], artists=artists)
+        return cls(spotify_id=response["id"], name=response["name"], artists=artists)
 
     def get_id(self) -> str:
         return self.id
@@ -36,6 +36,10 @@ class Album(NamedDocument):
 
     def get_artists(self) -> List[art.Artist]:
         return self.artists
+
+    def add_artist(self, artist: art.Artist) -> None:
+        if artist not in self.get_artists():
+            self.artists.append(artist)
 
     def get_tracks(self) -> List[trk.Track]:
         return self.tracks
