@@ -7,6 +7,9 @@ class NamedDocument(SpotifyStatsDocument):
 
     meta = {"allow_inheritance": True}
 
-    id = StringField(required=True)
+    spotify_id = StringField(required=True)
     name = StringField(required=True)
     last_retrieved = DateTimeField(required=True, default=None)
+
+    def get_id(self):
+        return self.spotify_id

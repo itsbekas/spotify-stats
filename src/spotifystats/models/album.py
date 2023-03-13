@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING, List
 
 from mongoengine.fields import ListField, ReferenceField
 
+import spotifystats.database as db
 import spotifystats.models.artist as art
 from spotifystats.models.named_document import NamedDocument
 
@@ -17,14 +18,15 @@ class Album(NamedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Album:
-        return cls(
-            id=response["id"],
-            name=response["name"],
-            artists=[
-                art.Artist.from_spotify_response(artist)
-                for artist in response["artists"]
-            ],
-        )
+
+        artists = []
+        for artist_response in response["artists"]:
+            artist = db.get_artist(artist_response["id"])
+            if artist is None:
+                artist = art.Artist.from_spotify_response(artist)
+            artists.append(artist)
+
+        return cls(id=response["id"], name=response["name"], artists=artists)
 
     def get_id(self) -> str:
         return self.id

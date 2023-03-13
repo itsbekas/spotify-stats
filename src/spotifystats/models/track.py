@@ -4,11 +4,10 @@ from typing import TYPE_CHECKING
 
 from mongoengine.fields import IntField, ListField, ReferenceField, StringField
 
+import spotifystats.database as db
+import spotifystats.models.album as alb
+import spotifystats.models.artist as art
 from spotifystats.models.named_document import NamedDocument
-
-if TYPE_CHECKING:
-    import spotifystats.models.album as alb
-    import spotifystats.models.artist as art
 
 
 class Track(NamedDocument):
@@ -20,13 +19,20 @@ class Track(NamedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Track:
-        album = Album.objects(id=response["album"]["id"]).first()
-        artists = [
-            Artist.objects(id=a["id"]).first() or Artist.from_spotify_response(a)
-            for a in response["artists"]
-        ]
+
+        album = db.get_album(response["album"]["id"])
+        if album is None:
+            album = alb.Album.from_spotify_response(response["album"])
+
+        artists = []
+        for artist_response in response["artists"]:
+            artist = db.get_artist(artist_response["id"])
+            if artist is None:
+                artist = art.Artist.from_spotify_response(artist)
+            artists.append(artist)
+
         return cls(
-            id=response["id"],
+            spotify_id=response["id"],
             name=response["name"],
             album=album,
             artists=artists,

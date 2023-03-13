@@ -27,6 +27,4 @@ class Ranking(TimedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Ranking:
-        return cls(
-            type=
-        )
+        return cls(type="bruh")

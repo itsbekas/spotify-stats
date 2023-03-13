@@ -2,8 +2,16 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
-    import spotifystats.models.artist as art
+import spotifystats.models.artist as art
+
 
 def add_artist(artist: art.Artist) -> None:
-    artist.save()
+    """
+    Checks if artist is already in the database, adding it if it's not.
+    """
+    if get_artist(artist.get_id()) is not None:
+        artist.save()
+
+
+def get_artist(spotify_id: str) -> art.Artist:
+    return art.Artist.objects(spotify_id=spotify_id).first()

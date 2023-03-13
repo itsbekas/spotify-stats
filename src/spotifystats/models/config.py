@@ -1,11 +1,14 @@
-import datetime
+from __future__ import annotations
+
+from datetime import datetime
+from typing import TYPE_CHECKING
 
 from mongoengine import Document
 from mongoengine.fields import DateTimeField
 
 
 class Config(Document):
-    last_updated = DateTimeField(required=True, default=datetime.datetime.now)
+    last_updated = DateTimeField(required=True, default=datetime.now())
 
     @staticmethod
     def get_config():
@@ -18,7 +21,7 @@ class Config(Document):
             config = Config()
             config.save()
         return config
-    
+
     def get_last_updated(self) -> datetime:
         return self.last_updated
 
