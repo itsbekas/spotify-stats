@@ -10,7 +10,7 @@ from mongoengine.fields import DateTimeField
 from spotifystats.models.spotifystats_document import SpotifyStatsDocument
 
 
-class TimedDocument(SpotifyStatsDocument):
+class DatedDocument(SpotifyStatsDocument):
 
     meta = {"allow_inheritance": True}
 

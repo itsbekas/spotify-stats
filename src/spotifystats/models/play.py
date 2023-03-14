@@ -5,14 +5,13 @@ from typing import TYPE_CHECKING, List
 
 from mongoengine.fields import DateTimeField, ReferenceField
 
-from spotifystats.models.timed_document import TimedDocument
-
+import spotifystats.database as db
 import spotifystats.models.track as trk
-
 import spotifystats.util as util
+from spotifystats.models.dated_document import DatedDocument
 
 
-class Play(TimedDocument):
+class Play(DatedDocument):
     track = ReferenceField("Track")
 
     def get_track(self) -> trk.Track:
@@ -20,7 +19,10 @@ class Play(TimedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Play:
-        return cls(
-            track=trk.Track.from_spotify_response(response["track"]),
-            timestamp=util.iso_to_datetime(response["played_at"]),
-        )
+
+        track = db.get_track(response["track"]["id"])
+        if track is None:
+            track = trk.Track.from_spotify_response(response["track"])
+            db.add_track(track)
+
+        return cls(track=track, timestamp=util.iso_to_datetime(response["played_at"]))

@@ -9,7 +9,7 @@ setup(
     packages=find_packages("src"),
     package_dir={"": "src"},
     include_package_data=True,
-    install_requires=["pymongo", "spotipy"],
+    install_requires=["mongoengine", "spotipy"],
     entry_points={
         "console_scripts": [
             "spotifystats = spotifystats:main",

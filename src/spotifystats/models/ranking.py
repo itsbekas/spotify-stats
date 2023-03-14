@@ -4,10 +4,10 @@ from typing import TYPE_CHECKING
 
 from mongoengine.fields import ListField, ReferenceField, StringField
 
-from spotifystats.models.timed_document import TimedDocument
+from spotifystats.models.dated_document import DatedDocument
 
 
-class Ranking(TimedDocument):
+class Ranking(DatedDocument):
     SHORT = "short"
     MEDIUM = "medium"
     LONG = "long"
