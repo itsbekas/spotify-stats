@@ -37,10 +37,11 @@ class SpotifyStatsService:
         ts = db.get_current_timestamp()
         history = self.api.get_user_history(ts)
 
+        print(history[0])
+
         for play_dict in history:
             play = pl.Play.from_spotify_response(play_dict)
             db.add_play(play)
-        print(play)
 
     def update_timestamp(self) -> None:
         #! TESTING ONLY
