@@ -24,6 +24,7 @@ class Album(NamedDocument):
             artist = db.get_artist(artist_response["id"])
             if artist is None:
                 artist = art.Artist.from_spotify_response(artist_response)
+                db.add_artist(artist)
             artists.append(artist)
 
         return cls(spotify_id=response["id"], name=response["name"], artists=artists)
