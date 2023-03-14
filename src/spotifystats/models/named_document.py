@@ -1,3 +1,10 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from datetime import datetime
+
 from mongoengine.fields import DateTimeField, StringField
 
 from spotifystats.models.spotifystats_document import SpotifyStatsDocument
@@ -13,3 +20,9 @@ class NamedDocument(SpotifyStatsDocument):
 
     def get_id(self) -> str:
         return self.spotify_id
+    
+    def get_name(self) -> str:
+        return self.name
+    
+    def get_last_retrieved(self) -> datetime:
+        return self.last_retrieved

@@ -19,12 +19,6 @@ class Artist(NamedDocument):
     def from_spotify_response(cls, response) -> Artist:
         return cls(spotify_id=response["id"], name=response["name"])
 
-    def get_id(self) -> str:
-        return self.id
-
-    def get_name(self) -> str:
-        return self.name
-
     def get_albums(self) -> List[alb.Album]:
         return self.albums
 
