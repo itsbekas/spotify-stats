@@ -1,6 +1,0 @@
-{
-    "schedule": "0 0 */1 * * *",
-    "name": "spotify-stats-timer",
-    "type": "timerTrigger",
-    "direction": "in"
-}
