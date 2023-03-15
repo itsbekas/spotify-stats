@@ -7,9 +7,8 @@ if TYPE_CHECKING:
     import spotifystats.models.play as play
     import spotifystats.models.ranking as rnk
 
-from mongoengine.fields import IntField, ListField, ReferenceField, StringField
+from mongoengine.fields import IntField, ListField, ReferenceField
 
-import spotifystats.database as db
 import spotifystats.models.album as alb
 import spotifystats.models.artist as art
 from spotifystats.models.named_document import NamedDocument

@@ -4,7 +4,6 @@ from typing import TYPE_CHECKING, List
 
 from mongoengine.fields import ListField, ReferenceField
 
-import spotifystats.database as db
 import spotifystats.models.artist as art
 from spotifystats.models.named_document import NamedDocument
 
