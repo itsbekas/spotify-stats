@@ -25,16 +25,12 @@ class Track(NamedDocument):
     @classmethod
     def from_spotify_response(cls, response) -> Track:
 
-        album = db.get_album(response["album"]["id"])
-        if album is None:
-            album = alb.Album.from_spotify_response(response["album"])
+        album = alb.Album.from_spotify_response(response["album"])
 
-        artists = []
-        for artist_response in response["artists"]:
-            artist = db.get_artist(artist_response["id"])
-            if artist is None:
-                artist = art.Artist.from_spotify_response(artist_response)
-            artists.append(artist)
+        artists = [
+            art.Artist.from_spotify_response(artist_response)
+            for artist_response in response["artists"]
+        ]
 
         return cls(
             spotify_id=response["id"],
@@ -46,6 +42,9 @@ class Track(NamedDocument):
 
     def get_album(self) -> alb.Album:
         return self.album
+
+    def set_album(self, album: alb.Album) -> None:
+        self.album = album
 
     def get_artists(self) -> art.Artist:
         return self.artists

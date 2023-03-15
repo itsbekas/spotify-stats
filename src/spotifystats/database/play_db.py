@@ -13,7 +13,11 @@ def add_play(play: play.Play) -> None:
     if get_play(play.get_timestamp()) is None:
 
         track = play.get_track()
-        db.add_track(track)
+        db_track = db.get_track(track.get_id())
+        if db_track is None:
+            db.add_track(track)
+        else:
+            play.set_track(track)
 
         play.save()
 
