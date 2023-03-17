@@ -10,15 +10,15 @@ import spotifystats.models.artist as art
 
 
 @pytest.fixture
-def example_artist():
-    with open("src/tests/data/play.json", "r") as f:
+def artist_response():
+    with open("src/tests/data/play1.json", "r") as f:
         play = json.load(f)
     return play["track"]["artists"][0]
 
 
 @pytest.fixture
-def example_album():
-    with open("src/tests/data/play.json", "r") as f:
+def album_response():
+    with open("src/tests/data/play1.json", "r") as f:
         play = json.load(f)
     return play["track"]["album"]
 
@@ -39,18 +39,19 @@ def teardown_function():
     disconnect()
 
 
-def test_create_artist(example_artist):
-    artist = art.Artist.from_spotify_response(example_artist)
-    artist.save()
-    assert artist.get_id() == example_artist["id"]
-    assert artist.get_name() == example_artist["name"]
+def test_create_artist(artist_response):
+    artist = art.Artist.from_spotify_response(artist_response)
+    assert isinstance(artist, art.Artist)
+    assert artist.get_id() == artist_response["id"]
+    assert artist.get_name() == artist_response["name"]
     assert artist.get_albums() == []
     assert artist.get_tracks() == []
 
 
-def test_add_album(example_artist, example_album):
-    artist = art.Artist.from_spotify_response(example_artist)
-    album = alb.Album.from_spotify_response(example_album)
+def test_add_album(artist_response, album_response):
+    artist = art.Artist.from_spotify_response(artist_response)
+    album = alb.Album.from_spotify_response(album_response)
     artist.add_album(album)
 
-    assert artist.get_albums() == [album]
+    assert len(artist.get_albums()) == 1
+    assert artist.get_albums()[0] == alb.Album.from_spotify_response(album_response)

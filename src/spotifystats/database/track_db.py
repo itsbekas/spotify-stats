@@ -27,7 +27,7 @@ def add_track(track: trk.Track) -> None:
         if db_album is None:
             db.add_album(album)
         else:
-            track.set_album(album)
+            track.set_album(db_album)
 
         track.save()
 

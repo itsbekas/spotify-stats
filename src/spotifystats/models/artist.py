@@ -23,7 +23,8 @@ class Artist(NamedDocument):
         return self.albums
 
     def add_album(self, album: alb.Album) -> None:
-        if album not in self.get_albums():
+        ids = [a.get_id() for a in self.get_albums()]
+        if album.get_id() not in ids:
             self.albums.append(album)
 
     def get_tracks(self) -> List[trk.Track]:

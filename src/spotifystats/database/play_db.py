@@ -17,7 +17,7 @@ def add_play(play: play.Play) -> None:
         if db_track is None:
             db.add_track(track)
         else:
-            play.set_track(track)
+            play.set_track(db_track)
 
         play.save()
 

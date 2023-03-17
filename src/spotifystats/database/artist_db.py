@@ -13,5 +13,16 @@ def add_artist(artist: art.Artist) -> None:
         artist.save()
 
 
-def get_artist(spotify_id: str) -> art.Artist:
-    return art.Artist.objects(spotify_id=spotify_id).first()
+def get_artist(spotify_id: None | str = None,
+               name: None | str = None) -> art.Artist:
+    
+    query = {}
+    if spotify_id:
+        query['spotify_id'] = spotify_id
+    if name:
+        query['name'] = name
+
+    if query == {}:
+        raise ValueError('At least one argument must be provided.')
+    
+    return art.Artist.objects(**query).first()
