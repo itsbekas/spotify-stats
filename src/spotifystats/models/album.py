@@ -7,6 +7,8 @@ from mongoengine.fields import ListField, ReferenceField
 import spotifystats.models.artist as art
 from spotifystats.models.named_document import NamedDocument
 
+from spotifystats.util import is_duplicate
+
 if TYPE_CHECKING:
     import spotifystats.models.track as trk
 
@@ -29,14 +31,12 @@ class Album(NamedDocument):
         return self.artists
 
     def add_artist(self, artist: art.Artist) -> None:
-        ids = [a.get_id() for a in self.get_artist()]
-        if artist.get_id() not in ids:
+        if not is_duplicate(artist, self.get_artists()):
             self.artists.append(artist)
 
     def get_tracks(self) -> List[trk.Track]:
         return self.tracks
 
     def add_track(self, track: trk.Track) -> None:
-        ids = [t.get_id() for t in self.get_track()]
-        if track.get_id() not in ids:
+        if not is_duplicate(track, self.get_tracks()):
             self.tracks.append(track)

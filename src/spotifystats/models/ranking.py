@@ -27,7 +27,7 @@ class Ranking(DatedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Ranking:
-        return cls(type="bruh")
+        return cls(rank_type="bruh")
 
     def get_type(self):
         return self.rank_type
