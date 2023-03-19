@@ -30,10 +30,6 @@ class Album(NamedDocument):
     def get_artists(self) -> List[art.Artist]:
         return self.artists
 
-    def add_artist(self, artist: art.Artist) -> None:
-        if not is_duplicate(artist, self.get_artists()):
-            self.artists.append(artist)
-
     def get_tracks(self) -> List[trk.Track]:
         return self.tracks
 
