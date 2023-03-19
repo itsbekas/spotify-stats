@@ -26,7 +26,7 @@ class SpotifyStatsService:
 
     def update_artist_rankings(self, range_type) -> None:
         top_artists = self.api.get_user_top_artists(range_type)
-        print(top_artists[0].keys())
+        print(top_artists[0])
 
         rnk.Ranking.from_spotify_response(top_artists)
 
@@ -36,8 +36,6 @@ class SpotifyStatsService:
     def update_history(self) -> None:
         latest_timestamp = db.get_latest_timestamp()
         history = self.api.get_user_history(latest_timestamp)
-
-        print(history[0])
 
         for play_dict in history:
             play = pl.Play.from_spotify_response(play_dict)

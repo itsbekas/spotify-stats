@@ -53,19 +53,15 @@ class SpotifyAPI:
         Retrieves the user's listening history after the specified timestamp.
 
         Args:
-            after (datetime or str): The timestamp after which to retrieve listening history. This can be either a
-                datetime object or a string in ISO format (e.g. '2022-01-01T00:00:00Z').
+            after (datetime): The timestamp after which to retrieve listening history.
 
         Returns:
             A list of dictionaries representing the user's listening history.
             Each dictionary has information about a single play, including its track and its timestamp
-
-        Raises:
-            ValueError: If the 'after' argument is not a valid datetime object or ISO string.
         """
         # Retrieve the user's listening history using the Spotify API
         timestamp = util.datetime_to_int(after)
-        result = self._sp.current_user_recently_played(after=timestamp)
+        result = self._sp.current_user_recently_played(limit=50, after=timestamp)
 
         return result.get("items", []) if result else {}
 
@@ -81,7 +77,7 @@ class SpotifyAPI:
             A list of dictionaries containing the user's top artists for the specified time range.
             Each dictionary has information about a single artist, including its name, Spotify ID, and popularity.
         """
-        result = self._sp.current_user_top_artists(time_range=range_type)
+        result = self._sp.current_user_top_artists(limit=50, time_range=range_type)
 
         return result.get("items", []) if result else []
 

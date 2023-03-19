@@ -1,15 +1,13 @@
 from __future__ import annotations
 
+import datetime as dt
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
-    from datetime import datetime
-
 import spotifystats.database as db
-import spotifystats.models.play as play
+import spotifystats.models.play as pl
 
 
-def add_play(play: play.Play) -> None:
+def add_play(play: pl.Play) -> None:
     if get_play(play.get_timestamp()) is None:
 
         track = play.get_track()
@@ -22,10 +20,13 @@ def add_play(play: play.Play) -> None:
         play.save()
 
 
-def get_play(timestamp: datetime) -> play.Play:
-    return play.Play.objects(timestamp=timestamp).first()
+def get_play(timestamp: dt.datetime) -> pl.Play:
+    return pl.Play.objects(timestamp=timestamp).first()
 
 
 # todo: test to make sure order is correct -> add older, add latest, add older then check if latest is the first one
-def get_latest_timestamp() -> datetime:
-    return play.Play.objects().first().get_timestamp()
+def get_latest_timestamp() -> dt.datetime:
+    latest_play = pl.Play.objects().first()
+    if latest_play is None:
+        return dt.datetime.now() - dt.timedelta(minutes=1000)
+    return latest_play.get_timestamp()
