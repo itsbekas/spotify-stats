@@ -1,5 +1,3 @@
-import pytest
-
 import spotifystats.models.album as alb
 import spotifystats.models.artist as art
 import spotifystats.models.track as trk
@@ -12,7 +10,9 @@ def test_create_album_from_response(play1_album):
     assert isinstance(album, alb.Album)
     assert album.get_id() == play1_album["id"]
     assert album.get_name() == play1_album["name"]
+    assert album.get_last_retrieved() is None
     assert len(album.get_artists()) == 1
+    assert album.get_artists()[0].get_id() == play1_album["artists"][0]["id"]
     assert len(album.get_tracks()) == 0
 
 
