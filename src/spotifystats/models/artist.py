@@ -31,5 +31,6 @@ class Artist(NamedDocument):
         return self.tracks
 
     def add_track(self, track: trk.Track) -> None:
-        if track not in self.get_tracks():
+        ids = [t.get_id() for t in self.get_tracks()]
+        if track.get_id() not in ids:
             self.tracks.append(track)

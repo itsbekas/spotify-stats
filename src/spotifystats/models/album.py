@@ -25,21 +25,18 @@ class Album(NamedDocument):
 
         return cls(spotify_id=response["id"], name=response["name"], artists=artists)
 
-    def get_id(self) -> str:
-        return self.id
-
-    def get_name(self) -> str:
-        return self.name
-
     def get_artists(self) -> List[art.Artist]:
         return self.artists
 
     def add_artist(self, artist: art.Artist) -> None:
-        if artist not in self.get_artists():
+        ids = [a.get_id() for a in self.get_artist()]
+        if artist.get_id() not in ids:
             self.artists.append(artist)
 
     def get_tracks(self) -> List[trk.Track]:
         return self.tracks
 
     def add_track(self, track: trk.Track) -> None:
-        self.tracks.append(track)
+        ids = [t.get_id() for t in self.get_track()]
+        if track.get_id() not in ids:
+            self.tracks.append(track)
