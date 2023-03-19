@@ -10,7 +10,7 @@ from spotifystats.models.spotifystats_document import SpotifyStatsDocument
 
 class NamedDocument(SpotifyStatsDocument):
 
-    meta = {"allow_inheritance": True}
+    meta = meta = {"allow_inheritance": True, "indexes": ["spotify_id"]}
 
     spotify_id = StringField(required=True)
     name = StringField(required=True)

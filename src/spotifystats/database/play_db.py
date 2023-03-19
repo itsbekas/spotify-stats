@@ -24,3 +24,8 @@ def add_play(play: play.Play) -> None:
 
 def get_play(timestamp: datetime) -> play.Play:
     return play.Play.objects(timestamp=timestamp).first()
+
+
+# todo: test to make sure order is correct -> add older, add latest, add older then check if latest is the first one
+def get_latest_timestamp() -> datetime:
+    return play.Play.objects().first().get_timestamp()
