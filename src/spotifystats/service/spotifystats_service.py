@@ -25,20 +25,28 @@ class SpotifyStatsService:
             self.update_artist_rankings(range_type)
             self.update_track_rankings(range_type)
 
-    def update_artist_rankings(self, range_type) -> None:
-        top_artists = self.api.get_user_top_artists(range_type)
+    def update_artist_rankings(self, time_range: str) -> None:
+        top_artists = self.api.get_user_top_artists(time_range)
 
-        rank = a_rnk.ArtistRanking.from_spotify_response(top_artists)
-        rank.set_time_range(range_type)
-        rank.set_timestamp(self.timestamp)
+        rank_dict = {
+            "artists": top_artists,
+            "time_range": time_range,
+            "timestamp": self.timestamp,
+        }
+
+        rank = a_rnk.ArtistRanking.from_spotify_response(rank_dict)
         db.add_artist_ranking(rank)
 
-    def update_track_rankings(self, range_type) -> None:
-        top_tracks = self.api.get_user_top_tracks(range_type)
+    def update_track_rankings(self, time_range: str) -> None:
+        top_tracks = self.api.get_user_top_tracks(time_range)
 
-        rank = t_rnk.TrackRanking.from_spotify_response(top_tracks)
-        rank.set_time_range(range_type)
-        rank.set_timestamp(self.timestamp)
+        rank_dict = {
+            "tracks": top_tracks,
+            "time_range": time_range,
+            "timestamp": self.timestamp,
+        }
+
+        rank = t_rnk.TrackRanking.from_spotify_response(rank_dict)
         db.add_track_ranking(rank)
 
     def update_history(self) -> None:

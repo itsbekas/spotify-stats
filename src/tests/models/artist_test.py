@@ -82,3 +82,7 @@ def test_add_duplicate_track(play1_artist, play1_track):
 
     assert len(artist.get_tracks()) == 1
     assert artist.get_tracks()[0].get_id() == play1_track["id"]
+
+
+# def test_add_ranking(ranking1) -> None:
+#     pass

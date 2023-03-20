@@ -2,8 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
-    import spotifystats.models.track as trk
+import spotifystats.models.track as trk
 
 import spotifystats.database as db
 
