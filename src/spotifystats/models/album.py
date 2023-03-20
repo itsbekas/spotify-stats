@@ -6,7 +6,6 @@ from mongoengine.fields import ListField, ReferenceField
 
 import spotifystats.models.artist as art
 from spotifystats.models.named_document import NamedDocument
-
 from spotifystats.util import is_duplicate
 
 if TYPE_CHECKING:
@@ -19,7 +18,6 @@ class Album(NamedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Album:
-
         artists = [
             art.Artist.from_spotify_response(artist_response)
             for artist_response in response["artists"]

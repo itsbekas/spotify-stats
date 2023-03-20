@@ -1,14 +1,10 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
-import spotifystats.models.track as trk
-
 import spotifystats.database as db
+import spotifystats.models.track as trk
 
 
 def add_track(track: trk.Track) -> None:
-
     if get_track(track.get_id()) is None:
         artists = track.get_artists()
         for i, artist in enumerate(artists):

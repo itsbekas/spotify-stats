@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import spotifystats.models.artist as art
 
 
@@ -14,7 +12,6 @@ def add_artist(artist: art.Artist) -> None:
 
 
 def get_artist(spotify_id: None | str = None, name: None | str = None) -> art.Artist:
-
     query = {}
     if spotify_id:
         query["spotify_id"] = spotify_id

@@ -1,17 +1,11 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List
-
-if TYPE_CHECKING:
-    from datetime import datetime
-
-from mongoengine.fields import ListField, ReferenceField, StringField
+from mongoengine.fields import StringField
 
 from spotifystats.models.dated_document import DatedDocument
 
 
 class Ranking(DatedDocument):
-
     meta = {"allow_inheritance": True}
 
     SHORT = "short_term"

@@ -1,6 +1,6 @@
 from datetime import datetime
 from os import environ
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 from dotenv import load_dotenv
 from spotipy import Spotify
@@ -26,7 +26,10 @@ class SpotifyAPI:
             ]
         ):
             raise Exception(
-                "Make sure SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET and SPOTIPY_REDIRECT_URI are defined in your environment!"
+                (
+                    "Make sure SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET"
+                    "and SPOTIPY_REDIRECT_URI are defined in your environment!"
+                )
             )
 
         cache_handler = CacheFileHandler(cache_path=environ["SPOTIPY_CACHE_PATH"])

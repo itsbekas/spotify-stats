@@ -5,13 +5,12 @@ from typing import TYPE_CHECKING, List
 from mongoengine.fields import ListField, ReferenceField
 
 from spotifystats.models.named_document import NamedDocument
-
 from spotifystats.util import is_duplicate
 
 if TYPE_CHECKING:
     import spotifystats.models.album as alb
-    import spotifystats.models.track as trk
     import spotifystats.models.artist_ranking as a_rnk
+    import spotifystats.models.track as trk
 
 
 class Artist(NamedDocument):

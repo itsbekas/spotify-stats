@@ -1,8 +1,5 @@
 from __future__ import annotations
 
-import datetime as dt
-from typing import TYPE_CHECKING, List
-
 from mongoengine.fields import ReferenceField
 
 import spotifystats.models.track as trk
@@ -15,7 +12,6 @@ class Play(DatedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Play:
-
         track = trk.Track.from_spotify_response(response["track"])
 
         return cls(track=track, timestamp=util.iso_to_datetime(response["played_at"]))

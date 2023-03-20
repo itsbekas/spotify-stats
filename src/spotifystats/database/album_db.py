@@ -1,12 +1,7 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List
-
 import spotifystats.database as db
 import spotifystats.models.album as alb
-
-if TYPE_CHECKING:
-    import spotifystats.models.artist as art
 
 
 def add_album(album: alb.Album) -> None:

@@ -1,11 +1,9 @@
-from pprint import pformat
+# from pprint import pformat
 
 from mongoengine import Document
-from mongoengine.fields import DateTimeField
 
 
 class SpotifyStatsDocument(Document):
-
     meta = {"allow_inheritance": True}
 
     # inline

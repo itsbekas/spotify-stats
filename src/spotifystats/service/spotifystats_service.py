@@ -2,13 +2,12 @@ from datetime import datetime
 
 import spotifystats.database as db
 import spotifystats.models.artist_ranking as a_rnk
-import spotifystats.models.track_ranking as t_rnk
 import spotifystats.models.play as pl
+import spotifystats.models.track_ranking as t_rnk
 from spotifystats.service.spotify_api import SpotifyAPI
 
 
 class SpotifyStatsService:
-
     timestamp: datetime
 
     def __init__(self):

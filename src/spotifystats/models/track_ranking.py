@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List, Dict, Any
+from typing import Any, Dict, List
 
 from mongoengine.fields import ListField, ReferenceField
 
@@ -9,12 +9,10 @@ from spotifystats.models.ranking import Ranking
 
 
 class TrackRanking(Ranking):
-
     tracks = ListField(ReferenceField("Track"))
 
     @classmethod
     def from_spotify_response(cls, rank_dict: Dict[str, Any]) -> TrackRanking:
-
         tracks = [
             trk.Track.from_spotify_response(track) for track in rank_dict["tracks"]
         ]

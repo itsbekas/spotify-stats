@@ -23,7 +23,6 @@ class Track(NamedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Track:
-
         album = alb.Album.from_spotify_response(response["album"])
 
         artists = [
