@@ -5,7 +5,10 @@ from math import floor
 
 
 def iso_to_datetime(iso_str: str) -> datetime:
-    return datetime.strptime(iso_str, "%Y-%m-%dT%H:%M:%S.%fZ")
+    try:
+        return datetime.strptime(iso_str, "%Y-%m-%dT%H:%M:%S.%fZ")
+    except ValueError:
+        return datetime.strptime(iso_str, "%Y-%m-%dT%H:%M:%SZ")
 
 
 def datetime_to_int(dt: datetime) -> int:
