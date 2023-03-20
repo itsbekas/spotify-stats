@@ -11,11 +11,13 @@ from spotifystats.util import is_duplicate
 if TYPE_CHECKING:
     import spotifystats.models.album as alb
     import spotifystats.models.track as trk
+    import spotifystats.models.artist_ranking as a_rnk
 
 
 class Artist(NamedDocument):
     albums = ListField(ReferenceField("Album"))
     tracks = ListField(ReferenceField("Track"))
+    rankings = ListField(ReferenceField("ArtistRanking"))
 
     @classmethod
     def from_spotify_response(cls, response) -> Artist:
@@ -34,3 +36,9 @@ class Artist(NamedDocument):
     def add_track(self, track: trk.Track) -> None:
         if not is_duplicate(track, self.get_tracks()):
             self.tracks.append(track)
+
+    def get_rankings(self) -> List[a_rnk.ArtistRanking]:
+        return self.rankings
+
+    def add_ranking(self, ranking: a_rnk.ArtistRanking) -> None:
+        self.rankings.append(ranking)

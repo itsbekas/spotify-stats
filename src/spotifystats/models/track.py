@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import List
     import spotifystats.models.play as pl
-    import spotifystats.models.artist_ranking as rnk
+    import spotifystats.models.track_ranking as t_rnk
 
 from mongoengine.fields import IntField, ListField, ReferenceField
 
@@ -54,5 +54,11 @@ class Track(NamedDocument):
     def get_plays(self) -> List[pl.Play]:
         return self.plays
 
+    def add_play(self, play: pl.Play) -> None:
+        self.plays.append(play)
+
     def get_rankings(self) -> List[rnk.Ranking]:
         return self.rankings
+
+    def add_ranking(self, ranking: t_rnk.TrackRanking) -> None:
+        self.rankings.append(ranking)

@@ -31,9 +31,13 @@ def add_track(track: trk.Track) -> None:
 
         track.save()
 
-        # After the track has been saved, add it to the album and update it
+        for artist in track.get_artists():
+            artist.add_track(track)
+            artist.save()
+
+        album = track.get_album()
         album.add_track(track)
-        db.update_album(track.get_album())
+        album.save()
 
 
 def get_track(spotify_id: str) -> trk.Track:

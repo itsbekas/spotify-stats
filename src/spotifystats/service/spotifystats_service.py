@@ -31,7 +31,7 @@ class SpotifyStatsService:
         rank = a_rnk.ArtistRanking.from_spotify_response(top_artists)
         rank.set_time_range(range_type)
         rank.set_timestamp(self.timestamp)
-        db.add_ranking(rank)
+        db.add_artist_ranking(rank)
 
     def update_track_rankings(self, range_type) -> None:
         top_tracks = self.api.get_user_top_tracks(range_type)
@@ -39,7 +39,7 @@ class SpotifyStatsService:
         rank = t_rnk.TrackRanking.from_spotify_response(top_tracks)
         rank.set_time_range(range_type)
         rank.set_timestamp(self.timestamp)
-        db.add_ranking(rank)
+        db.add_track_ranking(rank)
 
     def update_history(self) -> None:
         latest_timestamp = db.get_latest_timestamp()

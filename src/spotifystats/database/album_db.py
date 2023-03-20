@@ -21,9 +21,9 @@ def add_album(album: alb.Album) -> None:
                 artists[i] = db_artist
         album.save()
 
-
-def update_album(album: alb.Album) -> None:
-    album.save()
+        for artist in album.get_artists():
+            artist.add_album(album)
+            artist.save()
 
 
 def get_album(spotify_id: str) -> alb.Album:

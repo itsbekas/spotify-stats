@@ -19,6 +19,11 @@ def add_play(play: pl.Play) -> None:
 
         play.save()
 
+        # Add play to track
+        track = play.get_track()
+        track.add_play(play)
+        track.save()
+
 
 def get_play(timestamp: dt.datetime) -> pl.Play:
     return pl.Play.objects(timestamp=timestamp).first()
