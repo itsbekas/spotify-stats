@@ -1,6 +1,9 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
+
+if TYPE_CHECKING:
+    from datetime import datetime
 
 from mongoengine.fields import ListField, ReferenceField, StringField
 
@@ -8,32 +11,22 @@ from spotifystats.models.dated_document import DatedDocument
 
 
 class Ranking(DatedDocument):
-    SHORT = "short"
-    MEDIUM = "medium"
-    LONG = "long"
+
+    meta = {"allow_inheritance": True}
+
+    SHORT = "short_term"
+    MEDIUM = "medium_term"
+    LONG = "long_term"
     TIME_CHOICES = (
         (SHORT, "Last 4 Weeks"),
         (MEDIUM, "Last 6 Months"),
         (LONG, "All Time"),
     )
 
-    ARTIST = "artist"
-    TRACK = "track"
-    TYPE_CHOICES = ((ARTIST, "Artist"), (TRACK, "Track"))
-
-    rank_type = StringField(required=True, choices=TYPE_CHOICES)
     time_range = StringField(required=True, choices=TIME_CHOICES)
-    tracks = ListField(ReferenceField("Track"))
 
-    @classmethod
-    def from_spotify_response(cls, response) -> Ranking:
-        return cls(rank_type="bruh")
-
-    def get_type(self):
-        return self.rank_type
-
-    def get_time_range(self):
+    def get_time_range(self) -> str:
         return self.time_range
 
-    def get_tracks(self):
-        return self.tracks
+    def set_time_range(self, time_range: str) -> None:
+        self.time_range = time_range

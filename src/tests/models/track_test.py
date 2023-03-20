@@ -1,7 +1,7 @@
 import spotifystats.models.album as alb
 import spotifystats.models.artist as art
 import spotifystats.models.play as pl
-import spotifystats.models.ranking as rnk
+import spotifystats.models.artist_ranking as rnk
 import spotifystats.models.track as trk
 
 

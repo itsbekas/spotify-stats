@@ -22,3 +22,6 @@ class DatedDocument(SpotifyStatsDocument):
 
     def get_timestamp(self) -> datetime:
         return self.timestamp
+
+    def set_timestamp(self, timestamp: datetime) -> None:
+        self.timestamp = timestamp

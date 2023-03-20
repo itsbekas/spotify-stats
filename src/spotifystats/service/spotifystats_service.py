@@ -1,7 +1,8 @@
 from datetime import datetime
 
 import spotifystats.database as db
-import spotifystats.models.ranking as rnk
+import spotifystats.models.artist_ranking as a_rnk
+import spotifystats.models.track_ranking as t_rnk
 import spotifystats.models.play as pl
 from spotifystats.service.spotify_api import SpotifyAPI
 
@@ -26,12 +27,19 @@ class SpotifyStatsService:
 
     def update_artist_rankings(self, range_type) -> None:
         top_artists = self.api.get_user_top_artists(range_type)
-        print(top_artists[0])
 
-        rnk.Ranking.from_spotify_response(top_artists)
+        rank = a_rnk.ArtistRanking.from_spotify_response(top_artists)
+        rank.set_time_range(range_type)
+        rank.set_timestamp(self.timestamp)
+        db.add_ranking(rank)
 
     def update_track_rankings(self, range_type) -> None:
         top_tracks = self.api.get_user_top_tracks(range_type)
+
+        rank = t_rnk.TrackRanking.from_spotify_response(top_tracks)
+        rank.set_time_range(range_type)
+        rank.set_timestamp(self.timestamp)
+        db.add_ranking(rank)
 
     def update_history(self) -> None:
         latest_timestamp = db.get_latest_timestamp()
