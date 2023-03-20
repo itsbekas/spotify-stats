@@ -1,5 +1,6 @@
 import spotifystats.models.album as alb
 import spotifystats.models.artist as art
+import spotifystats.models.artist_ranking as a_rnk
 import spotifystats.models.track as trk
 import spotifystats.util as util
 
@@ -13,6 +14,7 @@ def test_create_artist_from_response(play1_artist):
     assert artist.get_last_retrieved() is None
     assert len(artist.get_albums()) == 0
     assert len(artist.get_tracks()) == 0
+    assert len(artist.get_rankings()) == 0
 
 
 def test_add_album(play1_artist, play1_album):
@@ -84,5 +86,24 @@ def test_add_duplicate_track(play1_artist, play1_track):
     assert artist.get_tracks()[0].get_id() == play1_track["id"]
 
 
-# def test_add_ranking(ranking1) -> None:
-#     pass
+def test_add_ranking(ranking_artists_long) -> None:
+    artist = art.Artist.from_spotify_response(ranking_artists_long["artists"][0])
+    ranking = a_rnk.ArtistRanking.from_spotify_response(ranking_artists_long)
+
+    artist.add_ranking(ranking)
+
+    assert len(artist.get_rankings()) == 1
+    assert util.is_duplicate(artist, artist.get_rankings()[0].get_artists())
+
+
+def test_two_rankings(ranking_artists_medium, ranking_artists_long):
+    artist = art.Artist.from_spotify_response(ranking_artists_long["artists"][0])
+    rankingL = a_rnk.ArtistRanking.from_spotify_response(ranking_artists_long)
+
+    artist.add_ranking(rankingL)
+
+    rankingM = a_rnk.ArtistRanking.from_spotify_response(ranking_artists_medium)
+
+    artist.add_ranking(rankingM)
+
+    assert len(artist.get_rankings()) == 2

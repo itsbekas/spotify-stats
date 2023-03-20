@@ -45,6 +45,8 @@ class SpotifyStatsService:
             "timestamp": self.timestamp,
         }
 
+        if time_range == "long_term":
+            print(top_tracks)
         rank = t_rnk.TrackRanking.from_spotify_response(rank_dict)
         db.add_track_ranking(rank)
 
