@@ -57,7 +57,7 @@ class Track(NamedDocument):
     def add_play(self, play: pl.Play) -> None:
         self.plays.append(play)
 
-    def get_rankings(self) -> List[rnk.Ranking]:
+    def get_rankings(self) -> List[t_rnk.TrackRanking]:
         return self.rankings
 
     def add_ranking(self, ranking: t_rnk.TrackRanking) -> None:
