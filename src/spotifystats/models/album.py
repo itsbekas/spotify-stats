@@ -6,7 +6,6 @@ from mongoengine.fields import ListField, ReferenceField
 
 import spotifystats.models.artist as art
 from spotifystats.models.named_document import NamedDocument
-from spotifystats.util import is_duplicate
 
 if TYPE_CHECKING:
     import spotifystats.models.track as trk
@@ -32,5 +31,8 @@ class Album(NamedDocument):
         return self.tracks
 
     def add_track(self, track: trk.Track) -> None:
-        if not is_duplicate(track, self.get_tracks()):
-            self.tracks.append(track)
+        # Check if album already has this track
+        if track not in self.get_tracks():
+            # Check if track is part of the album
+            if self.get_id() in track.get_album().get_id():
+                self.tracks.append(track)

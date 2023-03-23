@@ -2,7 +2,6 @@ import spotifystats.models.album as alb
 import spotifystats.models.artist as art
 import spotifystats.models.artist_ranking as a_rnk
 import spotifystats.models.track as trk
-import spotifystats.util as util
 
 
 def test_create_artist_from_response(play1_artist):
@@ -35,8 +34,8 @@ def test_add_two_albums(play1_artist, play1_album, play2_album):
     artist.add_album(album2)
 
     assert len(artist.get_albums()) == 2
-    assert util.is_duplicate(album1, artist.get_albums())
-    assert util.is_duplicate(album2, artist.get_albums())
+    assert album1 in artist.get_albums()
+    assert album2 in artist.get_albums()
 
 
 def test_add_duplicate_album(play1_artist, play1_album):
@@ -70,8 +69,8 @@ def test_add_two_tracks(play1_artist, play1_track, play2_track):
     artist.add_track(track2)
 
     assert len(artist.get_tracks()) == 2
-    assert util.is_duplicate(track1, artist.get_tracks())
-    assert util.is_duplicate(track2, artist.get_tracks())
+    assert track1 in artist.get_tracks()
+    assert track2 in artist.get_tracks()
 
 
 def test_add_duplicate_track(play1_artist, play1_track):
@@ -93,7 +92,7 @@ def test_add_ranking(ranking_artists_long) -> None:
     artist.add_ranking(ranking)
 
     assert len(artist.get_rankings()) == 1
-    assert util.is_duplicate(artist, artist.get_rankings()[0].get_artists())
+    assert artist in artist.get_rankings()[0].get_artists()
 
 
 def test_two_rankings(ranking_artists_medium, ranking_artists_long):

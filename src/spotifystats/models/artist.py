@@ -5,7 +5,6 @@ from typing import TYPE_CHECKING, List
 from mongoengine.fields import ListField, ReferenceField
 
 from spotifystats.models.named_document import NamedDocument
-from spotifystats.util import is_duplicate
 
 if TYPE_CHECKING:
     import spotifystats.models.album as alb
@@ -26,18 +25,26 @@ class Artist(NamedDocument):
         return self.albums
 
     def add_album(self, album: alb.Album) -> None:
-        if not is_duplicate(album, self.get_albums()):
-            self.albums.append(album)
+        # Check if artist already has this album
+        if album not in self.get_albums():
+            # Check if artist is part of the album
+            if self not in album.get_artists():
+                self.albums.append(album)
 
     def get_tracks(self) -> List[trk.Track]:
         return self.tracks
 
     def add_track(self, track: trk.Track) -> None:
-        if not is_duplicate(track, self.get_tracks()):
-            self.tracks.append(track)
+        # Check if artist already has this track
+        if track not in self.get_tracks():
+            # Check if artist is part of the track
+            if self not in track.get_artists():
+                self.tracks.append(track)
 
     def get_rankings(self) -> List[a_rnk.ArtistRanking]:
         return self.rankings
 
     def add_ranking(self, ranking: a_rnk.ArtistRanking) -> None:
-        self.rankings.append(ranking)
+        # Check if artist is part of the ranking
+        if self not in ranking.get_artists():
+            self.rankings.append(ranking)

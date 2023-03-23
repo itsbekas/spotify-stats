@@ -1,6 +1,5 @@
 import spotifystats.models.album as alb
 import spotifystats.models.track as trk
-import spotifystats.util as util
 
 
 def test_create_album_from_response(play1_album):
@@ -22,7 +21,7 @@ def test_add_track(play1_album, play1_track):
     album.add_track(track)
 
     assert len(album.get_tracks()) == 1
-    assert util.is_duplicate(track, album.get_tracks())
+    assert track in album.get_tracks()
 
 
 def test_add_two_tracks(play1_album, play1_track, play2_track):
@@ -34,8 +33,8 @@ def test_add_two_tracks(play1_album, play1_track, play2_track):
     album.add_track(track2)
 
     assert len(album.get_tracks()) == 2
-    assert util.is_duplicate(track1, album.get_tracks())
-    assert util.is_duplicate(track2, album.get_tracks())
+    assert track1 in album.get_tracks()
+    assert track2 in album.get_tracks()
 
 
 def test_add_duplicate_track(play1_album, play1_track):
@@ -47,4 +46,4 @@ def test_add_duplicate_track(play1_album, play1_track):
     album.add_track(track2)
 
     assert len(album.get_tracks()) == 1
-    assert util.is_duplicate(track1, album.get_tracks())
+    assert track1 in album.get_tracks()

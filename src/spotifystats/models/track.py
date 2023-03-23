@@ -42,7 +42,9 @@ class Track(NamedDocument):
         return self.album
 
     def set_album(self, album: alb.Album) -> None:
-        self.album = album
+        # Check if track is part of the album
+        if self in album.get_tracks():
+            self.album = album
 
     def get_artists(self) -> art.Artist:
         return self.artists
@@ -54,10 +56,14 @@ class Track(NamedDocument):
         return self.plays
 
     def add_play(self, play: pl.Play) -> None:
-        self.plays.append(play)
+        # Check if play corresponds to the track
+        if self.get_id() == play.get_track().get_id():
+            self.plays.append(play)
 
     def get_rankings(self) -> List[t_rnk.TrackRanking]:
         return self.rankings
 
     def add_ranking(self, ranking: t_rnk.TrackRanking) -> None:
-        self.rankings.append(ranking)
+        # Check if track is part of the ranking
+        if self in ranking.get_tracks():
+            self.rankings.append(ranking)
