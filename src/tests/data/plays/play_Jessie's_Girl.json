@@ -1,0 +1,22 @@
+{
+    "id": "2F1fnE1a8zQCogM6jJifHH",
+    "name": "Jessie's Girl",
+    "popularity": 64,
+    "album": {
+        "id": "5MeeResNCJfmDmwmHX4w2D",
+        "name": "Working Class Dog",
+        "artists": [
+            {
+                "id": "6IFXsrXBpwbIqtOUOiAa3p",
+                "name": "Rick Springfield"
+            }
+        ]
+    },
+    "artists": [
+        {
+            "id": "6IFXsrXBpwbIqtOUOiAa3p",
+            "name": "Rick Springfield"
+        }
+    ],
+    "played_at": "2023-03-23T20:40:33.418Z"
+}

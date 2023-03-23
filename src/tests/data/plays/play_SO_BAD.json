@@ -1,0 +1,22 @@
+{
+    "id": "13KR2yNRDrbKwR3dOKCDl4",
+    "name": "SO BAD",
+    "popularity": 63,
+    "album": {
+        "id": "4PrRd0lIunUEiiE5rbZklR",
+        "name": "Star To A Young Culture",
+        "artists": [
+            {
+                "id": "01XYiBYaoMJcNhPokrg0l0",
+                "name": "STAYC"
+            }
+        ]
+    },
+    "artists": [
+        {
+            "id": "01XYiBYaoMJcNhPokrg0l0",
+            "name": "STAYC"
+        }
+    ],
+    "played_at": "2023-03-23T20:48:49.452Z"
+}
