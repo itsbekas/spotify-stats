@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
 
-from mongoengine.fields import ListField, ReferenceField
+from mongoengine.fields import IntField, ListField, ReferenceField, StringField
 
 from spotifystats.models.named_document import NamedDocument
 
@@ -13,6 +13,8 @@ if TYPE_CHECKING:
 
 
 class Artist(NamedDocument):
+    popularity = IntField(required=True)
+    genres = ListField(StringField())
     albums = ListField(ReferenceField("Album"))
     tracks = ListField(ReferenceField("Track"))
     rankings = ListField(ReferenceField("ArtistRanking"))
@@ -48,3 +50,15 @@ class Artist(NamedDocument):
         # Check if artist is part of the ranking
         if self not in ranking.get_artists():
             self.rankings.append(ranking)
+
+    def get_genres(self) -> List[str]:
+        return self.genres
+
+    def add_genre(self, genre: str) -> None:
+        self.genres.append(genre)
+
+    def get_popularity(self) -> int:
+        return self.popularity
+
+    def set_popularity(self, popularity: int) -> None:
+        self.popularity = popularity

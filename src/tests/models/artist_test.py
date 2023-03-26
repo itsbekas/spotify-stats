@@ -4,16 +4,32 @@ import spotifystats.models.artist_ranking as a_rnk
 import spotifystats.models.track as trk
 
 
-def test_create_artist_from_response(play1_artist):
-    artist = art.Artist.from_spotify_response(play1_artist)
+def test_create_artist_from_play_response(play_STEREOTYPE):
+    artist = art.Artist.from_spotify_response(play_STEREOTYPE["track"]["artists"][0])
 
     assert isinstance(artist, art.Artist)
-    assert artist.get_id() == play1_artist["id"]
-    assert artist.get_name() == play1_artist["name"]
+    assert artist.get_id() == play_STEREOTYPE["track"]["artists"][0]["id"]
+    assert artist.get_name() == play_STEREOTYPE["track"]["artists"][0]["name"]
     assert artist.get_last_retrieved() is None
-    assert len(artist.get_albums()) == 0
-    assert len(artist.get_tracks()) == 0
-    assert len(artist.get_rankings()) == 0
+    assert artist.get_popularity() == 0
+    assert artist.get_genres() == []
+    assert artist.get_albums() == []
+    assert artist.get_tracks() == []
+    assert artist.get_rankings() == []
+
+
+def test_create_artist_from_artist_response(artist_STAYC):
+    artist = art.Artist.from_spotify_response(artist_STAYC)
+
+    assert isinstance(artist, art.Artist)
+    assert artist.get_id() == artist_STAYC["id"]
+    assert artist.get_name() == artist_STAYC["name"]
+    assert artist.get_last_retrieved() is None
+    assert artist.get_popularity() == artist_STAYC["popularity"]
+    assert artist.get_genres() == artist_STAYC["genres"]
+    assert artist.get_albums() == []
+    assert artist.get_tracks() == []
+    assert artist.get_rankings() == []
 
 
 def test_add_album(play1_artist, play1_album):
