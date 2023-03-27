@@ -1,0 +1,28 @@
+{
+    "track": {
+        "id": "5WzfCu5fhgm7jv896EN1Md",
+        "name": "She",
+        "popularity": 69,
+        "album": {
+            "id": "3CxknRPQLbOJRwQrNekNyU",
+            "name": "Goblin",
+            "artists": [
+                {
+                    "id": "4V8LLVI7PbaPR0K2TGSxFF",
+                    "name": "Tyler, The Creator"
+                }
+            ]
+        },
+        "artists": [
+            {
+                "id": "4V8LLVI7PbaPR0K2TGSxFF",
+                "name": "Tyler, The Creator"
+            },
+            {
+                "id": "2h93pZq0e7k5yf4dywlkpM",
+                "name": "Frank Ocean"
+            }
+        ]
+    },
+    "played_at": "2023-03-23T20:07:12.721Z"
+}

@@ -1,0 +1,28 @@
+{
+    "track": {
+        "id": "0NrtwAmRAdLxua31SzHvXr",
+        "name": "Everything I Am",
+        "popularity": 71,
+        "album": {
+            "id": "4SZko61aMnmgvNhfhgTuD3",
+            "name": "Graduation",
+            "artists": [
+                {
+                    "id": "5K4W6rqBFWDnAN6FQUkS6x",
+                    "name": "Kanye West"
+                }
+            ]
+        },
+        "artists": [
+            {
+                "id": "5K4W6rqBFWDnAN6FQUkS6x",
+                "name": "Kanye West"
+            },
+            {
+                "id": "6GEykX11lQqp92UVOQQCC7",
+                "name": "DJ Premier"
+            }
+        ]
+    },
+    "played_at": "2023-03-23T19:39:35.203Z"
+}

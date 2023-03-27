@@ -1,0 +1,54 @@
+{
+    "id": "7HGjNJBj1NQGNwCzFD2LHj",
+    "name": "STEREOTYPE",
+    "popularity": 64,
+    "genres": [],
+    "artists": [
+        {
+            "id": "01XYiBYaoMJcNhPokrg0l0",
+            "name": "STAYC"
+        }
+    ],
+    "tracks": [
+        {
+            "id": "2bZIDMpzVooosmPHn0tHnd",
+            "name": "STEREOTYPE",
+            "artists": [
+                {
+                    "id": "01XYiBYaoMJcNhPokrg0l0",
+                    "name": "STAYC"
+                }
+            ]
+        },
+        {
+            "id": "1aWnOcf3GE7xuu4rubVPYL",
+            "name": "I\u2019ll BE THERE",
+            "artists": [
+                {
+                    "id": "01XYiBYaoMJcNhPokrg0l0",
+                    "name": "STAYC"
+                }
+            ]
+        },
+        {
+            "id": "4SiwxGPQzlG2r4zatpEzLc",
+            "name": "SLOW DOWN",
+            "artists": [
+                {
+                    "id": "01XYiBYaoMJcNhPokrg0l0",
+                    "name": "STAYC"
+                }
+            ]
+        },
+        {
+            "id": "1JWtIj2hmFjGucIlC7zfAe",
+            "name": "COMPLEX",
+            "artists": [
+                {
+                    "id": "01XYiBYaoMJcNhPokrg0l0",
+                    "name": "STAYC"
+                }
+            ]
+        }
+    ]
+}

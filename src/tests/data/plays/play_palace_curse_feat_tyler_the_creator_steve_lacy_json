@@ -1,0 +1,32 @@
+{
+    "track": {
+        "id": "300DUx4tdtCdGEUXR032jA",
+        "name": "Palace/Curse (feat. Tyler, The Creator & Steve Lacy)",
+        "popularity": 65,
+        "album": {
+            "id": "69g3CtOVg98TPOwqmI2K7Q",
+            "name": "Ego Death",
+            "artists": [
+                {
+                    "id": "7GN9PivdemQRKjDt4z5Zv8",
+                    "name": "The Internet"
+                }
+            ]
+        },
+        "artists": [
+            {
+                "id": "7GN9PivdemQRKjDt4z5Zv8",
+                "name": "The Internet"
+            },
+            {
+                "id": "4V8LLVI7PbaPR0K2TGSxFF",
+                "name": "Tyler, The Creator"
+            },
+            {
+                "id": "57vWImR43h4CaDao012Ofp",
+                "name": "Steve Lacy"
+            }
+        ]
+    },
+    "played_at": "2023-03-23T20:14:34.037Z"
+}

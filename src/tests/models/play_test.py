@@ -3,7 +3,7 @@ import spotifystats.models.track as trk
 import spotifystats.util as util
 
 
-def test_create_track_from_response(play1):
+def test_create_play_from_response(play1):
     play = pl.Play.from_spotify_response(play1)
 
     assert isinstance(play, pl.Play)
@@ -11,7 +11,7 @@ def test_create_track_from_response(play1):
     assert play.get_timestamp() == util.iso_to_datetime(play1["played_at"])
 
 
-def test_set_album(play1, play1_track, play2_track):
+def test_set_track(play1, play1_track, play2_track):
     play = pl.Play.from_spotify_response(play1)
     track2 = trk.Track.from_spotify_response(play2_track)
 

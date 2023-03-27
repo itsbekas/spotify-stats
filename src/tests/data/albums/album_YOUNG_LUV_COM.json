@@ -1,0 +1,74 @@
+{
+    "id": "2xPdgNkM4yIQmP7axJ1T1o",
+    "name": "YOUNG-LUV.COM",
+    "popularity": 68,
+    "genres": [],
+    "artists": [
+        {
+            "id": "01XYiBYaoMJcNhPokrg0l0",
+            "name": "STAYC"
+        }
+    ],
+    "tracks": [
+        {
+            "id": "3gFcGnU4kTdMYLXDjH1TK8",
+            "name": "RUN2U",
+            "artists": [
+                {
+                    "id": "01XYiBYaoMJcNhPokrg0l0",
+                    "name": "STAYC"
+                }
+            ]
+        },
+        {
+            "id": "5mr1d04qe0s5ux5fQQcH2p",
+            "name": "SAME SAME",
+            "artists": [
+                {
+                    "id": "01XYiBYaoMJcNhPokrg0l0",
+                    "name": "STAYC"
+                }
+            ]
+        },
+        {
+            "id": "51XWwKV6VHCuFftFQLp4iA",
+            "name": "247",
+            "artists": [
+                {
+                    "id": "01XYiBYaoMJcNhPokrg0l0",
+                    "name": "STAYC"
+                }
+            ]
+        },
+        {
+            "id": "7HGKvoju3ucB7UqVt1GoJu",
+            "name": "YOUNG LUV",
+            "artists": [
+                {
+                    "id": "01XYiBYaoMJcNhPokrg0l0",
+                    "name": "STAYC"
+                }
+            ]
+        },
+        {
+            "id": "1q97NRLZfQlXYvZJAQ7tln",
+            "name": "BUTTERFLY",
+            "artists": [
+                {
+                    "id": "01XYiBYaoMJcNhPokrg0l0",
+                    "name": "STAYC"
+                }
+            ]
+        },
+        {
+            "id": "4wqvBkHI3a75Fmlirlq3uD",
+            "name": "I WANT U BABY",
+            "artists": [
+                {
+                    "id": "01XYiBYaoMJcNhPokrg0l0",
+                    "name": "STAYC"
+                }
+            ]
+        }
+    ]
+}
