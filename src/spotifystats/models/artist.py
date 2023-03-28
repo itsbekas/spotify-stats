@@ -57,7 +57,8 @@ class Artist(NamedDocument):
     def add_ranking(self, ranking: a_rnk.ArtistRanking) -> None:
         # Check if artist is part of the ranking
         if self in ranking.get_artists():
-            self.rankings.append(ranking)
+            if ranking not in self.get_rankings():
+                self.rankings.append(ranking)
 
     def get_genres(self) -> List[str]:
         return self.genres

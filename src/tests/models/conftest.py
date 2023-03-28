@@ -85,3 +85,24 @@ def ranking_artist_short():
     with open("src/tests/data/rankings/ranking_artist_short.json", "r") as f:
         play = json.load(f)
     return play
+
+
+@pytest.fixture
+def ranking_track_long():
+    with open("src/tests/data/rankings/ranking_track_long.json", "r") as f:
+        play = json.load(f)
+    return play
+
+
+@pytest.fixture
+def ranking_track_medium():
+    with open("src/tests/data/rankings/ranking_track_medium.json", "r") as f:
+        play = json.load(f)
+    return play
+
+
+@pytest.fixture
+def ranking_track_short():
+    with open("src/tests/data/rankings/ranking_track_short.json", "r") as f:
+        play = json.load(f)
+    return play

@@ -59,7 +59,8 @@ class Track(NamedDocument):
     def add_play(self, play: pl.Play) -> None:
         # Check if play corresponds to the track
         if self.get_id() == play.get_track().get_id():
-            self.plays.append(play)
+            if play not in self.get_plays():
+                self.plays.append(play)
 
     def get_rankings(self) -> List[t_rnk.TrackRanking]:
         return self.rankings
