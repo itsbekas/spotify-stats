@@ -144,7 +144,7 @@ def test_add_invalid_ranking(artist_STAYC, ranking_artist_long):
     assert ranking not in artist.get_rankings()
 
 
-def test_two_rankings(artist_STAYC, ranking_artist_short, ranking_artist_medium):
+def test_add_two_rankings(artist_STAYC, ranking_artist_short, ranking_artist_medium):
     artist = art.Artist.from_spotify_response(artist_STAYC)
     ranking1 = a_rnk.ArtistRanking.from_spotify_response(ranking_artist_short)
     ranking2 = a_rnk.ArtistRanking.from_spotify_response(ranking_artist_medium)
@@ -153,5 +153,18 @@ def test_two_rankings(artist_STAYC, ranking_artist_short, ranking_artist_medium)
     artist.add_ranking(ranking2)
 
     assert len(artist.get_rankings()) == 2
+    assert ranking1 in artist.get_rankings()
+    assert ranking2 in artist.get_rankings()
+
+
+def test_add_duplicate_rankings(artist_STAYC, ranking_artist_short):
+    artist = art.Artist.from_spotify_response(artist_STAYC)
+    ranking1 = a_rnk.ArtistRanking.from_spotify_response(ranking_artist_short)
+    ranking2 = a_rnk.ArtistRanking.from_spotify_response(ranking_artist_short)
+
+    artist.add_ranking(ranking1)
+    artist.add_ranking(ranking2)
+
+    assert len(artist.get_rankings()) == 1
     assert ranking1 in artist.get_rankings()
     assert ranking2 in artist.get_rankings()

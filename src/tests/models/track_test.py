@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 import spotifystats.models.album as alb
 import spotifystats.models.play as pl
 import spotifystats.models.track as trk
@@ -11,9 +13,8 @@ def test_create_track_from_play_response(play_STEREOTYPE):
     assert track.get_id() == play_STEREOTYPE["track"]["id"]
     assert track.get_name() == play_STEREOTYPE["track"]["name"]
     assert track.get_last_retrieved() is None
-    assert track.get_popularity() == 0
-    assert len(track.get_albums()) == 1
-    assert track.get_albums()[0].get_id() == play_STEREOTYPE["track"]["album"]["id"]
+    assert track.get_popularity() == play_STEREOTYPE["track"]["popularity"]
+    assert track.get_album().get_id() == play_STEREOTYPE["track"]["album"]["id"]
     assert len(track.get_artists()) == 1
     assert (
         track.get_artists()[0].get_id() == play_STEREOTYPE["track"]["artists"][0]["id"]
@@ -30,60 +31,80 @@ def test_create_track_from_track_response(track_STEREOTYPE):
     assert track.get_name() == track_STEREOTYPE["name"]
     assert track.get_last_retrieved() is None
     assert track.get_popularity() == track_STEREOTYPE["popularity"]
-    assert len(track.get_albums()) == 1
-    assert track.get_albums()[0].get_id() == track_STEREOTYPE["album"]["id"]
+    assert track.get_album().get_id() == track_STEREOTYPE["album"]["id"]
     assert len(track.get_artists()) == 1
     assert track.get_artists()[0].get_id() == track_STEREOTYPE["artists"][0]["id"]
     assert track.get_plays() == []
     assert track.get_rankings() == []
 
 
-def test_set_album(play1_track, play1_album, play2_album):
-    track = trk.Track.from_spotify_response(play1_track)
-    album2 = alb.Album.from_spotify_response(play2_album)
+def test_set_album(track_STEREOTYPE, album_STEREOTYPE):
+    track = trk.Track.from_spotify_response(track_STEREOTYPE)
+    album = alb.Album.from_spotify_response(album_STEREOTYPE)
 
-    assert track.get_album().get_id() == play1_album["id"]
+    track.set_album(album)
 
-    track.set_album(album2)
-
-    assert track.get_album().get_id() == play2_album["id"]
+    assert track.get_album().get_id() == album.get_id()
 
 
-def test_add_play(play1, play1_track):
-    track = trk.Track.from_spotify_response(play1_track)
-    play = pl.Play.from_spotify_response(play1)
+def test_add_play(track_STEREOTYPE, play_STEREOTYPE):
+    track = trk.Track.from_spotify_response(track_STEREOTYPE)
+    play = pl.Play.from_spotify_response(play_STEREOTYPE)
 
     track.add_play(play)
 
     assert len(track.get_plays()) == 1
+    assert play in track.get_plays()
 
 
-def test_two_plays(play1, play2, play1_track):
-    track = trk.Track.from_spotify_response(play1_track)
-    play1 = pl.Play.from_spotify_response(play1)
-    play2 = pl.Play.from_spotify_response(play2)
+def test_two_plays(track_STEREOTYPE, play_STEREOTYPE):
+    track = trk.Track.from_spotify_response(track_STEREOTYPE)
+    play1 = pl.Play.from_spotify_response(play_STEREOTYPE)
+    play2 = pl.Play.from_spotify_response(play_STEREOTYPE)
+
+    play2.timestamp = play2.timestamp + timedelta(seconds=1)
 
     track.add_play(play1)
     track.add_play(play2)
 
     assert len(track.get_plays()) == 2
+    assert play1 in track.get_plays()
+    assert play2 in track.get_plays()
 
 
-def test_add_ranking(ranking_tracks_long, top_tracks_long):
-    track = trk.Track.from_spotify_response(top_tracks_long[0])
-    ranking = t_rnk.TrackRanking.from_spotify_response(ranking_tracks_long)
+def test_duplicate_plays(track_STEREOTYPE, play_STEREOTYPE):
+    track = trk.Track.from_spotify_response(track_STEREOTYPE)
+    play1 = pl.Play.from_spotify_response(play_STEREOTYPE)
+    play2 = pl.Play.from_spotify_response(play_STEREOTYPE)
+
+    track.add_play(play1)
+    track.add_play(play2)
+
+    assert len(track.get_plays()) == 1
+    assert play1 in track.get_plays()
+    assert play2 in track.get_plays()
+
+
+def test_add_ranking(track_STEREOTYPE, ranking_track_short):
+    track = trk.Track.from_spotify_response(track_STEREOTYPE)
+    ranking = t_rnk.TrackRanking.from_spotify_response(ranking_track_short)
 
     track.add_ranking(ranking)
 
     assert len(track.get_rankings()) == 1
+    assert ranking in track.get_rankings()
 
 
-def test_two_rankings(ranking_tracks_medium, ranking_tracks_long, top_tracks_long):
-    track = trk.Track.from_spotify_response(top_tracks_long[0])
-    rankingL = t_rnk.TrackRanking.from_spotify_response(ranking_tracks_long)
-    rankingM = t_rnk.TrackRanking.from_spotify_response(ranking_tracks_medium)
+def test_two_rankings(track_STEREOTYPE, ranking_track_short):
+    track = trk.Track.from_spotify_response(track_STEREOTYPE)
+    ranking1 = t_rnk.TrackRanking.from_spotify_response(ranking_track_short)
+    ranking2 = t_rnk.TrackRanking.from_spotify_response(ranking_track_short)
 
-    track.add_ranking(rankingL)
-    track.add_ranking(rankingM)
+    ranking2.timestamp = ranking2.timestamp + timedelta(seconds=1)
+
+    track.add_ranking(ranking1)
+    track.add_ranking(ranking2)
 
     assert len(track.get_rankings()) == 2
+    assert ranking1 in track.get_rankings()
+    assert ranking2 in track.get_rankings()
