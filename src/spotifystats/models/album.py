@@ -6,6 +6,7 @@ from mongoengine.fields import ListField, ReferenceField
 
 import spotifystats.models.artist as art
 from spotifystats.models.named_document import NamedDocument
+from spotifystats.util.lists import NamedDocumentList
 
 if TYPE_CHECKING:
     import spotifystats.models.track as trk
@@ -25,10 +26,10 @@ class Album(NamedDocument):
         return cls(spotify_id=response["id"], name=response["name"], artists=artists)
 
     def get_artists(self) -> List[art.Artist]:
-        return self.artists
+        return NamedDocumentList(self.artists)
 
     def get_tracks(self) -> List[trk.Track]:
-        return self.tracks
+        return NamedDocumentList(self.tracks)
 
     def add_track(self, track: trk.Track) -> None:
         # Check if album already has this track

@@ -1,11 +1,19 @@
-[
-    {
-        "id": "5K9tfeoiztw94dyWzF39jq",
-        "name": "moment",
-        "popularity": 78,
-        "album": {
-            "id": "4FehFP4tVEFyT75LCTHl7m",
+{
+    "tracks": [
+        {
+            "id": "5K9tfeoiztw94dyWzF39jq",
             "name": "moment",
+            "popularity": 78,
+            "album": {
+                "id": "4FehFP4tVEFyT75LCTHl7m",
+                "name": "moment",
+                "artists": [
+                    {
+                        "id": "31ijgiurmIPTNojkYQXdnl",
+                        "name": "Vierre Cloud"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "31ijgiurmIPTNojkYQXdnl",
@@ -13,20 +21,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "31ijgiurmIPTNojkYQXdnl",
-                "name": "Vierre Cloud"
-            }
-        ]
-    },
-    {
-        "id": "29VdNzgJIxzlIDkIYjFQqS",
-        "name": "Life Letters",
-        "popularity": 64,
-        "album": {
-            "id": "2f5voeeirzSQBRR4ovCNnD",
+        {
+            "id": "29VdNzgJIxzlIDkIYjFQqS",
             "name": "Life Letters",
+            "popularity": 64,
+            "album": {
+                "id": "2f5voeeirzSQBRR4ovCNnD",
+                "name": "Life Letters",
+                "artists": [
+                    {
+                        "id": "0j5kVHxvTgUN4nBIPKCLRJ",
+                        "name": "Never Get Used To People"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "0j5kVHxvTgUN4nBIPKCLRJ",
@@ -34,20 +42,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "0j5kVHxvTgUN4nBIPKCLRJ",
-                "name": "Never Get Used To People"
-            }
-        ]
-    },
-    {
-        "id": "6hd1EIB3Cmh4QKQFXfOc7R",
-        "name": "Imperial",
-        "popularity": 57,
-        "album": {
-            "id": "45Y5C3tMARKDIseLQUh75M",
-            "name": "Prodigal",
+        {
+            "id": "6hd1EIB3Cmh4QKQFXfOc7R",
+            "name": "Imperial",
+            "popularity": 57,
+            "album": {
+                "id": "45Y5C3tMARKDIseLQUh75M",
+                "name": "Prodigal",
+                "artists": [
+                    {
+                        "id": "6s3PbveUJMvMwZHyQUAPV4",
+                        "name": "j^p^n"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "6s3PbveUJMvMwZHyQUAPV4",
@@ -55,20 +63,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "6s3PbveUJMvMwZHyQUAPV4",
-                "name": "j^p^n"
-            }
-        ]
-    },
-    {
-        "id": "3hxIUxnT27p5WcmjGUXNwx",
-        "name": "Shut up My Moms Calling",
-        "popularity": 86,
-        "album": {
-            "id": "4qVzNqB4cskFInYfrC7P0S",
+        {
+            "id": "3hxIUxnT27p5WcmjGUXNwx",
             "name": "Shut up My Moms Calling",
+            "popularity": 86,
+            "album": {
+                "id": "4qVzNqB4cskFInYfrC7P0S",
+                "name": "Shut up My Moms Calling",
+                "artists": [
+                    {
+                        "id": "35WVTyRnKAoaGExqgktVyb",
+                        "name": "Hotel Ugly"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "35WVTyRnKAoaGExqgktVyb",
@@ -76,20 +84,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "35WVTyRnKAoaGExqgktVyb",
-                "name": "Hotel Ugly"
-            }
-        ]
-    },
-    {
-        "id": "0QezBrYzFFT0f68zK6EvZI",
-        "name": "Passion",
-        "popularity": 65,
-        "album": {
-            "id": "65YAjLCn7Jp33nJpOxIPMe",
-            "name": "to hell with it",
+        {
+            "id": "0QezBrYzFFT0f68zK6EvZI",
+            "name": "Passion",
+            "popularity": 65,
+            "album": {
+                "id": "65YAjLCn7Jp33nJpOxIPMe",
+                "name": "to hell with it",
+                "artists": [
+                    {
+                        "id": "78rUTD7y6Cy67W1RVzYs7t",
+                        "name": "PinkPantheress"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "78rUTD7y6Cy67W1RVzYs7t",
@@ -97,45 +105,45 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "78rUTD7y6Cy67W1RVzYs7t",
-                "name": "PinkPantheress"
-            }
-        ]
-    },
-    {
-        "id": "7fwE3Nr0RsTzYOocfu2XbV",
-        "name": "Never",
-        "popularity": 66,
-        "album": {
-            "id": "6UXGi2ZR2aJ8JfXqnEaI3t",
+        {
+            "id": "7fwE3Nr0RsTzYOocfu2XbV",
             "name": "Never",
+            "popularity": 66,
+            "album": {
+                "id": "6UXGi2ZR2aJ8JfXqnEaI3t",
+                "name": "Never",
+                "artists": [
+                    {
+                        "id": "4pRlsLqOBsPKbTr4aSAe2y",
+                        "name": "Mag.Lo"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "4pRlsLqOBsPKbTr4aSAe2y",
                     "name": "Mag.Lo"
+                },
+                {
+                    "id": "5pkyK1GpSOzRAYqs7XclPo",
+                    "name": "O Super"
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "4pRlsLqOBsPKbTr4aSAe2y",
-                "name": "Mag.Lo"
+        {
+            "id": "2vWBUC9djv6BtiGlmKiQaH",
+            "name": "YKWIM?",
+            "popularity": 81,
+            "album": {
+                "id": "60jUlxAOAcsiQUEW0XLroT",
+                "name": "Bipolar",
+                "artists": [
+                    {
+                        "id": "6FugQjLquBF4JzATRN70bR",
+                        "name": "Yot Club"
+                    }
+                ]
             },
-            {
-                "id": "5pkyK1GpSOzRAYqs7XclPo",
-                "name": "O Super"
-            }
-        ]
-    },
-    {
-        "id": "2vWBUC9djv6BtiGlmKiQaH",
-        "name": "YKWIM?",
-        "popularity": 81,
-        "album": {
-            "id": "60jUlxAOAcsiQUEW0XLroT",
-            "name": "Bipolar",
             "artists": [
                 {
                     "id": "6FugQjLquBF4JzATRN70bR",
@@ -143,20 +151,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "6FugQjLquBF4JzATRN70bR",
-                "name": "Yot Club"
-            }
-        ]
-    },
-    {
-        "id": "6YGEmlsY5s3q5LJWBRSbKn",
-        "name": "Meru",
-        "popularity": 42,
-        "album": {
-            "id": "5FXp1B6JmjYh8qtnFYr6p5",
-            "name": "Meridian",
+        {
+            "id": "6YGEmlsY5s3q5LJWBRSbKn",
+            "name": "Meru",
+            "popularity": 42,
+            "album": {
+                "id": "5FXp1B6JmjYh8qtnFYr6p5",
+                "name": "Meridian",
+                "artists": [
+                    {
+                        "id": "2GL5OJQQ0qp2rtth8iy6Kf",
+                        "name": "Rohne"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "2GL5OJQQ0qp2rtth8iy6Kf",
@@ -164,20 +172,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "2GL5OJQQ0qp2rtth8iy6Kf",
-                "name": "Rohne"
-            }
-        ]
-    },
-    {
-        "id": "3OHfY25tqY28d16oZczHc8",
-        "name": "Kill Bill",
-        "popularity": 92,
-        "album": {
-            "id": "07w0rG5TETcyihsEIZR3qG",
-            "name": "SOS",
+        {
+            "id": "3OHfY25tqY28d16oZczHc8",
+            "name": "Kill Bill",
+            "popularity": 92,
+            "album": {
+                "id": "07w0rG5TETcyihsEIZR3qG",
+                "name": "SOS",
+                "artists": [
+                    {
+                        "id": "7tYKF4w9nC0nq9CsPZTHyP",
+                        "name": "SZA"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "7tYKF4w9nC0nq9CsPZTHyP",
@@ -185,20 +193,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "7tYKF4w9nC0nq9CsPZTHyP",
-                "name": "SZA"
-            }
-        ]
-    },
-    {
-        "id": "3N5yLQIsMacux1uzNdqiPa",
-        "name": "Now You Know",
-        "popularity": 49,
-        "album": {
-            "id": "27eFgRNrdqdlXIJmbtjDRP",
+        {
+            "id": "3N5yLQIsMacux1uzNdqiPa",
             "name": "Now You Know",
+            "popularity": 49,
+            "album": {
+                "id": "27eFgRNrdqdlXIJmbtjDRP",
+                "name": "Now You Know",
+                "artists": [
+                    {
+                        "id": "0oouuXi8tdasgUgk520Jy6",
+                        "name": "Will Paquin"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "0oouuXi8tdasgUgk520Jy6",
@@ -206,20 +214,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "0oouuXi8tdasgUgk520Jy6",
-                "name": "Will Paquin"
-            }
-        ]
-    },
-    {
-        "id": "2YOev1DTVgKTqBuUN3J5kg",
-        "name": "eyes",
-        "popularity": 50,
-        "album": {
-            "id": "3kjWlk30j8gIzBe39MbndW",
+        {
+            "id": "2YOev1DTVgKTqBuUN3J5kg",
             "name": "eyes",
+            "popularity": 50,
+            "album": {
+                "id": "3kjWlk30j8gIzBe39MbndW",
+                "name": "eyes",
+                "artists": [
+                    {
+                        "id": "1URVdcNYXigvk6Dj0fHYOM",
+                        "name": "skaiwater"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "1URVdcNYXigvk6Dj0fHYOM",
@@ -227,20 +235,24 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "1URVdcNYXigvk6Dj0fHYOM",
-                "name": "skaiwater"
-            }
-        ]
-    },
-    {
-        "id": "7nc7mlSdWYeFom84zZ8Wr8",
-        "name": "Tell Em",
-        "popularity": 77,
-        "album": {
-            "id": "3OE8gkPLqI9zr3hlEz6ruQ",
+        {
+            "id": "7nc7mlSdWYeFom84zZ8Wr8",
             "name": "Tell Em",
+            "popularity": 77,
+            "album": {
+                "id": "3OE8gkPLqI9zr3hlEz6ruQ",
+                "name": "Tell Em",
+                "artists": [
+                    {
+                        "id": "46HzS7yz0c9udVwtbHk1sx",
+                        "name": "Cochise"
+                    },
+                    {
+                        "id": "5IbEL2xjRtKsunfmsahLuO",
+                        "name": "$NOT"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "46HzS7yz0c9udVwtbHk1sx",
@@ -252,24 +264,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "46HzS7yz0c9udVwtbHk1sx",
-                "name": "Cochise"
-            },
-            {
-                "id": "5IbEL2xjRtKsunfmsahLuO",
-                "name": "$NOT"
-            }
-        ]
-    },
-    {
-        "id": "1cwqP7Tyxu5z8XDYoPkNte",
-        "name": "Chandelier",
-        "popularity": 73,
-        "album": {
-            "id": "1VC4P7rm1o3aYlYVYFkpGF",
+        {
+            "id": "1cwqP7Tyxu5z8XDYoPkNte",
             "name": "Chandelier",
+            "popularity": 73,
+            "album": {
+                "id": "1VC4P7rm1o3aYlYVYFkpGF",
+                "name": "Chandelier",
+                "artists": [
+                    {
+                        "id": "0oouuXi8tdasgUgk520Jy6",
+                        "name": "Will Paquin"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "0oouuXi8tdasgUgk520Jy6",
@@ -277,20 +285,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "0oouuXi8tdasgUgk520Jy6",
-                "name": "Will Paquin"
-            }
-        ]
-    },
-    {
-        "id": "5CoMPjfMO8XnNc6aNKYSo1",
-        "name": "you're a parasite",
-        "popularity": 65,
-        "album": {
-            "id": "1ZJR20NLRKNzzSbQvwkFMK",
+        {
+            "id": "5CoMPjfMO8XnNc6aNKYSo1",
             "name": "you're a parasite",
+            "popularity": 65,
+            "album": {
+                "id": "1ZJR20NLRKNzzSbQvwkFMK",
+                "name": "you're a parasite",
+                "artists": [
+                    {
+                        "id": "1bhZt10yZVCJfp3HaNxJv8",
+                        "name": "Riovaz"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "1bhZt10yZVCJfp3HaNxJv8",
@@ -298,20 +306,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "1bhZt10yZVCJfp3HaNxJv8",
-                "name": "Riovaz"
-            }
-        ]
-    },
-    {
-        "id": "1hboZZxKIEjLHRIkhx4Soi",
-        "name": "#miles",
-        "popularity": 68,
-        "album": {
-            "id": "2PCs0ZB8bHofV9khzpRmal",
+        {
+            "id": "1hboZZxKIEjLHRIkhx4Soi",
             "name": "#miles",
+            "popularity": 68,
+            "album": {
+                "id": "2PCs0ZB8bHofV9khzpRmal",
+                "name": "#miles",
+                "artists": [
+                    {
+                        "id": "1URVdcNYXigvk6Dj0fHYOM",
+                        "name": "skaiwater"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "1URVdcNYXigvk6Dj0fHYOM",
@@ -319,20 +327,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "1URVdcNYXigvk6Dj0fHYOM",
-                "name": "skaiwater"
-            }
-        ]
-    },
-    {
-        "id": "2jkyPVk1nbpsZD0KAS98Zw",
-        "name": "SPIT IN MY FACE!",
-        "popularity": 48,
-        "album": {
-            "id": "5wtEXxqlCbVuy7hxDsTX3K",
+        {
+            "id": "2jkyPVk1nbpsZD0KAS98Zw",
             "name": "SPIT IN MY FACE!",
+            "popularity": 48,
+            "album": {
+                "id": "5wtEXxqlCbVuy7hxDsTX3K",
+                "name": "SPIT IN MY FACE!",
+                "artists": [
+                    {
+                        "id": "4MvZhE1iuzttcoyepkpfdF",
+                        "name": "ThxSoMch"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "4MvZhE1iuzttcoyepkpfdF",
@@ -340,20 +348,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "4MvZhE1iuzttcoyepkpfdF",
-                "name": "ThxSoMch"
-            }
-        ]
-    },
-    {
-        "id": "0MnTkIEP4zZN1IUSu8MvIz",
-        "name": "Tek It - Sped Up",
-        "popularity": 78,
-        "album": {
-            "id": "3Bt2OtHQDRDXC10Flgm9Rv",
-            "name": "Tek It (I Watch the Moon)",
+        {
+            "id": "0MnTkIEP4zZN1IUSu8MvIz",
+            "name": "Tek It - Sped Up",
+            "popularity": 78,
+            "album": {
+                "id": "3Bt2OtHQDRDXC10Flgm9Rv",
+                "name": "Tek It (I Watch the Moon)",
+                "artists": [
+                    {
+                        "id": "581C5Qwl87TskfBEzuoisu",
+                        "name": "Cafun\u00e9"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "581C5Qwl87TskfBEzuoisu",
@@ -361,20 +369,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "581C5Qwl87TskfBEzuoisu",
-                "name": "Cafun\u00e9"
-            }
-        ]
-    },
-    {
-        "id": "3gFcGnU4kTdMYLXDjH1TK8",
-        "name": "RUN2U",
-        "popularity": 69,
-        "album": {
-            "id": "2xPdgNkM4yIQmP7axJ1T1o",
-            "name": "YOUNG-LUV.COM",
+        {
+            "id": "3gFcGnU4kTdMYLXDjH1TK8",
+            "name": "RUN2U",
+            "popularity": 69,
+            "album": {
+                "id": "2xPdgNkM4yIQmP7axJ1T1o",
+                "name": "YOUNG-LUV.COM",
+                "artists": [
+                    {
+                        "id": "01XYiBYaoMJcNhPokrg0l0",
+                        "name": "STAYC"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "01XYiBYaoMJcNhPokrg0l0",
@@ -382,20 +390,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "01XYiBYaoMJcNhPokrg0l0",
-                "name": "STAYC"
-            }
-        ]
-    },
-    {
-        "id": "0oKpBxCq4U5IvUZqMuVMM3",
-        "name": "chamada n\u00e3o atendida",
-        "popularity": 61,
-        "album": {
-            "id": "3BYMDX4fOqP8KI7UamT5Ji",
+        {
+            "id": "0oKpBxCq4U5IvUZqMuVMM3",
             "name": "chamada n\u00e3o atendida",
+            "popularity": 61,
+            "album": {
+                "id": "3BYMDX4fOqP8KI7UamT5Ji",
+                "name": "chamada n\u00e3o atendida",
+                "artists": [
+                    {
+                        "id": "10okQWuBo3LEA8HSZ1VUMT",
+                        "name": "B\u00e1rbara Tinoco"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "10okQWuBo3LEA8HSZ1VUMT",
@@ -403,20 +411,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "10okQWuBo3LEA8HSZ1VUMT",
-                "name": "B\u00e1rbara Tinoco"
-            }
-        ]
-    },
-    {
-        "id": "0Q5VnK2DYzRyfqQRJuUtvi",
-        "name": "LOVE DIVE",
-        "popularity": 80,
-        "album": {
-            "id": "1AFVTHHm7kKoQ6Rgb25x3p",
+        {
+            "id": "0Q5VnK2DYzRyfqQRJuUtvi",
             "name": "LOVE DIVE",
+            "popularity": 80,
+            "album": {
+                "id": "1AFVTHHm7kKoQ6Rgb25x3p",
+                "name": "LOVE DIVE",
+                "artists": [
+                    {
+                        "id": "6RHTUrRF63xao58xh9FXYJ",
+                        "name": "IVE"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "6RHTUrRF63xao58xh9FXYJ",
@@ -424,20 +432,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "6RHTUrRF63xao58xh9FXYJ",
-                "name": "IVE"
-            }
-        ]
-    },
-    {
-        "id": "2gYj9lubBorOPIVWsTXugG",
-        "name": "After LIKE",
-        "popularity": 81,
-        "album": {
-            "id": "0nzRF7khA2UDSZa9T0B6Da",
+        {
+            "id": "2gYj9lubBorOPIVWsTXugG",
             "name": "After LIKE",
+            "popularity": 81,
+            "album": {
+                "id": "0nzRF7khA2UDSZa9T0B6Da",
+                "name": "After LIKE",
+                "artists": [
+                    {
+                        "id": "6RHTUrRF63xao58xh9FXYJ",
+                        "name": "IVE"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "6RHTUrRF63xao58xh9FXYJ",
@@ -445,20 +453,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "6RHTUrRF63xao58xh9FXYJ",
-                "name": "IVE"
-            }
-        ]
-    },
-    {
-        "id": "5lMStXhu7wlFmk6KyJF0jD",
-        "name": "\u68ee\u6797\u6d74 shinrin-yoku",
-        "popularity": 43,
-        "album": {
-            "id": "1ufbJrBaCe4u84sSLkXBpL",
+        {
+            "id": "5lMStXhu7wlFmk6KyJF0jD",
             "name": "\u68ee\u6797\u6d74 shinrin-yoku",
+            "popularity": 43,
+            "album": {
+                "id": "1ufbJrBaCe4u84sSLkXBpL",
+                "name": "\u68ee\u6797\u6d74 shinrin-yoku",
+                "artists": [
+                    {
+                        "id": "6J12Ff7swWdQ7CslETtKBT",
+                        "name": "Nako Yanagisawa"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "6J12Ff7swWdQ7CslETtKBT",
@@ -466,20 +474,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "6J12Ff7swWdQ7CslETtKBT",
-                "name": "Nako Yanagisawa"
-            }
-        ]
-    },
-    {
-        "id": "2La21GqU4fKTQLcfLxTeoz",
-        "name": "Agitations tropicales",
-        "popularity": 63,
-        "album": {
-            "id": "346ZDnGgJudDau17EEyWWA",
-            "name": "Odyss\u00e9e - EP",
+        {
+            "id": "2La21GqU4fKTQLcfLxTeoz",
+            "name": "Agitations tropicales",
+            "popularity": 63,
+            "album": {
+                "id": "346ZDnGgJudDau17EEyWWA",
+                "name": "Odyss\u00e9e - EP",
+                "artists": [
+                    {
+                        "id": "4PwlsrN0t5mLN0C827cbEU",
+                        "name": "L'Imp\u00e9ratrice"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "4PwlsrN0t5mLN0C827cbEU",
@@ -487,20 +495,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "4PwlsrN0t5mLN0C827cbEU",
-                "name": "L'Imp\u00e9ratrice"
-            }
-        ]
-    },
-    {
-        "id": "0TZejo18HlJ86OrWNsXKnw",
-        "name": "Mrs Magic",
-        "popularity": 76,
-        "album": {
-            "id": "3Oovjf1PZOryLQSDKwjJzO",
+        {
+            "id": "0TZejo18HlJ86OrWNsXKnw",
             "name": "Mrs Magic",
+            "popularity": 76,
+            "album": {
+                "id": "3Oovjf1PZOryLQSDKwjJzO",
+                "name": "Mrs Magic",
+                "artists": [
+                    {
+                        "id": "1AbJ2cmwK400LSvdvBL5Jc",
+                        "name": "Strawberry Guy"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "1AbJ2cmwK400LSvdvBL5Jc",
@@ -508,20 +516,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "1AbJ2cmwK400LSvdvBL5Jc",
-                "name": "Strawberry Guy"
-            }
-        ]
-    },
-    {
-        "id": "7oe04qLMdQxHXhcGIfShXf",
-        "name": "Piggypink",
-        "popularity": 65,
-        "album": {
-            "id": "2EhxiHgVM7Xp3zw59TuSsT",
+        {
+            "id": "7oe04qLMdQxHXhcGIfShXf",
             "name": "Piggypink",
+            "popularity": 65,
+            "album": {
+                "id": "2EhxiHgVM7Xp3zw59TuSsT",
+                "name": "Piggypink",
+                "artists": [
+                    {
+                        "id": "35WVTyRnKAoaGExqgktVyb",
+                        "name": "Hotel Ugly"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "35WVTyRnKAoaGExqgktVyb",
@@ -529,20 +537,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "35WVTyRnKAoaGExqgktVyb",
-                "name": "Hotel Ugly"
-            }
-        ]
-    },
-    {
-        "id": "070DusgGH4WJKyRIXrZz6u",
-        "name": "Journey",
-        "popularity": 41,
-        "album": {
-            "id": "0arLnM5zOVRFXCMpFPJi0p",
+        {
+            "id": "070DusgGH4WJKyRIXrZz6u",
             "name": "Journey",
+            "popularity": 41,
+            "album": {
+                "id": "0arLnM5zOVRFXCMpFPJi0p",
+                "name": "Journey",
+                "artists": [
+                    {
+                        "id": "3PThWtcE0CEi5IUmfgTvrC",
+                        "name": "Tim Schaufert"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "3PThWtcE0CEi5IUmfgTvrC",
@@ -550,20 +558,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "3PThWtcE0CEi5IUmfgTvrC",
-                "name": "Tim Schaufert"
-            }
-        ]
-    },
-    {
-        "id": "4DXwafDnkO9OakL5Q6y8o2",
-        "name": "Lovesong",
-        "popularity": 47,
-        "album": {
-            "id": "6QYScZZD5zb2E922VuDVCe",
-            "name": "One Hundred Billion Sparks",
+        {
+            "id": "4DXwafDnkO9OakL5Q6y8o2",
+            "name": "Lovesong",
+            "popularity": 47,
+            "album": {
+                "id": "6QYScZZD5zb2E922VuDVCe",
+                "name": "One Hundred Billion Sparks",
+                "artists": [
+                    {
+                        "id": "0WSSKmoRbxqLf3MnXInQ2J",
+                        "name": "Max Cooper"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "0WSSKmoRbxqLf3MnXInQ2J",
@@ -571,45 +579,45 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "0WSSKmoRbxqLf3MnXInQ2J",
-                "name": "Max Cooper"
-            }
-        ]
-    },
-    {
-        "id": "0Q3sh5WiTcP0wrvfGbTu2R",
-        "name": "2020 (feat. Slow J)",
-        "popularity": 36,
-        "album": {
-            "id": "1fHUpQWzk5iCynadmL4tIG",
-            "name": "AMOR'FATI",
+        {
+            "id": "0Q3sh5WiTcP0wrvfGbTu2R",
+            "name": "2020 (feat. Slow J)",
+            "popularity": 36,
+            "album": {
+                "id": "1fHUpQWzk5iCynadmL4tIG",
+                "name": "AMOR'FATI",
+                "artists": [
+                    {
+                        "id": "46uaNKR4GSjmDEK732EeVw",
+                        "name": "Lhast"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "46uaNKR4GSjmDEK732EeVw",
                     "name": "Lhast"
+                },
+                {
+                    "id": "7crp1tZcefnjT5RuL6WZQ0",
+                    "name": "Slow J"
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "46uaNKR4GSjmDEK732EeVw",
-                "name": "Lhast"
-            },
-            {
-                "id": "7crp1tZcefnjT5RuL6WZQ0",
-                "name": "Slow J"
-            }
-        ]
-    },
-    {
-        "id": "02x1qzpnBEEY3z7DD1VVoP",
-        "name": "BABYDOLL X The Perfect Girl",
-        "popularity": 72,
-        "album": {
-            "id": "0SPicFYvT6G6qByYWkT8Sc",
+        {
+            "id": "02x1qzpnBEEY3z7DD1VVoP",
             "name": "BABYDOLL X The Perfect Girl",
+            "popularity": 72,
+            "album": {
+                "id": "0SPicFYvT6G6qByYWkT8Sc",
+                "name": "BABYDOLL X The Perfect Girl",
+                "artists": [
+                    {
+                        "id": "5L9XA5GDsOOKNZfeOO8lmo",
+                        "name": "fam0uz"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "5L9XA5GDsOOKNZfeOO8lmo",
@@ -617,20 +625,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "5L9XA5GDsOOKNZfeOO8lmo",
-                "name": "fam0uz"
-            }
-        ]
-    },
-    {
-        "id": "46Ti65arYFXeRIjjR65Zob",
-        "name": "WAYS OF A TAINTED EARTH",
-        "popularity": 30,
-        "album": {
-            "id": "091AjI7Ely69paZ8D4gS1B",
+        {
+            "id": "46Ti65arYFXeRIjjR65Zob",
             "name": "WAYS OF A TAINTED EARTH",
+            "popularity": 30,
+            "album": {
+                "id": "091AjI7Ely69paZ8D4gS1B",
+                "name": "WAYS OF A TAINTED EARTH",
+                "artists": [
+                    {
+                        "id": "4pRlsLqOBsPKbTr4aSAe2y",
+                        "name": "Mag.Lo"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "4pRlsLqOBsPKbTr4aSAe2y",
@@ -638,20 +646,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "4pRlsLqOBsPKbTr4aSAe2y",
-                "name": "Mag.Lo"
-            }
-        ]
-    },
-    {
-        "id": "3K9QdGbTk1f9G5nrNQEsvC",
-        "name": "Mars",
-        "popularity": 54,
-        "album": {
-            "id": "7fraTjthGhz9TsyKemN1AO",
-            "name": "Dimensions",
+        {
+            "id": "3K9QdGbTk1f9G5nrNQEsvC",
+            "name": "Mars",
+            "popularity": 54,
+            "album": {
+                "id": "7fraTjthGhz9TsyKemN1AO",
+                "name": "Dimensions",
+                "artists": [
+                    {
+                        "id": "6AbXJxYckXHpMDApmUyP8A",
+                        "name": "Beauvois"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "6AbXJxYckXHpMDApmUyP8A",
@@ -659,20 +667,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "6AbXJxYckXHpMDApmUyP8A",
-                "name": "Beauvois"
-            }
-        ]
-    },
-    {
-        "id": "5KUNwkaNf8l5A9sXZhiCgI",
-        "name": "Rapp Snitch Knishes feat. Mr. Fantastik",
-        "popularity": 75,
-        "album": {
-            "id": "1UcS2nqUhxrZjrBZ3tHk2N",
-            "name": "MM...FOOD",
+        {
+            "id": "5KUNwkaNf8l5A9sXZhiCgI",
+            "name": "Rapp Snitch Knishes feat. Mr. Fantastik",
+            "popularity": 75,
+            "album": {
+                "id": "1UcS2nqUhxrZjrBZ3tHk2N",
+                "name": "MM...FOOD",
+                "artists": [
+                    {
+                        "id": "2pAWfrd7WFF3XhVt9GooDL",
+                        "name": "MF DOOM"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "2pAWfrd7WFF3XhVt9GooDL",
@@ -680,20 +688,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "2pAWfrd7WFF3XhVt9GooDL",
-                "name": "MF DOOM"
-            }
-        ]
-    },
-    {
-        "id": "6B2uIq7JV0UfleZOHAulKD",
-        "name": "I Feel Fantastic",
-        "popularity": 66,
-        "album": {
-            "id": "1imBqh217L161tQk9OUeWK",
+        {
+            "id": "6B2uIq7JV0UfleZOHAulKD",
             "name": "I Feel Fantastic",
+            "popularity": 66,
+            "album": {
+                "id": "1imBqh217L161tQk9OUeWK",
+                "name": "I Feel Fantastic",
+                "artists": [
+                    {
+                        "id": "1bhZt10yZVCJfp3HaNxJv8",
+                        "name": "Riovaz"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "1bhZt10yZVCJfp3HaNxJv8",
@@ -701,20 +709,24 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "1bhZt10yZVCJfp3HaNxJv8",
-                "name": "Riovaz"
-            }
-        ]
-    },
-    {
-        "id": "4nrPB8O7Y7wsOCJdgXkthe",
-        "name": "Shakira: Bzrp Music Sessions, Vol. 53",
-        "popularity": 96,
-        "album": {
-            "id": "1gi2iwr1l8IUyHYHxi01pg",
+        {
+            "id": "4nrPB8O7Y7wsOCJdgXkthe",
             "name": "Shakira: Bzrp Music Sessions, Vol. 53",
+            "popularity": 96,
+            "album": {
+                "id": "1gi2iwr1l8IUyHYHxi01pg",
+                "name": "Shakira: Bzrp Music Sessions, Vol. 53",
+                "artists": [
+                    {
+                        "id": "716NhGYqD1jl2wI1Qkgq36",
+                        "name": "Bizarrap"
+                    },
+                    {
+                        "id": "0EmeFodog0BfCgMzAIvKQp",
+                        "name": "Shakira"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "716NhGYqD1jl2wI1Qkgq36",
@@ -726,24 +738,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "716NhGYqD1jl2wI1Qkgq36",
-                "name": "Bizarrap"
+        {
+            "id": "3s8Le4UOKf7DOh1u2AGKyA",
+            "name": "Taken Away",
+            "popularity": 42,
+            "album": {
+                "id": "2o7x8GHrOfI0kosqwo9qlF",
+                "name": "In Stillness",
+                "artists": [
+                    {
+                        "id": "3GEUIa3Z0Qlivy3EcJm5RX",
+                        "name": "Etherwood"
+                    }
+                ]
             },
-            {
-                "id": "0EmeFodog0BfCgMzAIvKQp",
-                "name": "Shakira"
-            }
-        ]
-    },
-    {
-        "id": "3s8Le4UOKf7DOh1u2AGKyA",
-        "name": "Taken Away",
-        "popularity": 42,
-        "album": {
-            "id": "2o7x8GHrOfI0kosqwo9qlF",
-            "name": "In Stillness",
             "artists": [
                 {
                     "id": "3GEUIa3Z0Qlivy3EcJm5RX",
@@ -751,74 +759,74 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "3GEUIa3Z0Qlivy3EcJm5RX",
-                "name": "Etherwood"
-            }
-        ]
-    },
-    {
-        "id": "1otG6j1WHNvl9WgXLWkHTo",
-        "name": "After The Storm (feat. Tyler, The Creator & Bootsy Collins)",
-        "popularity": 79,
-        "album": {
-            "id": "4EPQtdq6vvwxuYeQTrwDVY",
-            "name": "Isolation",
+        {
+            "id": "1otG6j1WHNvl9WgXLWkHTo",
+            "name": "After The Storm (feat. Tyler, The Creator & Bootsy Collins)",
+            "popularity": 79,
+            "album": {
+                "id": "4EPQtdq6vvwxuYeQTrwDVY",
+                "name": "Isolation",
+                "artists": [
+                    {
+                        "id": "1U1el3k54VvEUzo3ybLPlM",
+                        "name": "Kali Uchis"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "1U1el3k54VvEUzo3ybLPlM",
                     "name": "Kali Uchis"
+                },
+                {
+                    "id": "4V8LLVI7PbaPR0K2TGSxFF",
+                    "name": "Tyler, The Creator"
+                },
+                {
+                    "id": "5K0rbdBrs2tNXe5LeWMATT",
+                    "name": "Bootsy Collins"
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "1U1el3k54VvEUzo3ybLPlM",
-                "name": "Kali Uchis"
+        {
+            "id": "6fkL9CjWmjeV6vfDxTp9OZ",
+            "name": "Walk On By",
+            "popularity": 60,
+            "album": {
+                "id": "7vHBQDqwzB7uDvoE5bncMM",
+                "name": "Drunk",
+                "artists": [
+                    {
+                        "id": "4frXpPxQQZwbCu3eTGnZEw",
+                        "name": "Thundercat"
+                    }
+                ]
             },
-            {
-                "id": "4V8LLVI7PbaPR0K2TGSxFF",
-                "name": "Tyler, The Creator"
-            },
-            {
-                "id": "5K0rbdBrs2tNXe5LeWMATT",
-                "name": "Bootsy Collins"
-            }
-        ]
-    },
-    {
-        "id": "6fkL9CjWmjeV6vfDxTp9OZ",
-        "name": "Walk On By",
-        "popularity": 60,
-        "album": {
-            "id": "7vHBQDqwzB7uDvoE5bncMM",
-            "name": "Drunk",
             "artists": [
                 {
                     "id": "4frXpPxQQZwbCu3eTGnZEw",
                     "name": "Thundercat"
+                },
+                {
+                    "id": "2YZyLoL8N0Wb9xBt1NhZWg",
+                    "name": "Kendrick Lamar"
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "4frXpPxQQZwbCu3eTGnZEw",
-                "name": "Thundercat"
+        {
+            "id": "5Gt9bxniM1SxN61yRzRhXL",
+            "name": "United In Grief",
+            "popularity": 74,
+            "album": {
+                "id": "79ONNoS4M9tfIA1mYLBYVX",
+                "name": "Mr. Morale & The Big Steppers",
+                "artists": [
+                    {
+                        "id": "2YZyLoL8N0Wb9xBt1NhZWg",
+                        "name": "Kendrick Lamar"
+                    }
+                ]
             },
-            {
-                "id": "2YZyLoL8N0Wb9xBt1NhZWg",
-                "name": "Kendrick Lamar"
-            }
-        ]
-    },
-    {
-        "id": "5Gt9bxniM1SxN61yRzRhXL",
-        "name": "United In Grief",
-        "popularity": 74,
-        "album": {
-            "id": "79ONNoS4M9tfIA1mYLBYVX",
-            "name": "Mr. Morale & The Big Steppers",
             "artists": [
                 {
                     "id": "2YZyLoL8N0Wb9xBt1NhZWg",
@@ -826,20 +834,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "2YZyLoL8N0Wb9xBt1NhZWg",
-                "name": "Kendrick Lamar"
-            }
-        ]
-    },
-    {
-        "id": "1ypY7XHRcU2wIg0nhIIUEz",
-        "name": "Sunlight",
-        "popularity": 36,
-        "album": {
-            "id": "2Bu55W8KIStVOFvtHJXAD6",
-            "name": "Twilight",
+        {
+            "id": "1ypY7XHRcU2wIg0nhIIUEz",
+            "name": "Sunlight",
+            "popularity": 36,
+            "album": {
+                "id": "2Bu55W8KIStVOFvtHJXAD6",
+                "name": "Twilight",
+                "artists": [
+                    {
+                        "id": "0VWvUvjaHaW1OeXtcVISu9",
+                        "name": "Fejk\u00e1"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "0VWvUvjaHaW1OeXtcVISu9",
@@ -847,20 +855,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "0VWvUvjaHaW1OeXtcVISu9",
-                "name": "Fejk\u00e1"
-            }
-        ]
-    },
-    {
-        "id": "7oLKoGzQVwjZ91AzCn560T",
-        "name": "PAINTING PICTURES",
-        "popularity": 85,
-        "album": {
-            "id": "0OQjYkxlKHsQwYLJziIQrI",
-            "name": "5LBS OF PRESSURE",
+        {
+            "id": "7oLKoGzQVwjZ91AzCn560T",
+            "name": "PAINTING PICTURES",
+            "popularity": 85,
+            "album": {
+                "id": "0OQjYkxlKHsQwYLJziIQrI",
+                "name": "5LBS OF PRESSURE",
+                "artists": [
+                    {
+                        "id": "3FBEsNyIwRnOHOf1Rv3SLa",
+                        "name": "Superstar Pride"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "3FBEsNyIwRnOHOf1Rv3SLa",
@@ -868,20 +876,24 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "3FBEsNyIwRnOHOf1Rv3SLa",
-                "name": "Superstar Pride"
-            }
-        ]
-    },
-    {
-        "id": "6AQbmUe0Qwf5PZnt4HmTXv",
-        "name": "Boy's a liar Pt. 2",
-        "popularity": 96,
-        "album": {
-            "id": "6cVfHBcp3AdpYY0bBglkLN",
+        {
+            "id": "6AQbmUe0Qwf5PZnt4HmTXv",
             "name": "Boy's a liar Pt. 2",
+            "popularity": 96,
+            "album": {
+                "id": "6cVfHBcp3AdpYY0bBglkLN",
+                "name": "Boy's a liar Pt. 2",
+                "artists": [
+                    {
+                        "id": "78rUTD7y6Cy67W1RVzYs7t",
+                        "name": "PinkPantheress"
+                    },
+                    {
+                        "id": "3LZZPxNDGDFVSIPqf4JuEf",
+                        "name": "Ice Spice"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "78rUTD7y6Cy67W1RVzYs7t",
@@ -893,24 +905,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "78rUTD7y6Cy67W1RVzYs7t",
-                "name": "PinkPantheress"
+        {
+            "id": "5KpaWriRJ1xk5PgHihIoNv",
+            "name": "Borders",
+            "popularity": 37,
+            "album": {
+                "id": "6hH0UH7rvRgWyu77Qjf7ph",
+                "name": "Fujisan",
+                "artists": [
+                    {
+                        "id": "514CDwBzI2wOfEGuVqHOur",
+                        "name": "Monomotion"
+                    }
+                ]
             },
-            {
-                "id": "3LZZPxNDGDFVSIPqf4JuEf",
-                "name": "Ice Spice"
-            }
-        ]
-    },
-    {
-        "id": "5KpaWriRJ1xk5PgHihIoNv",
-        "name": "Borders",
-        "popularity": 37,
-        "album": {
-            "id": "6hH0UH7rvRgWyu77Qjf7ph",
-            "name": "Fujisan",
             "artists": [
                 {
                     "id": "514CDwBzI2wOfEGuVqHOur",
@@ -918,20 +926,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "514CDwBzI2wOfEGuVqHOur",
-                "name": "Monomotion"
-            }
-        ]
-    },
-    {
-        "id": "5odlY52u43F5BjByhxg7wg",
-        "name": "golden hour",
-        "popularity": 89,
-        "album": {
-            "id": "69AaAkdktFGnk9POmHENkT",
-            "name": "this is what ____ feels like (Vol. 1-4)",
+        {
+            "id": "5odlY52u43F5BjByhxg7wg",
+            "name": "golden hour",
+            "popularity": 89,
+            "album": {
+                "id": "69AaAkdktFGnk9POmHENkT",
+                "name": "this is what ____ feels like (Vol. 1-4)",
+                "artists": [
+                    {
+                        "id": "164Uj4eKjl6zTBKfJLFKKK",
+                        "name": "JVKE"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "164Uj4eKjl6zTBKfJLFKKK",
@@ -939,20 +947,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "164Uj4eKjl6zTBKfJLFKKK",
-                "name": "JVKE"
-            }
-        ]
-    },
-    {
-        "id": "6Kd4iGylMjrpr1xVbuYKVw",
-        "name": "the 27 club",
-        "popularity": 51,
-        "album": {
-            "id": "1oDgCslpzVA6zATNLPFo7f",
-            "name": "black ben carson",
+        {
+            "id": "6Kd4iGylMjrpr1xVbuYKVw",
+            "name": "the 27 club",
+            "popularity": 51,
+            "album": {
+                "id": "1oDgCslpzVA6zATNLPFo7f",
+                "name": "black ben carson",
+                "artists": [
+                    {
+                        "id": "6yJ6QQ3Y5l0s0tn7b0arrO",
+                        "name": "JPEGMAFIA"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "6yJ6QQ3Y5l0s0tn7b0arrO",
@@ -960,45 +968,45 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "6yJ6QQ3Y5l0s0tn7b0arrO",
-                "name": "JPEGMAFIA"
-            }
-        ]
-    },
-    {
-        "id": "7mykoq6R3BArsSpNDjFQTm",
-        "name": "I Really Want to Stay at Your House",
-        "popularity": 76,
-        "album": {
-            "id": "1VGVJdmvOSRK2w9RKXk18A",
-            "name": "Cyberpunk 2077: Radio, Vol. 2 (Original Soundtrack)",
+        {
+            "id": "7mykoq6R3BArsSpNDjFQTm",
+            "name": "I Really Want to Stay at Your House",
+            "popularity": 76,
+            "album": {
+                "id": "1VGVJdmvOSRK2w9RKXk18A",
+                "name": "Cyberpunk 2077: Radio, Vol. 2 (Original Soundtrack)",
+                "artists": [
+                    {
+                        "id": "0LyfQWJT6nXafLPZqxe9Of",
+                        "name": "Various Artists"
+                    }
+                ]
+            },
             "artists": [
                 {
-                    "id": "0LyfQWJT6nXafLPZqxe9Of",
-                    "name": "Various Artists"
+                    "id": "1X0HaTcdkHW7LviblBiEeq",
+                    "name": "Rosa Walton"
+                },
+                {
+                    "id": "5JNkPX6dYGLeEm4cUjHNGc",
+                    "name": "Hallie Coggins"
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "1X0HaTcdkHW7LviblBiEeq",
-                "name": "Rosa Walton"
-            },
-            {
-                "id": "5JNkPX6dYGLeEm4cUjHNGc",
-                "name": "Hallie Coggins"
-            }
-        ]
-    },
-    {
-        "id": "2lnF0JlRZQ12zPjwohhhYd",
-        "name": "Mikey and the Frogs",
-        "popularity": 59,
-        "album": {
-            "id": "5SQaz4eNDae2Zziez7reyT",
+        {
+            "id": "2lnF0JlRZQ12zPjwohhhYd",
             "name": "Mikey and the Frogs",
+            "popularity": 59,
+            "album": {
+                "id": "5SQaz4eNDae2Zziez7reyT",
+                "name": "Mikey and the Frogs",
+                "artists": [
+                    {
+                        "id": "35WVTyRnKAoaGExqgktVyb",
+                        "name": "Hotel Ugly"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "35WVTyRnKAoaGExqgktVyb",
@@ -1006,20 +1014,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "35WVTyRnKAoaGExqgktVyb",
-                "name": "Hotel Ugly"
-            }
-        ]
-    },
-    {
-        "id": "6lYY2HktYKpV1pUamfRlU1",
-        "name": "Messages from the Stars",
-        "popularity": 69,
-        "album": {
-            "id": "0TGYRrYo4CbhYX6ktuv75f",
-            "name": "Going Up",
+        {
+            "id": "6lYY2HktYKpV1pUamfRlU1",
+            "name": "Messages from the Stars",
+            "popularity": 69,
+            "album": {
+                "id": "0TGYRrYo4CbhYX6ktuv75f",
+                "name": "Going Up",
+                "artists": [
+                    {
+                        "id": "7MDoXA8Kfykq3gkBkDBLtH",
+                        "name": "The Rah Band"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "7MDoXA8Kfykq3gkBkDBLtH",
@@ -1027,20 +1035,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "7MDoXA8Kfykq3gkBkDBLtH",
-                "name": "The Rah Band"
-            }
-        ]
-    },
-    {
-        "id": "0a4MMyCrzT0En247IhqZbD",
-        "name": "Hype Boy",
-        "popularity": 87,
-        "album": {
-            "id": "1HMLpmZAnNyl9pxvOnTovV",
-            "name": "NewJeans 1st EP 'New Jeans'",
+        {
+            "id": "0a4MMyCrzT0En247IhqZbD",
+            "name": "Hype Boy",
+            "popularity": 87,
+            "album": {
+                "id": "1HMLpmZAnNyl9pxvOnTovV",
+                "name": "NewJeans 1st EP 'New Jeans'",
+                "artists": [
+                    {
+                        "id": "6HvZYsbFfjnjFrWF950C9d",
+                        "name": "NewJeans"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "6HvZYsbFfjnjFrWF950C9d",
@@ -1048,20 +1056,20 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "6HvZYsbFfjnjFrWF950C9d",
-                "name": "NewJeans"
-            }
-        ]
-    },
-    {
-        "id": "6nYJWAPKIJfXIKtiYc4P4O",
-        "name": "Big Jet Plane",
-        "popularity": 76,
-        "album": {
-            "id": "23tdjMIkPQkeNJX9dS0bLW",
+        {
+            "id": "6nYJWAPKIJfXIKtiYc4P4O",
             "name": "Big Jet Plane",
+            "popularity": 76,
+            "album": {
+                "id": "23tdjMIkPQkeNJX9dS0bLW",
+                "name": "Big Jet Plane",
+                "artists": [
+                    {
+                        "id": "7mx6iGwPF157vXwYcl1DQ3",
+                        "name": "Restricted"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "7mx6iGwPF157vXwYcl1DQ3",
@@ -1069,32 +1077,28 @@
                 }
             ]
         },
-        "artists": [
-            {
-                "id": "7mx6iGwPF157vXwYcl1DQ3",
-                "name": "Restricted"
-            }
-        ]
-    },
-    {
-        "id": "7LOR8Rdc5n2EkduOXZeTp6",
-        "name": "Amend",
-        "popularity": 63,
-        "album": {
-            "id": "6k5ksX8Bwr3gVGq4VtadyG",
-            "name": "Spoils",
+        {
+            "id": "7LOR8Rdc5n2EkduOXZeTp6",
+            "name": "Amend",
+            "popularity": 63,
+            "album": {
+                "id": "6k5ksX8Bwr3gVGq4VtadyG",
+                "name": "Spoils",
+                "artists": [
+                    {
+                        "id": "6s3PbveUJMvMwZHyQUAPV4",
+                        "name": "j^p^n"
+                    }
+                ]
+            },
             "artists": [
                 {
                     "id": "6s3PbveUJMvMwZHyQUAPV4",
                     "name": "j^p^n"
                 }
             ]
-        },
-        "artists": [
-            {
-                "id": "6s3PbveUJMvMwZHyQUAPV4",
-                "name": "j^p^n"
-            }
-        ]
-    }
-]
+        }
+    ],
+    "time_range": "medium_term",
+    "timestamp": "2023-03-28T11:51:33.727663"
+}

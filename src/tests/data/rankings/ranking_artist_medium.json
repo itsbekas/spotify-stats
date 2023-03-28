@@ -1,466 +1,470 @@
-[
-    {
-        "id": "5K4W6rqBFWDnAN6FQUkS6x",
-        "name": "Kanye West",
-        "popularity": 92,
-        "genres": [
-            "chicago rap",
-            "rap"
-        ]
-    },
-    {
-        "id": "7n2Ycct7Beij7Dj7meI4X0",
-        "name": "TWICE",
-        "popularity": 85,
-        "genres": [
-            "k-pop",
-            "k-pop girl group"
-        ]
-    },
-    {
-        "id": "2YZyLoL8N0Wb9xBt1NhZWg",
-        "name": "Kendrick Lamar",
-        "popularity": 91,
-        "genres": [
-            "conscious hip hop",
-            "hip hop",
-            "rap",
-            "west coast rap"
-        ]
-    },
-    {
-        "id": "6l3HvQ5sa6mXTsMTB19rO5",
-        "name": "J. Cole",
-        "popularity": 89,
-        "genres": [
-            "conscious hip hop",
-            "hip hop",
-            "north carolina hip hop",
-            "rap"
-        ]
-    },
-    {
-        "id": "0eDvMgVFoNV3TpwtrVCoTj",
-        "name": "Pop Smoke",
-        "popularity": 84,
-        "genres": [
-            "brooklyn drill"
-        ]
-    },
-    {
-        "id": "3qiHUAX7zY4Qnjx8TNUzVx",
-        "name": "Yeat",
-        "popularity": 87,
-        "genres": [
-            "pluggnb"
-        ]
-    },
-    {
-        "id": "0Y5tJX1MQlPlqiwlOH1tJY",
-        "name": "Travis Scott",
-        "popularity": 91,
-        "genres": [
-            "rap",
-            "slap house"
-        ]
-    },
-    {
-        "id": "35WVTyRnKAoaGExqgktVyb",
-        "name": "Hotel Ugly",
-        "popularity": 77,
-        "genres": []
-    },
-    {
-        "id": "78rUTD7y6Cy67W1RVzYs7t",
-        "name": "PinkPantheress",
-        "popularity": 85,
-        "genres": []
-    },
-    {
-        "id": "0YC192cP3KPCRWx8zr8MfZ",
-        "name": "Hans Zimmer",
-        "popularity": 79,
-        "genres": [
-            "german soundtrack",
-            "orchestral soundtrack",
-            "soundtrack"
-        ]
-    },
-    {
-        "id": "6Xgp2XMz1fhVYe7i6yNAax",
-        "name": "Trippie Redd",
-        "popularity": 85,
-        "genres": [
-            "melodic rap",
-            "rap",
-            "trap"
-        ]
-    },
-    {
-        "id": "2KC9Qb60EaY0kW4eH68vr3",
-        "name": "ITZY",
-        "popularity": 75,
-        "genres": [
-            "k-pop girl group"
-        ]
-    },
-    {
-        "id": "5SXuuuRpukkTvsLuUknva1",
-        "name": "Baby Keem",
-        "popularity": 81,
-        "genres": [
-            "hip hop",
-            "rap"
-        ]
-    },
-    {
-        "id": "4V8LLVI7PbaPR0K2TGSxFF",
-        "name": "Tyler, The Creator",
-        "popularity": 86,
-        "genres": [
-            "hip hop",
-            "rap"
-        ]
-    },
-    {
-        "id": "7tYKF4w9nC0nq9CsPZTHyP",
-        "name": "SZA",
-        "popularity": 94,
-        "genres": [
-            "pop",
-            "r&b"
-        ]
-    },
-    {
-        "id": "7jVv8c5Fj3E9VhNjxT4snq",
-        "name": "Lil Nas X",
-        "popularity": 82,
-        "genres": [
-            "lgbtq+ hip hop",
-            "pop"
-        ]
-    },
-    {
-        "id": "3DhsjXVgWmA6X26tUugAjP",
-        "name": "ProfJam",
-        "popularity": 53,
-        "genres": [
-            "hip hop tuga",
-            "trap tuga"
-        ]
-    },
-    {
-        "id": "246dkjvS1zLTtiykXe5h60",
-        "name": "Post Malone",
-        "popularity": 90,
-        "genres": [
-            "dfw rap",
-            "melodic rap",
-            "rap"
-        ]
-    },
-    {
-        "id": "5cj0lLjcoR7YOSnhnX0Po5",
-        "name": "Doja Cat",
-        "popularity": 88,
-        "genres": [
-            "dance pop",
-            "pop"
-        ]
-    },
-    {
-        "id": "4tZwfgrHOc3mvqYlEYSvVi",
-        "name": "Daft Punk",
-        "popularity": 84,
-        "genres": [
-            "electro",
-            "filter house"
-        ]
-    },
-    {
-        "id": "0iEtIxbK0KxaSlF7G42ZOp",
-        "name": "Metro Boomin",
-        "popularity": 91,
-        "genres": [
-            "rap"
-        ]
-    },
-    {
-        "id": "1URnnhqYAYcrqrcwql10ft",
-        "name": "21 Savage",
-        "popularity": 93,
-        "genres": [
-            "atl hip hop",
-            "rap"
-        ]
-    },
-    {
-        "id": "57vWImR43h4CaDao012Ofp",
-        "name": "Steve Lacy",
-        "popularity": 84,
-        "genres": [
-            "afrofuturism"
-        ]
-    },
-    {
-        "id": "1Xyo4u8uXC1ZmMpatF05PJ",
-        "name": "The Weeknd",
-        "popularity": 99,
-        "genres": [
-            "canadian contemporary r&b",
-            "canadian pop",
-            "pop"
-        ]
-    },
-    {
-        "id": "6s3PbveUJMvMwZHyQUAPV4",
-        "name": "j^p^n",
-        "popularity": 56,
-        "genres": []
-    },
-    {
-        "id": "6HvZYsbFfjnjFrWF950C9d",
-        "name": "NewJeans",
-        "popularity": 86,
-        "genres": [
-            "k-pop",
-            "k-pop girl group"
-        ]
-    },
-    {
-        "id": "1fV7Au7ymGP3uhDV1TfjSd",
-        "name": "LON3R JOHNY",
-        "popularity": 51,
-        "genres": [
-            "hip hop tuga",
-            "trap tuga"
-        ]
-    },
-    {
-        "id": "4pRlsLqOBsPKbTr4aSAe2y",
-        "name": "Mag.Lo",
-        "popularity": 55,
-        "genres": [
-            "nerdcore"
-        ]
-    },
-    {
-        "id": "3uwAm6vQy7kWPS2bciKWx9",
-        "name": "girl in red",
-        "popularity": 76,
-        "genres": [
-            "bedroom pop",
-            "indie pop",
-            "norwegian indie",
-            "pop"
-        ]
-    },
-    {
-        "id": "4vGrte8FDu062Ntj0RsPiZ",
-        "name": "Polyphia",
-        "popularity": 68,
-        "genres": [
-            "instrumental rock"
-        ]
-    },
-    {
-        "id": "01XYiBYaoMJcNhPokrg0l0",
-        "name": "STAYC",
-        "popularity": 70,
-        "genres": [
-            "k-pop",
-            "k-pop girl group"
-        ]
-    },
-    {
-        "id": "15p1isN7VcGsjeSq8s9YeP",
-        "name": "Dillaz",
-        "popularity": 53,
-        "genres": [
-            "hip hop tuga"
-        ]
-    },
-    {
-        "id": "4ZgQDCtRqZlhLswVS6MHN4",
-        "name": "grandson",
-        "popularity": 69,
-        "genres": [
-            "modern alternative rock",
-            "modern rock",
-            "rock"
-        ]
-    },
-    {
-        "id": "4MCBfE4596Uoi2O4DtmEMz",
-        "name": "Juice WRLD",
-        "popularity": 91,
-        "genres": [
-            "chicago rap",
-            "melodic rap"
-        ]
-    },
-    {
-        "id": "6ngR2kHxjibH7bdDUBqL3z",
-        "name": "Sippinpurpp",
-        "popularity": 43,
-        "genres": [
-            "hip hop tuga",
-            "trap tuga"
-        ]
-    },
-    {
-        "id": "3PyJHH2wyfQK3WZrk9rpmP",
-        "name": "Ashnikko",
-        "popularity": 72,
-        "genres": [
-            "dance pop",
-            "electropop",
-            "escape room",
-            "pop"
-        ]
-    },
-    {
-        "id": "15UsOTVnJzReFVN1VCnxy4",
-        "name": "XXXTENTACION",
-        "popularity": 89,
-        "genres": [
-            "emo rap",
-            "miami hip hop"
-        ]
-    },
-    {
-        "id": "716NhGYqD1jl2wI1Qkgq36",
-        "name": "Bizarrap",
-        "popularity": 89,
-        "genres": [
-            "argentine hip hop",
-            "pop venezolano",
-            "trap argentino",
-            "trap latino",
-            "urbano latino"
-        ]
-    },
-    {
-        "id": "2P5sC9cVZDToPxyomzF1UH",
-        "name": "Joey Bada$$",
-        "popularity": 76,
-        "genres": [
-            "conscious hip hop",
-            "hip hop",
-            "rap",
-            "underground hip hop"
-        ]
-    },
-    {
-        "id": "6RHTUrRF63xao58xh9FXYJ",
-        "name": "IVE",
-        "popularity": 74,
-        "genres": [
-            "k-pop girl group"
-        ]
-    },
-    {
-        "id": "13ubrt8QOOCPljQ2FL1Kca",
-        "name": "A$AP Rocky",
-        "popularity": 84,
-        "genres": [
-            "east coast hip hop",
-            "hip hop",
-            "rap",
-            "trap"
-        ]
-    },
-    {
-        "id": "3Gm5F95VdRxW3mqCn8RPBJ",
-        "name": "Amin\u00e9",
-        "popularity": 70,
-        "genres": [
-            "hip hop",
-            "pop",
-            "portland hip hop",
-            "rap",
-            "viral rap"
-        ]
-    },
-    {
-        "id": "41MozSoPIsD1dJM0CLPjZF",
-        "name": "BLACKPINK",
-        "popularity": 87,
-        "genres": [
-            "k-pop",
-            "k-pop girl group"
-        ]
-    },
-    {
-        "id": "2AfmfGFbe0A0WsTYm0SDTx",
-        "name": "(G)I-DLE",
-        "popularity": 76,
-        "genres": [
-            "k-pop",
-            "k-pop girl group"
-        ]
-    },
-    {
-        "id": "1U1el3k54VvEUzo3ybLPlM",
-        "name": "Kali Uchis",
-        "popularity": 86,
-        "genres": [
-            "colombian pop",
-            "pop"
-        ]
-    },
-    {
-        "id": "4SpbR6yFEvexJuaBpgAU5p",
-        "name": "LE SSERAFIM",
-        "popularity": 78,
-        "genres": []
-    },
-    {
-        "id": "5WUlDfRSoLAfcVSX1WnrxN",
-        "name": "Sia",
-        "popularity": 86,
-        "genres": [
-            "australian dance",
-            "australian pop",
-            "dance pop",
-            "pop"
-        ]
-    },
-    {
-        "id": "1294QqYm1VuxxjRiL9M0h9",
-        "name": "UPSAHL",
-        "popularity": 65,
-        "genres": [
-            "alt z",
-            "electropop",
-            "indie poptimism",
-            "modern indie pop",
-            "pop",
-            "social media pop",
-            "viral rap"
-        ]
-    },
-    {
-        "id": "2FovgCfOwN9iqbkCBlKFdT",
-        "name": "Ellise",
-        "popularity": 63,
-        "genres": [
-            "alt z",
-            "electropop",
-            "indie poptimism",
-            "pop",
-            "social media pop",
-            "viral rap"
-        ]
-    },
-    {
-        "id": "3nFkdlSjzX9mRTtwJOzDYB",
-        "name": "JAY-Z",
-        "popularity": 86,
-        "genres": [
-            "east coast hip hop",
-            "hip hop",
-            "rap"
-        ]
-    }
-]
+{
+    "artists": [
+        {
+            "id": "5K4W6rqBFWDnAN6FQUkS6x",
+            "name": "Kanye West",
+            "popularity": 92,
+            "genres": [
+                "chicago rap",
+                "rap"
+            ]
+        },
+        {
+            "id": "7n2Ycct7Beij7Dj7meI4X0",
+            "name": "TWICE",
+            "popularity": 85,
+            "genres": [
+                "k-pop",
+                "k-pop girl group"
+            ]
+        },
+        {
+            "id": "2YZyLoL8N0Wb9xBt1NhZWg",
+            "name": "Kendrick Lamar",
+            "popularity": 91,
+            "genres": [
+                "conscious hip hop",
+                "hip hop",
+                "rap",
+                "west coast rap"
+            ]
+        },
+        {
+            "id": "6l3HvQ5sa6mXTsMTB19rO5",
+            "name": "J. Cole",
+            "popularity": 89,
+            "genres": [
+                "conscious hip hop",
+                "hip hop",
+                "north carolina hip hop",
+                "rap"
+            ]
+        },
+        {
+            "id": "0eDvMgVFoNV3TpwtrVCoTj",
+            "name": "Pop Smoke",
+            "popularity": 84,
+            "genres": [
+                "brooklyn drill"
+            ]
+        },
+        {
+            "id": "3qiHUAX7zY4Qnjx8TNUzVx",
+            "name": "Yeat",
+            "popularity": 87,
+            "genres": [
+                "pluggnb"
+            ]
+        },
+        {
+            "id": "0Y5tJX1MQlPlqiwlOH1tJY",
+            "name": "Travis Scott",
+            "popularity": 91,
+            "genres": [
+                "rap",
+                "slap house"
+            ]
+        },
+        {
+            "id": "35WVTyRnKAoaGExqgktVyb",
+            "name": "Hotel Ugly",
+            "popularity": 77,
+            "genres": []
+        },
+        {
+            "id": "78rUTD7y6Cy67W1RVzYs7t",
+            "name": "PinkPantheress",
+            "popularity": 85,
+            "genres": []
+        },
+        {
+            "id": "0YC192cP3KPCRWx8zr8MfZ",
+            "name": "Hans Zimmer",
+            "popularity": 79,
+            "genres": [
+                "german soundtrack",
+                "orchestral soundtrack",
+                "soundtrack"
+            ]
+        },
+        {
+            "id": "6Xgp2XMz1fhVYe7i6yNAax",
+            "name": "Trippie Redd",
+            "popularity": 85,
+            "genres": [
+                "melodic rap",
+                "rap",
+                "trap"
+            ]
+        },
+        {
+            "id": "2KC9Qb60EaY0kW4eH68vr3",
+            "name": "ITZY",
+            "popularity": 75,
+            "genres": [
+                "k-pop girl group"
+            ]
+        },
+        {
+            "id": "5SXuuuRpukkTvsLuUknva1",
+            "name": "Baby Keem",
+            "popularity": 81,
+            "genres": [
+                "hip hop",
+                "rap"
+            ]
+        },
+        {
+            "id": "4V8LLVI7PbaPR0K2TGSxFF",
+            "name": "Tyler, The Creator",
+            "popularity": 86,
+            "genres": [
+                "hip hop",
+                "rap"
+            ]
+        },
+        {
+            "id": "7tYKF4w9nC0nq9CsPZTHyP",
+            "name": "SZA",
+            "popularity": 94,
+            "genres": [
+                "pop",
+                "r&b"
+            ]
+        },
+        {
+            "id": "7jVv8c5Fj3E9VhNjxT4snq",
+            "name": "Lil Nas X",
+            "popularity": 82,
+            "genres": [
+                "lgbtq+ hip hop",
+                "pop"
+            ]
+        },
+        {
+            "id": "3DhsjXVgWmA6X26tUugAjP",
+            "name": "ProfJam",
+            "popularity": 53,
+            "genres": [
+                "hip hop tuga",
+                "trap tuga"
+            ]
+        },
+        {
+            "id": "246dkjvS1zLTtiykXe5h60",
+            "name": "Post Malone",
+            "popularity": 90,
+            "genres": [
+                "dfw rap",
+                "melodic rap",
+                "rap"
+            ]
+        },
+        {
+            "id": "5cj0lLjcoR7YOSnhnX0Po5",
+            "name": "Doja Cat",
+            "popularity": 88,
+            "genres": [
+                "dance pop",
+                "pop"
+            ]
+        },
+        {
+            "id": "4tZwfgrHOc3mvqYlEYSvVi",
+            "name": "Daft Punk",
+            "popularity": 84,
+            "genres": [
+                "electro",
+                "filter house"
+            ]
+        },
+        {
+            "id": "0iEtIxbK0KxaSlF7G42ZOp",
+            "name": "Metro Boomin",
+            "popularity": 91,
+            "genres": [
+                "rap"
+            ]
+        },
+        {
+            "id": "1URnnhqYAYcrqrcwql10ft",
+            "name": "21 Savage",
+            "popularity": 93,
+            "genres": [
+                "atl hip hop",
+                "rap"
+            ]
+        },
+        {
+            "id": "57vWImR43h4CaDao012Ofp",
+            "name": "Steve Lacy",
+            "popularity": 84,
+            "genres": [
+                "afrofuturism"
+            ]
+        },
+        {
+            "id": "1Xyo4u8uXC1ZmMpatF05PJ",
+            "name": "The Weeknd",
+            "popularity": 99,
+            "genres": [
+                "canadian contemporary r&b",
+                "canadian pop",
+                "pop"
+            ]
+        },
+        {
+            "id": "6s3PbveUJMvMwZHyQUAPV4",
+            "name": "j^p^n",
+            "popularity": 56,
+            "genres": []
+        },
+        {
+            "id": "6HvZYsbFfjnjFrWF950C9d",
+            "name": "NewJeans",
+            "popularity": 86,
+            "genres": [
+                "k-pop",
+                "k-pop girl group"
+            ]
+        },
+        {
+            "id": "1fV7Au7ymGP3uhDV1TfjSd",
+            "name": "LON3R JOHNY",
+            "popularity": 51,
+            "genres": [
+                "hip hop tuga",
+                "trap tuga"
+            ]
+        },
+        {
+            "id": "4pRlsLqOBsPKbTr4aSAe2y",
+            "name": "Mag.Lo",
+            "popularity": 55,
+            "genres": [
+                "nerdcore"
+            ]
+        },
+        {
+            "id": "3uwAm6vQy7kWPS2bciKWx9",
+            "name": "girl in red",
+            "popularity": 76,
+            "genres": [
+                "bedroom pop",
+                "indie pop",
+                "norwegian indie",
+                "pop"
+            ]
+        },
+        {
+            "id": "4vGrte8FDu062Ntj0RsPiZ",
+            "name": "Polyphia",
+            "popularity": 68,
+            "genres": [
+                "instrumental rock"
+            ]
+        },
+        {
+            "id": "01XYiBYaoMJcNhPokrg0l0",
+            "name": "STAYC",
+            "popularity": 70,
+            "genres": [
+                "k-pop",
+                "k-pop girl group"
+            ]
+        },
+        {
+            "id": "15p1isN7VcGsjeSq8s9YeP",
+            "name": "Dillaz",
+            "popularity": 53,
+            "genres": [
+                "hip hop tuga"
+            ]
+        },
+        {
+            "id": "4ZgQDCtRqZlhLswVS6MHN4",
+            "name": "grandson",
+            "popularity": 69,
+            "genres": [
+                "modern alternative rock",
+                "modern rock",
+                "rock"
+            ]
+        },
+        {
+            "id": "4MCBfE4596Uoi2O4DtmEMz",
+            "name": "Juice WRLD",
+            "popularity": 91,
+            "genres": [
+                "chicago rap",
+                "melodic rap"
+            ]
+        },
+        {
+            "id": "6ngR2kHxjibH7bdDUBqL3z",
+            "name": "Sippinpurpp",
+            "popularity": 43,
+            "genres": [
+                "hip hop tuga",
+                "trap tuga"
+            ]
+        },
+        {
+            "id": "3PyJHH2wyfQK3WZrk9rpmP",
+            "name": "Ashnikko",
+            "popularity": 72,
+            "genres": [
+                "dance pop",
+                "electropop",
+                "escape room",
+                "pop"
+            ]
+        },
+        {
+            "id": "15UsOTVnJzReFVN1VCnxy4",
+            "name": "XXXTENTACION",
+            "popularity": 89,
+            "genres": [
+                "emo rap",
+                "miami hip hop"
+            ]
+        },
+        {
+            "id": "716NhGYqD1jl2wI1Qkgq36",
+            "name": "Bizarrap",
+            "popularity": 89,
+            "genres": [
+                "argentine hip hop",
+                "pop venezolano",
+                "trap argentino",
+                "trap latino",
+                "urbano latino"
+            ]
+        },
+        {
+            "id": "2P5sC9cVZDToPxyomzF1UH",
+            "name": "Joey Bada$$",
+            "popularity": 76,
+            "genres": [
+                "conscious hip hop",
+                "hip hop",
+                "rap",
+                "underground hip hop"
+            ]
+        },
+        {
+            "id": "6RHTUrRF63xao58xh9FXYJ",
+            "name": "IVE",
+            "popularity": 74,
+            "genres": [
+                "k-pop girl group"
+            ]
+        },
+        {
+            "id": "13ubrt8QOOCPljQ2FL1Kca",
+            "name": "A$AP Rocky",
+            "popularity": 84,
+            "genres": [
+                "east coast hip hop",
+                "hip hop",
+                "rap",
+                "trap"
+            ]
+        },
+        {
+            "id": "3Gm5F95VdRxW3mqCn8RPBJ",
+            "name": "Amin\u00e9",
+            "popularity": 70,
+            "genres": [
+                "hip hop",
+                "pop",
+                "portland hip hop",
+                "rap",
+                "viral rap"
+            ]
+        },
+        {
+            "id": "41MozSoPIsD1dJM0CLPjZF",
+            "name": "BLACKPINK",
+            "popularity": 87,
+            "genres": [
+                "k-pop",
+                "k-pop girl group"
+            ]
+        },
+        {
+            "id": "2AfmfGFbe0A0WsTYm0SDTx",
+            "name": "(G)I-DLE",
+            "popularity": 76,
+            "genres": [
+                "k-pop",
+                "k-pop girl group"
+            ]
+        },
+        {
+            "id": "1U1el3k54VvEUzo3ybLPlM",
+            "name": "Kali Uchis",
+            "popularity": 86,
+            "genres": [
+                "colombian pop",
+                "pop"
+            ]
+        },
+        {
+            "id": "4SpbR6yFEvexJuaBpgAU5p",
+            "name": "LE SSERAFIM",
+            "popularity": 78,
+            "genres": []
+        },
+        {
+            "id": "5WUlDfRSoLAfcVSX1WnrxN",
+            "name": "Sia",
+            "popularity": 86,
+            "genres": [
+                "australian dance",
+                "australian pop",
+                "dance pop",
+                "pop"
+            ]
+        },
+        {
+            "id": "1294QqYm1VuxxjRiL9M0h9",
+            "name": "UPSAHL",
+            "popularity": 65,
+            "genres": [
+                "alt z",
+                "electropop",
+                "indie poptimism",
+                "modern indie pop",
+                "pop",
+                "social media pop",
+                "viral rap"
+            ]
+        },
+        {
+            "id": "2FovgCfOwN9iqbkCBlKFdT",
+            "name": "Ellise",
+            "popularity": 63,
+            "genres": [
+                "alt z",
+                "electropop",
+                "indie poptimism",
+                "pop",
+                "social media pop",
+                "viral rap"
+            ]
+        },
+        {
+            "id": "3nFkdlSjzX9mRTtwJOzDYB",
+            "name": "JAY-Z",
+            "popularity": 86,
+            "genres": [
+                "east coast hip hop",
+                "hip hop",
+                "rap"
+            ]
+        }
+    ],
+    "time_range": "medium_term",
+    "timestamp": "2023-03-28T11:51:33.727663"
+}

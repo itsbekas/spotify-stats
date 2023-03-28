@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List
 
 from mongoengine.fields import DateTimeField, StringField
 
@@ -23,7 +22,3 @@ class NamedDocument(SpotifyStatsDocument):
 
     def get_last_retrieved(self) -> datetime:
         return self.last_retrieved
-
-    def __contains__(self, item_list: List[NamedDocument]) -> bool:
-        ids = [item.get_id() for item in item_list]
-        return self.get_id() in ids

@@ -1,478 +1,482 @@
-[
-    {
-        "id": "7n2Ycct7Beij7Dj7meI4X0",
-        "name": "TWICE",
-        "popularity": 85,
-        "genres": [
-            "k-pop",
-            "k-pop girl group"
-        ]
-    },
-    {
-        "id": "5K4W6rqBFWDnAN6FQUkS6x",
-        "name": "Kanye West",
-        "popularity": 92,
-        "genres": [
-            "chicago rap",
-            "rap"
-        ]
-    },
-    {
-        "id": "4MCBfE4596Uoi2O4DtmEMz",
-        "name": "Juice WRLD",
-        "popularity": 91,
-        "genres": [
-            "chicago rap",
-            "melodic rap"
-        ]
-    },
-    {
-        "id": "6Xgp2XMz1fhVYe7i6yNAax",
-        "name": "Trippie Redd",
-        "popularity": 85,
-        "genres": [
-            "melodic rap",
-            "rap",
-            "trap"
-        ]
-    },
-    {
-        "id": "2tIP7SsRs7vjIcLrU85W8J",
-        "name": "The Kid LAROI",
-        "popularity": 85,
-        "genres": [
-            "australian hip hop",
-            "pop"
-        ]
-    },
-    {
-        "id": "0eDvMgVFoNV3TpwtrVCoTj",
-        "name": "Pop Smoke",
-        "popularity": 84,
-        "genres": [
-            "brooklyn drill"
-        ]
-    },
-    {
-        "id": "6AgTAQt8XS6jRWi4sX7w49",
-        "name": "Polo G",
-        "popularity": 85,
-        "genres": [
-            "chicago rap",
-            "rap"
-        ]
-    },
-    {
-        "id": "2KC9Qb60EaY0kW4eH68vr3",
-        "name": "ITZY",
-        "popularity": 75,
-        "genres": [
-            "k-pop girl group"
-        ]
-    },
-    {
-        "id": "2AasvmwafZPTgQANaoLoQY",
-        "name": "Mandragora",
-        "popularity": 58,
-        "genres": [
-            "brazilian edm",
-            "mexican edm",
-            "trance mexicano"
-        ]
-    },
-    {
-        "id": "3TVXtAsR1Inumwj472S9r4",
-        "name": "Drake",
-        "popularity": 98,
-        "genres": [
-            "canadian hip hop",
-            "canadian pop",
-            "hip hop",
-            "rap",
-            "toronto rap"
-        ]
-    },
-    {
-        "id": "6jGMq4yGs7aQzuGsMgVgZR",
-        "name": "Lil Tjay",
-        "popularity": 82,
-        "genres": [
-            "brooklyn drill",
-            "melodic rap",
-            "nyc rap"
-        ]
-    },
-    {
-        "id": "4vGrte8FDu062Ntj0RsPiZ",
-        "name": "Polyphia",
-        "popularity": 68,
-        "genres": [
-            "instrumental rock"
-        ]
-    },
-    {
-        "id": "4Ga1P7PMIsmqEZqhYZQgDo",
-        "name": "Lil Tecca",
-        "popularity": 79,
-        "genres": [
-            "melodic rap",
-            "pluggnb",
-            "rap",
-            "trap",
-            "viral rap"
-        ]
-    },
-    {
-        "id": "4O15NlyKLIASxsJ0PrXPfz",
-        "name": "Lil Uzi Vert",
-        "popularity": 89,
-        "genres": [
-            "melodic rap",
-            "philly rap",
-            "rap",
-            "trap"
-        ]
-    },
-    {
-        "id": "7gZfnEnfiaHzxARJ2LeXrf",
-        "name": "6ix9ine",
-        "popularity": 74,
-        "genres": [
-            "emo rap",
-            "rap",
-            "trap"
-        ]
-    },
-    {
-        "id": "2Waw2sSbqvAwK8NwACNjVo",
-        "name": "Bo Burnham",
-        "popularity": 73,
-        "genres": [
-            "comic"
-        ]
-    },
-    {
-        "id": "1nzgtKYFckznkcVMR3Gg4z",
-        "name": "KSI",
-        "popularity": 69,
-        "genres": [
-            "uk hip hop"
-        ]
-    },
-    {
-        "id": "757aE44tKEUQEqRuT6GnEB",
-        "name": "Roddy Ricch",
-        "popularity": 81,
-        "genres": [
-            "melodic rap",
-            "rap",
-            "trap"
-        ]
-    },
-    {
-        "id": "6l3HvQ5sa6mXTsMTB19rO5",
-        "name": "J. Cole",
-        "popularity": 89,
-        "genres": [
-            "conscious hip hop",
-            "hip hop",
-            "north carolina hip hop",
-            "rap"
-        ]
-    },
-    {
-        "id": "4tZwfgrHOc3mvqYlEYSvVi",
-        "name": "Daft Punk",
-        "popularity": 84,
-        "genres": [
-            "electro",
-            "filter house"
-        ]
-    },
-    {
-        "id": "5f7VJjfbwm532GiveGC0ZK",
-        "name": "Lil Baby",
-        "popularity": 90,
-        "genres": [
-            "atl hip hop",
-            "atl trap",
-            "rap",
-            "trap"
-        ]
-    },
-    {
-        "id": "0Y5tJX1MQlPlqiwlOH1tJY",
-        "name": "Travis Scott",
-        "popularity": 91,
-        "genres": [
-            "rap",
-            "slap house"
-        ]
-    },
-    {
-        "id": "31W5EY0aAly4Qieq6OFu6I",
-        "name": "A Boogie Wit da Hoodie",
-        "popularity": 84,
-        "genres": [
-            "melodic rap",
-            "rap"
-        ]
-    },
-    {
-        "id": "1URnnhqYAYcrqrcwql10ft",
-        "name": "21 Savage",
-        "popularity": 93,
-        "genres": [
-            "atl hip hop",
-            "rap"
-        ]
-    },
-    {
-        "id": "2LIk90788K0zvyj2JJVwkJ",
-        "name": "Jack Harlow",
-        "popularity": 82,
-        "genres": [
-            "deep underground hip hop",
-            "kentucky hip hop",
-            "pop",
-            "rap"
-        ]
-    },
-    {
-        "id": "6ASri4ePR7RlsvIQgWPJpS",
-        "name": "iann dior",
-        "popularity": 76,
-        "genres": [
-            "melodic rap",
-            "pop",
-            "pop rap"
-        ]
-    },
-    {
-        "id": "491U1PrV1EoQuhM0aUCn9r",
-        "name": "M Huncho",
-        "popularity": 65,
-        "genres": [
-            "uk hip hop"
-        ]
-    },
-    {
-        "id": "15UsOTVnJzReFVN1VCnxy4",
-        "name": "XXXTENTACION",
-        "popularity": 89,
-        "genres": [
-            "emo rap",
-            "miami hip hop"
-        ]
-    },
-    {
-        "id": "7jVv8c5Fj3E9VhNjxT4snq",
-        "name": "Lil Nas X",
-        "popularity": 82,
-        "genres": [
-            "lgbtq+ hip hop",
-            "pop"
-        ]
-    },
-    {
-        "id": "6fWVd57NKTalqvmjRd2t8Z",
-        "name": "24kGoldn",
-        "popularity": 74,
-        "genres": [
-            "cali rap",
-            "pop",
-            "pop rap",
-            "rap"
-        ]
-    },
-    {
-        "id": "5cj0lLjcoR7YOSnhnX0Po5",
-        "name": "Doja Cat",
-        "popularity": 88,
-        "genres": [
-            "dance pop",
-            "pop"
-        ]
-    },
-    {
-        "id": "4r63FhuTkUYltbVAg5TQnk",
-        "name": "DaBaby",
-        "popularity": 83,
-        "genres": [
-            "north carolina hip hop",
-            "rap",
-            "trap"
-        ]
-    },
-    {
-        "id": "2YZyLoL8N0Wb9xBt1NhZWg",
-        "name": "Kendrick Lamar",
-        "popularity": 91,
-        "genres": [
-            "conscious hip hop",
-            "hip hop",
-            "rap",
-            "west coast rap"
-        ]
-    },
-    {
-        "id": "4TS37lr3ZraUxBHS727sEp",
-        "name": "LXST CXNTURY",
-        "popularity": 61,
-        "genres": [
-            "drift phonk"
-        ]
-    },
-    {
-        "id": "0ksX396B3t2Gt8kwr0BJZk",
-        "name": "Fumez The Engineer",
-        "popularity": 68,
-        "genres": [
-            "melodic drill",
-            "uk drill",
-            "uk melodic rap"
-        ]
-    },
-    {
-        "id": "246dkjvS1zLTtiykXe5h60",
-        "name": "Post Malone",
-        "popularity": 90,
-        "genres": [
-            "dfw rap",
-            "melodic rap",
-            "rap"
-        ]
-    },
-    {
-        "id": "0ErzCpIMyLcjPiwT4elrtZ",
-        "name": "NLE Choppa",
-        "popularity": 81,
-        "genres": [
-            "memphis hip hop"
-        ]
-    },
-    {
-        "id": "7m0BsF0t3K9WQFgKoPejfk",
-        "name": "ArrDee",
-        "popularity": 68,
-        "genres": [
-            "uk hip hop"
-        ]
-    },
-    {
-        "id": "66CXWjxzNUsdJxJ2JdwvnR",
-        "name": "Ariana Grande",
-        "popularity": 92,
-        "genres": [
-            "dance pop",
-            "pop"
-        ]
-    },
-    {
-        "id": "5H4yInM5zmHqpKIoMNAx4r",
-        "name": "Central Cee",
-        "popularity": 83,
-        "genres": [
-            "melodic drill"
-        ]
-    },
-    {
-        "id": "1v7B6ZWa7QRQS3knn3Jvf4",
-        "name": "Ichika Nito",
-        "popularity": 54,
-        "genres": [
-            "japanese guitar",
-            "japanese math rock"
-        ]
-    },
-    {
-        "id": "5zctI4wO9XSKS8XwcnqEHk",
-        "name": "Lil Mosey",
-        "popularity": 72,
-        "genres": [
-            "melodic rap",
-            "rap",
-            "rap conscient",
-            "trap",
-            "vapor trap",
-            "viral rap"
-        ]
-    },
-    {
-        "id": "1RyvyyTE3xzB2ZywiAwp0i",
-        "name": "Future",
-        "popularity": 92,
-        "genres": [
-            "atl hip hop",
-            "rap",
-            "southern hip hop",
-            "trap"
-        ]
-    },
-    {
-        "id": "0nmQIMXWTXfhgOBdNzhGOs",
-        "name": "Avenged Sevenfold",
-        "popularity": 76,
-        "genres": [
-            "alternative metal"
-        ]
-    },
-    {
-        "id": "57n1OF36WvtOeATY6WQ6iw",
-        "name": "Digga D",
-        "popularity": 69,
-        "genres": [
-            "aussie drill",
-            "london rap",
-            "melodic drill"
-        ]
-    },
-    {
-        "id": "2AfmfGFbe0A0WsTYm0SDTx",
-        "name": "(G)I-DLE",
-        "popularity": 76,
-        "genres": [
-            "k-pop",
-            "k-pop girl group"
-        ]
-    },
-    {
-        "id": "0DbBBj0ScPumRqKXswGQH1",
-        "name": "Cookiee Kawaii",
-        "popularity": 57,
-        "genres": [
-            "alternative r&b",
-            "escape room",
-            "viral rap"
-        ]
-    },
-    {
-        "id": "7xDYCf4fsGxHBp8Blo9D94",
-        "name": "Chico da Tina",
-        "popularity": 47,
-        "genres": [
-            "hip hop tuga",
-            "rap portuense"
-        ]
-    },
-    {
-        "id": "6MPCFvOQv5cIGfw3jODMF0",
-        "name": "Internet Money",
-        "popularity": 72,
-        "genres": [
-            "pop rap",
-            "rap",
-            "trap",
-            "viral rap"
-        ]
-    },
-    {
-        "id": "7wlFDEWiM5OoIAt8RSli8b",
-        "name": "YoungBoy Never Broke Again",
-        "popularity": 86,
-        "genres": [
-            "baton rouge rap",
-            "trap"
-        ]
-    }
-]
+{
+    "artists": [
+        {
+            "id": "7n2Ycct7Beij7Dj7meI4X0",
+            "name": "TWICE",
+            "popularity": 85,
+            "genres": [
+                "k-pop",
+                "k-pop girl group"
+            ]
+        },
+        {
+            "id": "5K4W6rqBFWDnAN6FQUkS6x",
+            "name": "Kanye West",
+            "popularity": 92,
+            "genres": [
+                "chicago rap",
+                "rap"
+            ]
+        },
+        {
+            "id": "4MCBfE4596Uoi2O4DtmEMz",
+            "name": "Juice WRLD",
+            "popularity": 91,
+            "genres": [
+                "chicago rap",
+                "melodic rap"
+            ]
+        },
+        {
+            "id": "6Xgp2XMz1fhVYe7i6yNAax",
+            "name": "Trippie Redd",
+            "popularity": 85,
+            "genres": [
+                "melodic rap",
+                "rap",
+                "trap"
+            ]
+        },
+        {
+            "id": "2tIP7SsRs7vjIcLrU85W8J",
+            "name": "The Kid LAROI",
+            "popularity": 85,
+            "genres": [
+                "australian hip hop",
+                "pop"
+            ]
+        },
+        {
+            "id": "0eDvMgVFoNV3TpwtrVCoTj",
+            "name": "Pop Smoke",
+            "popularity": 84,
+            "genres": [
+                "brooklyn drill"
+            ]
+        },
+        {
+            "id": "6AgTAQt8XS6jRWi4sX7w49",
+            "name": "Polo G",
+            "popularity": 85,
+            "genres": [
+                "chicago rap",
+                "rap"
+            ]
+        },
+        {
+            "id": "2KC9Qb60EaY0kW4eH68vr3",
+            "name": "ITZY",
+            "popularity": 75,
+            "genres": [
+                "k-pop girl group"
+            ]
+        },
+        {
+            "id": "2AasvmwafZPTgQANaoLoQY",
+            "name": "Mandragora",
+            "popularity": 58,
+            "genres": [
+                "brazilian edm",
+                "mexican edm",
+                "trance mexicano"
+            ]
+        },
+        {
+            "id": "3TVXtAsR1Inumwj472S9r4",
+            "name": "Drake",
+            "popularity": 98,
+            "genres": [
+                "canadian hip hop",
+                "canadian pop",
+                "hip hop",
+                "rap",
+                "toronto rap"
+            ]
+        },
+        {
+            "id": "6jGMq4yGs7aQzuGsMgVgZR",
+            "name": "Lil Tjay",
+            "popularity": 82,
+            "genres": [
+                "brooklyn drill",
+                "melodic rap",
+                "nyc rap"
+            ]
+        },
+        {
+            "id": "4vGrte8FDu062Ntj0RsPiZ",
+            "name": "Polyphia",
+            "popularity": 68,
+            "genres": [
+                "instrumental rock"
+            ]
+        },
+        {
+            "id": "4Ga1P7PMIsmqEZqhYZQgDo",
+            "name": "Lil Tecca",
+            "popularity": 79,
+            "genres": [
+                "melodic rap",
+                "pluggnb",
+                "rap",
+                "trap",
+                "viral rap"
+            ]
+        },
+        {
+            "id": "4O15NlyKLIASxsJ0PrXPfz",
+            "name": "Lil Uzi Vert",
+            "popularity": 89,
+            "genres": [
+                "melodic rap",
+                "philly rap",
+                "rap",
+                "trap"
+            ]
+        },
+        {
+            "id": "7gZfnEnfiaHzxARJ2LeXrf",
+            "name": "6ix9ine",
+            "popularity": 74,
+            "genres": [
+                "emo rap",
+                "rap",
+                "trap"
+            ]
+        },
+        {
+            "id": "2Waw2sSbqvAwK8NwACNjVo",
+            "name": "Bo Burnham",
+            "popularity": 73,
+            "genres": [
+                "comic"
+            ]
+        },
+        {
+            "id": "1nzgtKYFckznkcVMR3Gg4z",
+            "name": "KSI",
+            "popularity": 69,
+            "genres": [
+                "uk hip hop"
+            ]
+        },
+        {
+            "id": "757aE44tKEUQEqRuT6GnEB",
+            "name": "Roddy Ricch",
+            "popularity": 81,
+            "genres": [
+                "melodic rap",
+                "rap",
+                "trap"
+            ]
+        },
+        {
+            "id": "6l3HvQ5sa6mXTsMTB19rO5",
+            "name": "J. Cole",
+            "popularity": 89,
+            "genres": [
+                "conscious hip hop",
+                "hip hop",
+                "north carolina hip hop",
+                "rap"
+            ]
+        },
+        {
+            "id": "4tZwfgrHOc3mvqYlEYSvVi",
+            "name": "Daft Punk",
+            "popularity": 84,
+            "genres": [
+                "electro",
+                "filter house"
+            ]
+        },
+        {
+            "id": "5f7VJjfbwm532GiveGC0ZK",
+            "name": "Lil Baby",
+            "popularity": 90,
+            "genres": [
+                "atl hip hop",
+                "atl trap",
+                "rap",
+                "trap"
+            ]
+        },
+        {
+            "id": "0Y5tJX1MQlPlqiwlOH1tJY",
+            "name": "Travis Scott",
+            "popularity": 91,
+            "genres": [
+                "rap",
+                "slap house"
+            ]
+        },
+        {
+            "id": "31W5EY0aAly4Qieq6OFu6I",
+            "name": "A Boogie Wit da Hoodie",
+            "popularity": 84,
+            "genres": [
+                "melodic rap",
+                "rap"
+            ]
+        },
+        {
+            "id": "1URnnhqYAYcrqrcwql10ft",
+            "name": "21 Savage",
+            "popularity": 93,
+            "genres": [
+                "atl hip hop",
+                "rap"
+            ]
+        },
+        {
+            "id": "2LIk90788K0zvyj2JJVwkJ",
+            "name": "Jack Harlow",
+            "popularity": 82,
+            "genres": [
+                "deep underground hip hop",
+                "kentucky hip hop",
+                "pop",
+                "rap"
+            ]
+        },
+        {
+            "id": "6ASri4ePR7RlsvIQgWPJpS",
+            "name": "iann dior",
+            "popularity": 76,
+            "genres": [
+                "melodic rap",
+                "pop",
+                "pop rap"
+            ]
+        },
+        {
+            "id": "491U1PrV1EoQuhM0aUCn9r",
+            "name": "M Huncho",
+            "popularity": 65,
+            "genres": [
+                "uk hip hop"
+            ]
+        },
+        {
+            "id": "15UsOTVnJzReFVN1VCnxy4",
+            "name": "XXXTENTACION",
+            "popularity": 89,
+            "genres": [
+                "emo rap",
+                "miami hip hop"
+            ]
+        },
+        {
+            "id": "7jVv8c5Fj3E9VhNjxT4snq",
+            "name": "Lil Nas X",
+            "popularity": 82,
+            "genres": [
+                "lgbtq+ hip hop",
+                "pop"
+            ]
+        },
+        {
+            "id": "6fWVd57NKTalqvmjRd2t8Z",
+            "name": "24kGoldn",
+            "popularity": 74,
+            "genres": [
+                "cali rap",
+                "pop",
+                "pop rap",
+                "rap"
+            ]
+        },
+        {
+            "id": "5cj0lLjcoR7YOSnhnX0Po5",
+            "name": "Doja Cat",
+            "popularity": 88,
+            "genres": [
+                "dance pop",
+                "pop"
+            ]
+        },
+        {
+            "id": "4r63FhuTkUYltbVAg5TQnk",
+            "name": "DaBaby",
+            "popularity": 83,
+            "genres": [
+                "north carolina hip hop",
+                "rap",
+                "trap"
+            ]
+        },
+        {
+            "id": "2YZyLoL8N0Wb9xBt1NhZWg",
+            "name": "Kendrick Lamar",
+            "popularity": 91,
+            "genres": [
+                "conscious hip hop",
+                "hip hop",
+                "rap",
+                "west coast rap"
+            ]
+        },
+        {
+            "id": "4TS37lr3ZraUxBHS727sEp",
+            "name": "LXST CXNTURY",
+            "popularity": 61,
+            "genres": [
+                "drift phonk"
+            ]
+        },
+        {
+            "id": "0ksX396B3t2Gt8kwr0BJZk",
+            "name": "Fumez The Engineer",
+            "popularity": 68,
+            "genres": [
+                "melodic drill",
+                "uk drill",
+                "uk melodic rap"
+            ]
+        },
+        {
+            "id": "246dkjvS1zLTtiykXe5h60",
+            "name": "Post Malone",
+            "popularity": 90,
+            "genres": [
+                "dfw rap",
+                "melodic rap",
+                "rap"
+            ]
+        },
+        {
+            "id": "0ErzCpIMyLcjPiwT4elrtZ",
+            "name": "NLE Choppa",
+            "popularity": 81,
+            "genres": [
+                "memphis hip hop"
+            ]
+        },
+        {
+            "id": "7m0BsF0t3K9WQFgKoPejfk",
+            "name": "ArrDee",
+            "popularity": 68,
+            "genres": [
+                "uk hip hop"
+            ]
+        },
+        {
+            "id": "66CXWjxzNUsdJxJ2JdwvnR",
+            "name": "Ariana Grande",
+            "popularity": 92,
+            "genres": [
+                "dance pop",
+                "pop"
+            ]
+        },
+        {
+            "id": "5H4yInM5zmHqpKIoMNAx4r",
+            "name": "Central Cee",
+            "popularity": 83,
+            "genres": [
+                "melodic drill"
+            ]
+        },
+        {
+            "id": "1v7B6ZWa7QRQS3knn3Jvf4",
+            "name": "Ichika Nito",
+            "popularity": 54,
+            "genres": [
+                "japanese guitar",
+                "japanese math rock"
+            ]
+        },
+        {
+            "id": "5zctI4wO9XSKS8XwcnqEHk",
+            "name": "Lil Mosey",
+            "popularity": 72,
+            "genres": [
+                "melodic rap",
+                "rap",
+                "rap conscient",
+                "trap",
+                "vapor trap",
+                "viral rap"
+            ]
+        },
+        {
+            "id": "1RyvyyTE3xzB2ZywiAwp0i",
+            "name": "Future",
+            "popularity": 92,
+            "genres": [
+                "atl hip hop",
+                "rap",
+                "southern hip hop",
+                "trap"
+            ]
+        },
+        {
+            "id": "0nmQIMXWTXfhgOBdNzhGOs",
+            "name": "Avenged Sevenfold",
+            "popularity": 76,
+            "genres": [
+                "alternative metal"
+            ]
+        },
+        {
+            "id": "57n1OF36WvtOeATY6WQ6iw",
+            "name": "Digga D",
+            "popularity": 69,
+            "genres": [
+                "aussie drill",
+                "london rap",
+                "melodic drill"
+            ]
+        },
+        {
+            "id": "2AfmfGFbe0A0WsTYm0SDTx",
+            "name": "(G)I-DLE",
+            "popularity": 76,
+            "genres": [
+                "k-pop",
+                "k-pop girl group"
+            ]
+        },
+        {
+            "id": "0DbBBj0ScPumRqKXswGQH1",
+            "name": "Cookiee Kawaii",
+            "popularity": 57,
+            "genres": [
+                "alternative r&b",
+                "escape room",
+                "viral rap"
+            ]
+        },
+        {
+            "id": "7xDYCf4fsGxHBp8Blo9D94",
+            "name": "Chico da Tina",
+            "popularity": 47,
+            "genres": [
+                "hip hop tuga",
+                "rap portuense"
+            ]
+        },
+        {
+            "id": "6MPCFvOQv5cIGfw3jODMF0",
+            "name": "Internet Money",
+            "popularity": 72,
+            "genres": [
+                "pop rap",
+                "rap",
+                "trap",
+                "viral rap"
+            ]
+        },
+        {
+            "id": "7wlFDEWiM5OoIAt8RSli8b",
+            "name": "YoungBoy Never Broke Again",
+            "popularity": 86,
+            "genres": [
+                "baton rouge rap",
+                "trap"
+            ]
+        }
+    ],
+    "time_range": "long_term",
+    "timestamp": "2023-03-28T11:51:33.727663"
+}

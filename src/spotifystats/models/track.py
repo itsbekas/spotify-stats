@@ -12,6 +12,7 @@ from mongoengine.fields import IntField, ListField, ReferenceField
 import spotifystats.models.album as alb
 import spotifystats.models.artist as art
 from spotifystats.models.named_document import NamedDocument
+from spotifystats.util.lists import NamedDocumentList
 
 
 class Track(NamedDocument):
@@ -47,7 +48,7 @@ class Track(NamedDocument):
             self.album = album
 
     def get_artists(self) -> art.Artist:
-        return self.artists
+        return NamedDocumentList(self.artists)
 
     def get_popularity(self) -> int:
         return self.popularity

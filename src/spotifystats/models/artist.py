@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING, List
 from mongoengine.fields import IntField, ListField, ReferenceField, StringField
 
 from spotifystats.models.named_document import NamedDocument
+from spotifystats.util.lists import NamedDocumentList
 
 if TYPE_CHECKING:
     import spotifystats.models.album as alb
@@ -21,26 +22,33 @@ class Artist(NamedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Artist:
-        return cls(spotify_id=response["id"], name=response["name"])
+        popularity = response["popularity"] if "popularity" in response else None
+        genres = response["genres"] if "genres" in response else None
+        return cls(
+            spotify_id=response["id"],
+            name=response["name"],
+            popularity=popularity,
+            genres=genres,
+        )
 
     def get_albums(self) -> List[alb.Album]:
-        return self.albums
+        return NamedDocumentList(self.albums)
 
     def add_album(self, album: alb.Album) -> None:
         # Check if artist already has this album
         if album not in self.get_albums():
             # Check if artist is part of the album
-            if self not in album.get_artists():
+            if self in album.get_artists():
                 self.albums.append(album)
 
     def get_tracks(self) -> List[trk.Track]:
-        return self.tracks
+        return NamedDocumentList(self.tracks)
 
     def add_track(self, track: trk.Track) -> None:
         # Check if artist already has this track
         if track not in self.get_tracks():
             # Check if artist is part of the track
-            if self not in track.get_artists():
+            if self in track.get_artists():
                 self.tracks.append(track)
 
     def get_rankings(self) -> List[a_rnk.ArtistRanking]:
@@ -48,7 +56,7 @@ class Artist(NamedDocument):
 
     def add_ranking(self, ranking: a_rnk.ArtistRanking) -> None:
         # Check if artist is part of the ranking
-        if self not in ranking.get_artists():
+        if self in ranking.get_artists():
             self.rankings.append(ranking)
 
     def get_genres(self) -> List[str]:

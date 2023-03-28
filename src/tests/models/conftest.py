@@ -54,14 +54,14 @@ def album_YOUNG_LUV_COM():
 
 @pytest.fixture
 def play_STEREOTYPE():
-    with open("src/tests/data/plays/play_STEREOTYPE.json", "r") as f:
+    with open("src/tests/data/plays/play_stereotype.json", "r") as f:
         play = json.load(f)
     return play
 
 
 @pytest.fixture
 def play_Hype_Boy():
-    with open("src/tests/data/plays/play_Hype_Boy.json", "r") as f:
+    with open("src/tests/data/plays/play_hype_boy.json", "r") as f:
         play = json.load(f)
     return play
 
@@ -76,5 +76,12 @@ def ranking_artist_long():
 @pytest.fixture
 def ranking_artist_medium():
     with open("src/tests/data/rankings/ranking_artist_medium.json", "r") as f:
+        play = json.load(f)
+    return play
+
+
+@pytest.fixture
+def ranking_artist_short():
+    with open("src/tests/data/rankings/ranking_artist_short.json", "r") as f:
         play = json.load(f)
     return play

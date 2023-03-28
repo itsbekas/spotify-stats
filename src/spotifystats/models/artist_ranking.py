@@ -6,6 +6,7 @@ from mongoengine.fields import ListField, ReferenceField
 
 import spotifystats.models.artist as art
 from spotifystats.models.ranking import Ranking
+from spotifystats.util.lists import NamedDocumentList
 
 
 class ArtistRanking(Ranking):
@@ -24,4 +25,4 @@ class ArtistRanking(Ranking):
         )
 
     def get_artists(self) -> List[art.Artist]:
-        return self.artists
+        return NamedDocumentList(self.artists)

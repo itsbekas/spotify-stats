@@ -1,5 +1,6 @@
 import spotifystats.models.album as alb
 import spotifystats.models.artist as art
+import spotifystats.models.artist_ranking as a_rnk
 import spotifystats.models.track as trk
 
 
@@ -10,7 +11,7 @@ def test_create_artist_from_play_response(play_STEREOTYPE):
     assert artist.get_id() == play_STEREOTYPE["track"]["artists"][0]["id"]
     assert artist.get_name() == play_STEREOTYPE["track"]["artists"][0]["name"]
     assert artist.get_last_retrieved() is None
-    assert artist.get_popularity() == 0
+    assert artist.get_popularity() is None
     assert artist.get_genres() == []
     assert artist.get_albums() == []
     assert artist.get_tracks() == []
@@ -34,6 +35,7 @@ def test_create_artist_from_artist_response(artist_STAYC):
 def test_add_album(artist_STAYC, album_STEREOTYPE):
     artist = art.Artist.from_spotify_response(artist_STAYC)
     album = alb.Album.from_spotify_response(album_STEREOTYPE)
+
     artist.add_album(album)
 
     assert len(artist.get_albums()) == 1
@@ -43,6 +45,7 @@ def test_add_album(artist_STAYC, album_STEREOTYPE):
 def test_add_invalid_album(artist_STAYC, album_LOVE_DIVE):
     artist = art.Artist.from_spotify_response(artist_STAYC)
     album = alb.Album.from_spotify_response(album_LOVE_DIVE)
+
     artist.add_album(album)
 
     assert len(artist.get_albums()) == 0
@@ -78,6 +81,7 @@ def test_add_duplicate_album(artist_STAYC, album_STEREOTYPE):
 def test_add_track(artist_STAYC, track_STEREOTYPE):
     artist = art.Artist.from_spotify_response(artist_STAYC)
     track = trk.Track.from_spotify_response(track_STEREOTYPE)
+
     artist.add_track(track)
 
     assert len(artist.get_tracks()) == 1
@@ -87,6 +91,7 @@ def test_add_track(artist_STAYC, track_STEREOTYPE):
 def test_add_invalid_track(artist_STAYC, track_LOVE_DIVE):
     artist = art.Artist.from_spotify_response(artist_STAYC)
     track = trk.Track.from_spotify_response(track_LOVE_DIVE)
+
     artist.add_track(track)
 
     assert len(artist.get_tracks()) == 0
@@ -119,9 +124,34 @@ def test_add_duplicate_track(artist_STAYC, track_STEREOTYPE):
     assert track2 in artist.get_tracks()
 
 
-def test_add_ranking(ranking_artist_long) -> None:
-    pass
+def test_add_ranking(artist_STAYC, ranking_artist_short):
+    artist = art.Artist.from_spotify_response(artist_STAYC)
+    ranking = a_rnk.ArtistRanking.from_spotify_response(ranking_artist_short)
+
+    artist.add_ranking(ranking)
+
+    assert len(artist.get_rankings()) == 1
+    assert ranking in artist.get_rankings()
 
 
-def test_two_rankings(ranking_artist_medium, ranking_artist_long):
-    pass
+def test_add_invalid_ranking(artist_STAYC, ranking_artist_long):
+    artist = art.Artist.from_spotify_response(artist_STAYC)
+    ranking = a_rnk.ArtistRanking.from_spotify_response(ranking_artist_long)
+
+    artist.add_ranking(ranking)
+
+    assert len(artist.get_rankings()) == 0
+    assert ranking not in artist.get_rankings()
+
+
+def test_two_rankings(artist_STAYC, ranking_artist_short, ranking_artist_medium):
+    artist = art.Artist.from_spotify_response(artist_STAYC)
+    ranking1 = a_rnk.ArtistRanking.from_spotify_response(ranking_artist_short)
+    ranking2 = a_rnk.ArtistRanking.from_spotify_response(ranking_artist_medium)
+
+    artist.add_ranking(ranking1)
+    artist.add_ranking(ranking2)
+
+    assert len(artist.get_rankings()) == 2
+    assert ranking1 in artist.get_rankings()
+    assert ranking2 in artist.get_rankings()
