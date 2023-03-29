@@ -12,7 +12,11 @@ from mongoengine.fields import IntField, ListField, ReferenceField
 import spotifystats.models.album as alb
 import spotifystats.models.artist as art
 from spotifystats.models.named_document import NamedDocument
-from spotifystats.util.lists import DatedDocumentList, NamedDocumentList
+from spotifystats.util.lists import (
+    NamedDocumentList,
+    PlayDocumentList,
+    RankingDocumentList,
+)
 
 
 class Track(NamedDocument):
@@ -24,19 +28,29 @@ class Track(NamedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Track:
-        album = alb.Album.from_spotify_response(response["album"])
+        album = (
+            alb.Album.from_spotify_response(response["album"])
+            if "album" in response
+            else None
+        )
 
-        artists = [
-            art.Artist.from_spotify_response(artist_response)
-            for artist_response in response["artists"]
-        ]
+        artists = (
+            [
+                art.Artist.from_spotify_response(artist_response)
+                for artist_response in response["artists"]
+            ]
+            if "artists" in response
+            else []
+        )
+
+        popularity = response["popularity"] if "popularity" in response else None
 
         return cls(
             spotify_id=response["id"],
             name=response["name"],
             album=album,
             artists=artists,
-            popularity=response["popularity"],
+            popularity=popularity,
         )
 
     def get_album(self) -> alb.Album:
@@ -54,7 +68,7 @@ class Track(NamedDocument):
         return self.popularity
 
     def get_plays(self) -> List[pl.Play]:
-        return DatedDocumentList(self.plays)
+        return PlayDocumentList(self.plays)
 
     def add_play(self, play: pl.Play) -> None:
         # Check if play corresponds to the track
@@ -63,9 +77,9 @@ class Track(NamedDocument):
                 self.plays.append(play)
 
     def get_rankings(self) -> List[t_rnk.TrackRanking]:
-        return DatedDocumentList(self.rankings)
+        return RankingDocumentList(self.rankings)
 
     def add_ranking(self, ranking: t_rnk.TrackRanking) -> None:
-        # Check if track is part of the ranking
-        if self in ranking.get_tracks():
-            self.rankings.append(ranking)
+        if ranking not in self.get_rankings():
+            if self in ranking.get_tracks():
+                self.rankings.append(ranking)

@@ -517,23 +517,23 @@
             ]
         },
         {
-            "id": "7oe04qLMdQxHXhcGIfShXf",
-            "name": "Piggypink",
-            "popularity": 65,
+            "id": "2bZIDMpzVooosmPHn0tHnd",
+            "name": "STEREOTYPE",
+            "popularity": 68,
             "album": {
-                "id": "2EhxiHgVM7Xp3zw59TuSsT",
-                "name": "Piggypink",
+                "id": "7HGjNJBj1NQGNwCzFD2LHj",
+                "name": "STEREOTYPE",
                 "artists": [
                     {
-                        "id": "35WVTyRnKAoaGExqgktVyb",
-                        "name": "Hotel Ugly"
+                        "id": "01XYiBYaoMJcNhPokrg0l0",
+                        "name": "STAYC"
                     }
                 ]
             },
             "artists": [
                 {
-                    "id": "35WVTyRnKAoaGExqgktVyb",
-                    "name": "Hotel Ugly"
+                    "id": "01XYiBYaoMJcNhPokrg0l0",
+                    "name": "STAYC"
                 }
             ]
         },

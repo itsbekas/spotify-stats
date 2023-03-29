@@ -3,12 +3,11 @@ from __future__ import annotations
 from datetime import datetime
 from math import floor
 
+from dateutil import parser
+
 
 def iso_to_datetime(iso_str: str) -> datetime:
-    try:
-        return datetime.strptime(iso_str, "%Y-%m-%dT%H:%M:%S.%fZ")
-    except ValueError:
-        return datetime.strptime(iso_str, "%Y-%m-%dT%H:%M:%SZ")
+    return parser.parse(iso_str)
 
 
 def datetime_to_int(dt: datetime) -> int:

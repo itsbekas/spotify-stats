@@ -872,23 +872,23 @@
             ]
         },
         {
-            "id": "7ksqmIxk48TqqBdHXUdwvJ",
-            "name": "Biome",
-            "popularity": 49,
+            "id": "2bZIDMpzVooosmPHn0tHnd",
+            "name": "STEREOTYPE",
+            "popularity": 68,
             "album": {
-                "id": "4FOSsqWEItqDmlAj5WomS8",
-                "name": "Biome",
+                "id": "7HGjNJBj1NQGNwCzFD2LHj",
+                "name": "STEREOTYPE",
                 "artists": [
                     {
-                        "id": "0Upbj4hHk4d4UJ0HhnVs4F",
-                        "name": "il:lo"
+                        "id": "01XYiBYaoMJcNhPokrg0l0",
+                        "name": "STAYC"
                     }
                 ]
             },
             "artists": [
                 {
-                    "id": "0Upbj4hHk4d4UJ0HhnVs4F",
-                    "name": "il:lo"
+                    "id": "01XYiBYaoMJcNhPokrg0l0",
+                    "name": "STAYC"
                 }
             ]
         },
@@ -1107,6 +1107,6 @@
             ]
         }
     ],
-    "time_range": "medium_term",
+    "time_range": "short_term",
     "timestamp": "2023-03-28T11:51:33.727663"
 }

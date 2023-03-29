@@ -11,8 +11,22 @@ def artist_STAYC():
 
 
 @pytest.fixture
+def track_COMPLEX():
+    with open("src/tests/data/tracks/track_COMPLEX.json", "r") as f:
+        play = json.load(f)
+    return play
+
+
+@pytest.fixture
 def track_LOVE_DIVE():
     with open("src/tests/data/tracks/track_LOVE_DIVE.json", "r") as f:
+        play = json.load(f)
+    return play
+
+
+@pytest.fixture
+def track_SLOW_DOWN():
+    with open("src/tests/data/tracks/track_SLOW_DOWN.json", "r") as f:
         play = json.load(f)
     return play
 

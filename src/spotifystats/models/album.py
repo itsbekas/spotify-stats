@@ -1,29 +1,58 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List
+from typing import List
 
-from mongoengine.fields import ListField, ReferenceField
+from mongoengine.fields import IntField, ListField, ReferenceField, StringField
 
 import spotifystats.models.artist as art
+import spotifystats.models.track as trk
 from spotifystats.models.named_document import NamedDocument
 from spotifystats.util.lists import NamedDocumentList
 
-if TYPE_CHECKING:
-    import spotifystats.models.track as trk
-
 
 class Album(NamedDocument):
+    popularity = IntField()
+    genres = ListField(StringField())
     artists = ListField(ReferenceField("Artist"))
     tracks = ListField(ReferenceField("Track"))
 
     @classmethod
     def from_spotify_response(cls, response) -> Album:
-        artists = [
-            art.Artist.from_spotify_response(artist_response)
-            for artist_response in response["artists"]
-        ]
+        popularity = response["popularity"] if "popularity" in response else None
+        genres = response["genres"] if "genres" in response else None
 
-        return cls(spotify_id=response["id"], name=response["name"], artists=artists)
+        tracks = (
+            [
+                trk.Track.from_spotify_response(track_response)
+                for track_response in response["tracks"]
+            ]
+            if "tracks" in response
+            else []
+        )
+
+        artists = (
+            [
+                art.Artist.from_spotify_response(artist_response)
+                for artist_response in response["artists"]
+            ]
+            if "artists" in response
+            else []
+        )
+
+        return cls(
+            spotify_id=response["id"],
+            name=response["name"],
+            popularity=popularity,
+            genres=genres,
+            artists=artists,
+            tracks=tracks,
+        )
+
+    def get_popularity(self) -> int:
+        return self.popularity
+
+    def get_genres(self) -> List[str]:
+        return self.genres
 
     def get_artists(self) -> List[art.Artist]:
         return NamedDocumentList(self.artists)

@@ -3,11 +3,9 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from spotifystats.models.dated_document import DatedDocument
+    import spotifystats.models.play as pl
+    import spotifystats.models.ranking as rnk
     from spotifystats.models.named_document import NamedDocument
-
-import spotifystats.models.play as pl
-import spotifystats.models.ranking as rnk
 
 
 class NamedDocumentList(list):
@@ -16,23 +14,23 @@ class NamedDocumentList(list):
         return item.get_id() in ids
 
 
-class DatedDocumentList(list):
-    def __contains__(self, item: DatedDocument) -> bool:
-        if isinstance(self, pl.Play) and isinstance(item, pl.Play):
-            return self.get_timestamp() == item.get_timestamp()
+class RankingDocumentList(list):
+    def __contains__(self, item: rnk.Ranking) -> bool:
+        documents = [
+            {
+                "timestamp": document.get_timestamp(),
+                "time_range": document.get_time_range(),
+            }
+            for document in self
+        ]
 
-        elif isinstance(self, rnk.Ranking) and isinstance(item, rnk.Ranking):
-            documents = [
-                {
-                    "timestamp": document.get_timestamp(),
-                    "time_range": document.get_time_range(),
-                }
-                for document in self
-            ]
+        return {
+            "timestamp": item.get_timestamp(),
+            "time_range": item.get_time_range(),
+        } in documents
 
-            return {
-                "timestamp": item.get_timestamp(),
-                "time_range": item.get_time_range(),
-            } in documents
 
-        return False
+class PlayDocumentList(list):
+    def __contains__(self, item: pl.Play) -> bool:
+        timestamps = [play.get_timestamp() for play in self]
+        return item.get_timestamp() in timestamps

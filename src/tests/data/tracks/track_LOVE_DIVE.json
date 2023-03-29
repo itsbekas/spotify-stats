@@ -1,1 +1,21 @@
-{"id": "0Q5VnK2DYzRyfqQRJuUtvi", "name": "LOVE DIVE", "popularity": 80, "album": {"id": "1AFVTHHm7kKoQ6Rgb25x3p", "name": "LOVE DIVE", "artists": [{"id": "6RHTUrRF63xao58xh9FXYJ", "name": "IVE"}]}, "artists": [{"id": "6RHTUrRF63xao58xh9FXYJ", "name": "IVE"}]}
+{
+    "id": "0Q5VnK2DYzRyfqQRJuUtvi",
+    "name": "LOVE DIVE",
+    "popularity": 80,
+    "album": {
+        "id": "1AFVTHHm7kKoQ6Rgb25x3p",
+        "name": "LOVE DIVE",
+        "artists": [
+            {
+                "id": "6RHTUrRF63xao58xh9FXYJ",
+                "name": "IVE"
+            }
+        ]
+    },
+    "artists": [
+        {
+            "id": "6RHTUrRF63xao58xh9FXYJ",
+            "name": "IVE"
+        }
+    ]
+}

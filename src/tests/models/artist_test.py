@@ -5,11 +5,12 @@ import spotifystats.models.track as trk
 
 
 def test_create_artist_from_play_response(play_STEREOTYPE):
-    artist = art.Artist.from_spotify_response(play_STEREOTYPE["track"]["artists"][0])
+    artist_response = play_STEREOTYPE["track"]["artists"][0]
+    artist = art.Artist.from_spotify_response(artist_response)
 
     assert isinstance(artist, art.Artist)
-    assert artist.get_id() == play_STEREOTYPE["track"]["artists"][0]["id"]
-    assert artist.get_name() == play_STEREOTYPE["track"]["artists"][0]["name"]
+    assert artist.get_id() == artist_response["id"]
+    assert artist.get_name() == artist_response["name"]
     assert artist.get_last_retrieved() is None
     assert artist.get_popularity() is None
     assert artist.get_genres() == []
