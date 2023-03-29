@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING, List
 from mongoengine.fields import IntField, ListField, ReferenceField, StringField
 
 from spotifystats.models.named_document import NamedDocument
-from spotifystats.util.lists import NamedDocumentList
+from spotifystats.util.lists import DatedDocumentList, NamedDocumentList
 
 if TYPE_CHECKING:
     import spotifystats.models.album as alb
@@ -52,12 +52,11 @@ class Artist(NamedDocument):
                 self.tracks.append(track)
 
     def get_rankings(self) -> List[a_rnk.ArtistRanking]:
-        return self.rankings
+        return DatedDocumentList(self.rankings)
 
     def add_ranking(self, ranking: a_rnk.ArtistRanking) -> None:
-        # Check if artist is part of the ranking
-        if self in ranking.get_artists():
-            if ranking not in self.get_rankings():
+        if ranking not in self.get_rankings():
+            if self in ranking.get_artists():
                 self.rankings.append(ranking)
 
     def get_genres(self) -> List[str]:

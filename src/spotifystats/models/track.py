@@ -12,7 +12,7 @@ from mongoengine.fields import IntField, ListField, ReferenceField
 import spotifystats.models.album as alb
 import spotifystats.models.artist as art
 from spotifystats.models.named_document import NamedDocument
-from spotifystats.util.lists import NamedDocumentList
+from spotifystats.util.lists import DatedDocumentList, NamedDocumentList
 
 
 class Track(NamedDocument):
@@ -54,7 +54,7 @@ class Track(NamedDocument):
         return self.popularity
 
     def get_plays(self) -> List[pl.Play]:
-        return self.plays
+        return DatedDocumentList(self.plays)
 
     def add_play(self, play: pl.Play) -> None:
         # Check if play corresponds to the track
@@ -63,7 +63,7 @@ class Track(NamedDocument):
                 self.plays.append(play)
 
     def get_rankings(self) -> List[t_rnk.TrackRanking]:
-        return self.rankings
+        return DatedDocumentList(self.rankings)
 
     def add_ranking(self, ranking: t_rnk.TrackRanking) -> None:
         # Check if track is part of the ranking
