@@ -22,11 +22,7 @@ def start():
     service = SpotifyStatsService()
     service.update()
 
-    return
-
-    click.echo("Bruh")
-
-    schedule.every(30).minutes.do(click.echo, "Running Spotify Stats Service...")
+    schedule.every(30).minutes.do(service.update)
 
     while True:
         schedule.run_pending()
