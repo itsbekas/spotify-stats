@@ -1,3 +1,5 @@
+import time
+
 import click
 import schedule
 
@@ -20,7 +22,15 @@ def start():
     service = SpotifyStatsService()
     service.update()
 
-    schedule.every(5).seconds.do(click.echo, "Running Spotify Stats Service...")
+    return
+
+    click.echo("Bruh")
+
+    schedule.every(30).minutes.do(click.echo, "Running Spotify Stats Service...")
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
 
 if __name__ == "__main__":

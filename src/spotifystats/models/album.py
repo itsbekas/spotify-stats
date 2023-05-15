@@ -11,14 +11,14 @@ from spotifystats.util.lists import NamedDocumentList
 
 
 class Album(NamedDocument):
-    popularity = IntField()
+    popularity = IntField(required=True)
     genres = ListField(StringField())
     artists = ListField(ReferenceField("Artist"))
     tracks = ListField(ReferenceField("Track"))
 
     @classmethod
     def from_spotify_response(cls, response) -> Album:
-        popularity = response["popularity"] if "popularity" in response else None
+        popularity = response["popularity"] if "popularity" in response else -1
         genres = response["genres"] if "genres" in response else None
 
         tracks = (

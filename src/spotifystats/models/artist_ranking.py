@@ -6,7 +6,6 @@ from mongoengine.fields import ListField, ReferenceField
 
 import spotifystats.models.artist as art
 from spotifystats.models.ranking import Ranking
-from spotifystats.util import iso_to_datetime
 from spotifystats.util.lists import NamedDocumentList
 
 
@@ -15,14 +14,12 @@ class ArtistRanking(Ranking):
 
     @classmethod
     def from_spotify_response(cls, rank_dict: Dict[str, Any]) -> ArtistRanking:
-        timestamp = iso_to_datetime(rank_dict["timestamp"])
-
         artists = [
             art.Artist.from_spotify_response(artist) for artist in rank_dict["artists"]
         ]
 
         return cls(
-            timestamp=timestamp,
+            timestamp=rank_dict["timestamp"],
             time_range=rank_dict["time_range"],
             artists=artists,
         )

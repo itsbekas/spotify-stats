@@ -43,7 +43,7 @@ class Track(NamedDocument):
             else []
         )
 
-        popularity = response["popularity"] if "popularity" in response else None
+        popularity = response["popularity"] if "popularity" in response else -1
 
         return cls(
             spotify_id=response["id"],
