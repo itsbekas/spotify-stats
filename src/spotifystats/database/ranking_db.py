@@ -11,6 +11,7 @@ if TYPE_CHECKING:
 
 def add_artist_ranking(ranking: a_rnk.ArtistRanking) -> None:
     artists = ranking.get_artists()
+
     for i, artist in enumerate(artists):
         db_artist = db.get_artist(artist.get_id())
         if db_artist is None:

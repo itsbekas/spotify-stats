@@ -22,7 +22,7 @@ class Artist(NamedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Artist:
-        popularity = response["popularity"] if "popularity" in response else -1
+        popularity = response["popularity"] if "popularity" in response else None
         genres = response["genres"] if "genres" in response else None
 
         return cls(
