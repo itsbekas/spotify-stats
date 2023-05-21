@@ -31,10 +31,13 @@ def add_track_ranking(ranking: t_rnk.TrackRanking) -> None:
     for i, track in enumerate(tracks):
         db_track = db.get_track(track.get_id())
         if db_track is None:
+            print("Adding track: ", track.get_id())
             db.add_track(track)
         else:
+            print("Track found: ", track.get_id())
             tracks[i] = db_track
 
+    print("Saving ranking")
     ranking.save()
 
     for track in ranking.get_tracks():

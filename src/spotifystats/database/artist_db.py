@@ -9,6 +9,7 @@ def add_artist(artist: art.Artist) -> None:
     """
 
     if get_artist(spotify_id=artist.get_id()) is None:
+        print("Saving artist: ", artist.get_id())
         artist.save()
 
 

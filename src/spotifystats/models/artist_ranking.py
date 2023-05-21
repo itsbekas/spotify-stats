@@ -16,12 +16,6 @@ class ArtistRanking(Ranking):
     def from_spotify_response(cls, rank_dict: Dict[str, Any]) -> ArtistRanking:
         timestamp = rank_dict["timestamp"]
 
-        i = 0
-        for artist in rank_dict["artists"]:
-            print("---", i)
-            i += 1
-            print(artist["popularity"])
-
         artists = [
             art.Artist.from_spotify_response(artist) for artist in rank_dict["artists"]
         ]

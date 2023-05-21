@@ -11,13 +11,18 @@ def add_album(album: alb.Album) -> None:
         for i, artist in enumerate(artists):
             db_artist = db.get_artist(artist.get_id())
             if db_artist is None:
+                print("Adding artist " + artist.get_id() + " to database")
                 db.add_artist(artist)
             else:
+                print("Artist found: ", artist.get_id())
                 artists[i] = db_artist
+        print("Saving album: ", album.get_id())
         album.save()
 
         for artist in album.get_artists():
+            print("Adding album " + album.get_id() + " to artist " + artist.get_id())
             artist.add_album(album)
+            print("Saving artist: ", artist.get_id())
             artist.save()
 
 
