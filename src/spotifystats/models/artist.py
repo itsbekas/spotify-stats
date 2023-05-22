@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 
 
 class Artist(NamedDocument):
-    popularity = IntField(required=True)
+    popularity = IntField(default=-1)
     genres = ListField(StringField())
     albums = ListField(ReferenceField("Album"))
     tracks = ListField(ReferenceField("Track"))
@@ -22,8 +22,8 @@ class Artist(NamedDocument):
 
     @classmethod
     def from_spotify_response(cls, response) -> Artist:
-        popularity = response["popularity"] if "popularity" in response else None
-        genres = response["genres"] if "genres" in response else None
+        popularity = response["popularity"] if "popularity" in response else -1
+        genres = response["genres"] if "genres" in response else []
 
         return cls(
             spotify_id=response["id"],

@@ -12,7 +12,7 @@ class NamedDocument(SpotifyStatsDocument):
 
     spotify_id = StringField(required=True)
     name = StringField(required=True)
-    last_retrieved = DateTimeField(default=None)
+    last_retrieved = DateTimeField(default=0)
 
     def get_id(self) -> str:
         return self.spotify_id

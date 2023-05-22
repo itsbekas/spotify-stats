@@ -22,7 +22,7 @@ from spotifystats.util.lists import (
 class Track(NamedDocument):
     album = ReferenceField("Album")
     artists = ListField(ReferenceField("Artist"))
-    popularity = IntField(required=True)
+    popularity = IntField(default=-1)
     plays = ListField(ReferenceField("Play"))
     rankings = ListField(ReferenceField("TrackRanking"))
 

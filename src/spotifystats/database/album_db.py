@@ -9,6 +9,7 @@ def add_album(album: alb.Album) -> None:
         artists = album.get_artists()
         # Add artist if it's not in the database, otherwise use the existing artist
         for i, artist in enumerate(artists):
+            print(artist)
             db_artist = db.get_artist(artist.get_id())
             if db_artist is None:
                 print("Adding artist " + artist.get_id() + " to database")
