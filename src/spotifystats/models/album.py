@@ -57,6 +57,9 @@ class Album(NamedDocument):
     def get_artists(self) -> List[art.Artist]:
         return NamedDocumentList(self.artists)
 
+    def set_artist(self, index: int, artist: art.Artist) -> None:
+        self.artists[index] = artist
+
     def get_tracks(self) -> List[trk.Track]:
         return NamedDocumentList(self.tracks)
 

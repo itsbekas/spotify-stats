@@ -5,6 +5,7 @@ from datetime import datetime
 from mongoengine.fields import DateTimeField, StringField
 
 from spotifystats.models.spotifystats_document import SpotifyStatsDocument
+from spotifystats.util.conversions import int_to_datetime
 
 
 class NamedDocument(SpotifyStatsDocument):
@@ -12,7 +13,7 @@ class NamedDocument(SpotifyStatsDocument):
 
     spotify_id = StringField(required=True)
     name = StringField(required=True)
-    last_retrieved = DateTimeField(default=0)
+    last_retrieved = DateTimeField(default=int_to_datetime(0))
 
     def get_id(self) -> str:
         return self.spotify_id

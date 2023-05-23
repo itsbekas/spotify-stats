@@ -21,7 +21,7 @@ class SpotifyStatsService:
 
     def update_rankings(self) -> None:
         for range_type in ["short_term", "medium_term", "long_term"]:
-            # self.update_artist_rankings(range_type)
+            self.update_artist_rankings(range_type)
             self.update_track_rankings(range_type)
 
     def update_artist_rankings(self, time_range: str) -> None:

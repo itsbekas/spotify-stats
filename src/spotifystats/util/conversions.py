@@ -12,3 +12,7 @@ def iso_to_datetime(iso_str: str) -> datetime:
 
 def datetime_to_int(dt: datetime) -> int:
     return floor(dt.timestamp() * 1000)
+
+
+def int_to_datetime(i: int) -> datetime:
+    return datetime.fromtimestamp(i / 1000)

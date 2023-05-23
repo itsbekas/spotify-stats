@@ -57,12 +57,13 @@ class Track(NamedDocument):
         return self.album
 
     def set_album(self, album: alb.Album) -> None:
-        # Check if track is part of the album
-        if self in album.get_tracks():
-            self.album = album
+        self.album = album
 
     def get_artists(self) -> art.Artist:
         return NamedDocumentList(self.artists)
+
+    def set_artist(self, index: int, artist: art.Artist) -> None:
+        self.artists[index] = artist
 
     def get_popularity(self) -> int:
         return self.popularity

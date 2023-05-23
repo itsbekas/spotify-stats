@@ -26,6 +26,7 @@ def start():
 
     while True:
         schedule.run_pending()
+        print("Finished")
         time.sleep(1)
 
 

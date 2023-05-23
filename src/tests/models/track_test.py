@@ -5,7 +5,7 @@ import spotifystats.models.artist as art
 import spotifystats.models.play as pl
 import spotifystats.models.track as trk
 import spotifystats.models.track_ranking as t_rnk
-from spotifystats.util.conversions import datetime_to_int
+from spotifystats.util.conversions import int_to_datetime
 
 
 def test_create_track_from_play_response(play_STEREOTYPE):
@@ -15,7 +15,7 @@ def test_create_track_from_play_response(play_STEREOTYPE):
     assert isinstance(track, trk.Track)
     assert track.get_id() == track_response["id"]
     assert track.get_name() == track_response["name"]
-    assert datetime_to_int(track.get_last_retrieved()) == 0
+    assert track.get_last_retrieved() == int_to_datetime(0)
     assert track.get_popularity() == track_response["popularity"]
     assert track.get_album().get_id() == track_response["album"]["id"]
     assert len(track.get_artists()) == len(track_response["artists"])
@@ -33,7 +33,7 @@ def test_create_track_from_track_response(track_STEREOTYPE):
     assert isinstance(track, trk.Track)
     assert track.get_id() == track_STEREOTYPE["id"]
     assert track.get_name() == track_STEREOTYPE["name"]
-    assert datetime_to_int(track.get_last_retrieved()) == 0
+    assert track.get_last_retrieved() == int_to_datetime(0)
     assert track.get_popularity() == track_STEREOTYPE["popularity"]
     assert track.get_album().get_id() == track_STEREOTYPE["album"]["id"]
     assert len(track.get_artists()) == len(track_STEREOTYPE["artists"])

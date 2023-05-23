@@ -1,7 +1,7 @@
 import spotifystats.models.album as alb
 import spotifystats.models.artist as art
 import spotifystats.models.track as trk
-from spotifystats.util.conversions import datetime_to_int
+from spotifystats.util.conversions import int_to_datetime
 
 
 def test_create_album_from_play_response(play_STEREOTYPE):
@@ -11,7 +11,7 @@ def test_create_album_from_play_response(play_STEREOTYPE):
     assert isinstance(album, alb.Album)
     assert album.get_id() == album_response["id"]
     assert album.get_name() == album_response["name"]
-    assert datetime_to_int(album.get_last_retrieved()) == 0
+    assert album.get_last_retrieved() == int_to_datetime(0)
     assert album.get_popularity() == -1
     assert album.get_genres() == []
     assert album.get_tracks() == []
@@ -28,7 +28,7 @@ def test_create_album_from_album_response(album_STEREOTYPE):
     assert isinstance(album, alb.Album)
     assert album.get_id() == album_response["id"]
     assert album.get_name() == album_response["name"]
-    assert datetime_to_int(album.get_last_retrieved()) == 0
+    assert album.get_last_retrieved() == int_to_datetime(0)
     assert album.get_popularity() == album_response["popularity"]
     assert album.get_genres() == album_response["genres"]
     assert len(album.get_tracks()) == len(album_response["tracks"])

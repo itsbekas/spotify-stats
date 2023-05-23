@@ -17,7 +17,7 @@ def add_artist_ranking(ranking: a_rnk.ArtistRanking) -> None:
         if db_artist is None:
             db.add_artist(artist)
         else:
-            artists[i] = db_artist
+            ranking.set_artist(i, db_artist)
 
     ranking.save()
 
@@ -31,13 +31,10 @@ def add_track_ranking(ranking: t_rnk.TrackRanking) -> None:
     for i, track in enumerate(tracks):
         db_track = db.get_track(track.get_id())
         if db_track is None:
-            print("Adding track: ", track.get_id())
             db.add_track(track)
         else:
-            print("Track found: ", track.get_id())
-            tracks[i] = db_track
+            ranking.set_track(i, db_track)
 
-    print("Saving ranking")
     ranking.save()
 
     for track in ranking.get_tracks():

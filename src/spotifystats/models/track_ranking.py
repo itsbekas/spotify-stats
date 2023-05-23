@@ -28,3 +28,6 @@ class TrackRanking(Ranking):
 
     def get_tracks(self) -> List[trk.Track]:
         return NamedDocumentList(self.tracks)
+
+    def set_track(self, index: int, track: trk.Track) -> None:
+        self.tracks[index] = track

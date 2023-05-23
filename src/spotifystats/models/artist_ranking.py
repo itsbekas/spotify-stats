@@ -28,3 +28,6 @@ class ArtistRanking(Ranking):
 
     def get_artists(self) -> List[art.Artist]:
         return NamedDocumentList(self.artists)
+
+    def set_artist(self, index: int, artist: art.Artist) -> None:
+        self.artists[index] = artist

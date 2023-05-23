@@ -8,7 +8,7 @@ from spotifystats.models.spotifystats_document import SpotifyStatsDocument
 
 
 class DatedDocument(SpotifyStatsDocument):
-    timestamp = DateTimeField(required=True, default=datetime.utcfromtimestamp(0))
+    timestamp = DateTimeField(required=True)
     meta = {
         "allow_inheritance": True,
         "indexes": ["timestamp"],
