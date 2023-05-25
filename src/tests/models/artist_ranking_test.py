@@ -1,12 +1,11 @@
 import spotifystats.models.artist_ranking as a_rnk
-from spotifystats.util import iso_to_datetime
 
 
 def test_create_artist_ranking_from_response(ranking_artist_long):
     ranking = a_rnk.ArtistRanking.from_spotify_response(ranking_artist_long)
 
     assert isinstance(ranking, a_rnk.ArtistRanking)
-    assert ranking.get_timestamp() == iso_to_datetime(ranking_artist_long["timestamp"])
+    assert ranking.get_timestamp() == ranking_artist_long["timestamp"]
     assert ranking.get_time_range() == "long_term"
     assert len(ranking.get_artists()) == 50
 

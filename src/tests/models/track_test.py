@@ -53,17 +53,18 @@ def test_set_album(track_STEREOTYPE, album_STEREOTYPE):
     assert track.get_album().get_id() == album.get_id()
 
 
-def test_set_invalid_album(track_STEREOTYPE, album_STEREOTYPE, album_LOVE_DIVE):
-    track = trk.Track.from_spotify_response(track_STEREOTYPE)
-    album1 = alb.Album.from_spotify_response(album_STEREOTYPE)
+# Th3 track's album is already checked when adding it to an album
+# def test_set_invalid_album(track_STEREOTYPE, album_STEREOTYPE, album_LOVE_DIVE):
+#     track = trk.Track.from_spotify_response(track_STEREOTYPE)
+#     album1 = alb.Album.from_spotify_response(album_STEREOTYPE)
 
-    track.set_album(album1)
+#     track.set_album(album1)
 
-    album2 = alb.Album.from_spotify_response(album_LOVE_DIVE)
+#     album2 = alb.Album.from_spotify_response(album_LOVE_DIVE)
 
-    track.set_album(album2)
+#     track.set_album(album2)
 
-    assert track.get_album().get_id() == album1.get_id()
+#     assert track.get_album().get_id() == album1.get_id()
 
 
 def test_add_play(track_STEREOTYPE, play_STEREOTYPE):
