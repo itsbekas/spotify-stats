@@ -1,4 +1,5 @@
 from datetime import datetime
+from os import environ
 
 import spotifystats.database as db
 import spotifystats.models.artist_ranking as a_rnk
@@ -12,12 +13,17 @@ class SpotifyStatsService:
 
     def __init__(self):
         self.api = SpotifyAPI()
-        db.connect("spotify-stats")
+
+        mongodb_uri = environ.get("SPOTIFYSTATS_MONGODB_URI")
+        if mongodb_uri is None:
+            raise ValueError("SPOTIFYSTATS_MONGODB_URI is not set")
+        db.connect(host=mongodb_uri)
 
     def update(self) -> None:
         self.timestamp = datetime.now()
         self.update_rankings()
         self.update_history()
+        print("Finished updating:", self.timestamp)
 
     def update_rankings(self) -> None:
         for range_type in ["short_term", "medium_term", "long_term"]:
