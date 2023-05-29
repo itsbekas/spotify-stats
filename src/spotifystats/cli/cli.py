@@ -13,7 +13,7 @@ def cli():
 
 
 # Create a click command
-@cli.command()
+@cli.command("start")
 def start():
     """Start the Spotify Stats CLI."""
     click.echo("Starting Spotify Stats CLI...")
@@ -27,6 +27,13 @@ def start():
     while True:
         schedule.run_pending()
         time.sleep(1)
+
+
+@cli.command("import")
+@click.argument("file_path")
+def import_history(file_path):
+    """Import data from a file."""
+    click.echo(f"Importing data from {file_path}...")
 
 
 if __name__ == "__main__":
