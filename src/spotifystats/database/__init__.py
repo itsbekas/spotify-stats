@@ -1,4 +1,4 @@
-from mongoengine import connect
+from mongoengine import connect, disconnect
 
 from spotifystats.database.album_db import add_album, get_album
 from spotifystats.database.artist_db import add_artist, get_artist
@@ -8,6 +8,7 @@ from spotifystats.database.track_db import add_track, get_track
 
 __all__ = [
     "connect",
+    "disconnect",
     "add_album",
     "get_album",
     "add_artist",

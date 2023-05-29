@@ -22,5 +22,14 @@ def add_album(album: alb.Album) -> None:
             artist.save()
 
 
-def get_album(spotify_id: str) -> alb.Album:
-    return alb.Album.objects(spotify_id=spotify_id).first()
+def get_album(spotify_id: None | str = None, name: None | str = None) -> alb.Album:
+    query = {}
+    if spotify_id:
+        query["spotify_id"] = spotify_id
+    if name:
+        query["name"] = name
+
+    if query == {}:
+        raise ValueError("At least one argument must be provided.")
+
+    return alb.Album.objects(**query).first()

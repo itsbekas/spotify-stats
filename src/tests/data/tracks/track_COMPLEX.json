@@ -1,1 +1,21 @@
-{"id": "1JWtIj2hmFjGucIlC7zfAe", "name": "COMPLEX", "popularity": 49, "album": {"id": "7HGjNJBj1NQGNwCzFD2LHj", "name": "STEREOTYPE", "artists": [{"id": "01XYiBYaoMJcNhPokrg0l0", "name": "STAYC"}]}, "artists": [{"id": "01XYiBYaoMJcNhPokrg0l0", "name": "STAYC"}]}
+{
+    "id": "1JWtIj2hmFjGucIlC7zfAe",
+    "name": "COMPLEX",
+    "popularity": 49,
+    "album": {
+        "id": "7HGjNJBj1NQGNwCzFD2LHj",
+        "name": "STEREOTYPE",
+        "artists": [
+            {
+                "id": "01XYiBYaoMJcNhPokrg0l0",
+                "name": "STAYC"
+            }
+        ]
+    },
+    "artists": [
+        {
+            "id": "01XYiBYaoMJcNhPokrg0l0",
+            "name": "STAYC"
+        }
+    ]
+}

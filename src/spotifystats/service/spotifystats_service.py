@@ -14,10 +14,19 @@ class SpotifyStatsService:
     def __init__(self):
         self.api = SpotifyAPI()
 
+        mongodb_name = environ.get("SPOTIFYSTATS_MONGODB_DB_NAME")
+        if mongodb_name is None:
+            raise ValueError("SPOTIFYSTATS_MONGODB_DB_NAME is not set")
+
         mongodb_uri = environ.get("SPOTIFYSTATS_MONGODB_URI")
         if mongodb_uri is None:
             raise ValueError("SPOTIFYSTATS_MONGODB_URI is not set")
-        db.connect(host=mongodb_uri)
+
+        db.connect(
+            name=mongodb_name,
+            host=mongodb_uri,
+            uuidRepresentation="standard",
+        )
 
     def update(self) -> None:
         self.timestamp = datetime.now()
