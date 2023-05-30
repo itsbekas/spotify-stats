@@ -10,7 +10,7 @@ from spotifystats.models.spotifystats_document import SpotifyStatsDocument
 class DatedDocument(SpotifyStatsDocument):
     timestamp = DateTimeField(required=True)
     meta = {
-        "allow_inheritance": True,
+        "abstract": True,
         "indexes": ["timestamp"],
         "ordering": ["-timestamp"],
     }

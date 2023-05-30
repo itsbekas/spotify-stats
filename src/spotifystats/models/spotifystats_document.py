@@ -4,7 +4,7 @@ from mongoengine import Document
 
 
 class SpotifyStatsDocument(Document):
-    meta = {"allow_inheritance": True}
+    meta = {"abstract": True}
 
     # inline
     def __str__(self) -> str:

@@ -6,7 +6,7 @@ from spotifystats.models.dated_document import DatedDocument
 
 
 class Ranking(DatedDocument):
-    meta = {"allow_inheritance": True}
+    meta = {"abstract": True}
 
     SHORT = "short_term"
     MEDIUM = "medium_term"

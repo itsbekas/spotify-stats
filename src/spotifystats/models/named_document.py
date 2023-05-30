@@ -9,7 +9,7 @@ from spotifystats.util.conversions import int_to_datetime
 
 
 class NamedDocument(SpotifyStatsDocument):
-    meta = {"allow_inheritance": True, "indexes": ["spotify_id"]}
+    meta = {"abstract": True, "indexes": ["spotify_id"]}
 
     spotify_id = StringField(required=True)
     name = StringField(required=True)
