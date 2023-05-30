@@ -33,11 +33,7 @@ def test_get_album(album_LOVE_DIVE):
     assert db.get_album(spotify_id=album.get_id(), name=album.get_name()) == album
 
 
-def test_get_album_no_args(album_LOVE_DIVE):
-    album = alb.Album.from_spotify_response(album_LOVE_DIVE)
-
-    db.add_album(album)
-
+def test_get_album_no_args():
     with pytest.raises(ValueError):
         db.get_album()
 

@@ -16,11 +16,12 @@ def add_track(track: trk.Track) -> None:
 
         # Add the album to the database if it doesn't exist yet
         album = track.get_album()
-        db_album = db.get_album(album.get_id())
-        if db_album is None:
-            db.add_album(album)
-        else:
-            track.set_album(db_album)
+        if album is not None:
+            db_album = db.get_album(album.get_id())
+            if db_album is None:
+                db.add_album(album)
+            else:
+                track.set_album(db_album)
 
         track.save()
 
@@ -29,9 +30,21 @@ def add_track(track: trk.Track) -> None:
             artist.save()
 
         album = track.get_album()
-        album.add_track(track)
-        album.save()
+        if album is not None:
+            album.add_track(track)
+            album.save()
 
 
-def get_track(spotify_id: str) -> trk.Track:
-    return trk.Track.objects(spotify_id=spotify_id).first()
+def get_track(
+    spotify_id: None | str = None, name: None | str = None
+) -> None | trk.Track:
+    query = {}
+    if spotify_id:
+        query["spotify_id"] = spotify_id
+    if name:
+        query["name"] = name
+
+    if query == {}:
+        raise ValueError("At least one argument must be provided.")
+
+    return trk.Track.objects(**query).first()

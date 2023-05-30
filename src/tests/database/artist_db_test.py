@@ -33,11 +33,7 @@ def test_get_artist(artist_STAYC):
     assert db.get_artist(spotify_id=artist.get_id(), name=artist.get_name()) == artist
 
 
-def test_get_artist_no_args(artist_STAYC):
-    artist = art.Artist.from_spotify_response(artist_STAYC)
-
-    db.add_artist(artist)
-
+def test_get_artist_no_args():
     with pytest.raises(ValueError):
         db.get_artist()
 

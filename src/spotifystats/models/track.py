@@ -25,6 +25,7 @@ class Track(NamedDocument):
     popularity = IntField(default=-1)
     plays = ListField(ReferenceField("Play"))
     rankings = ListField(ReferenceField("TrackRanking"))
+    meta = {"collection": "tracks"}
 
     @classmethod
     def from_spotify_response(cls, response) -> Track:

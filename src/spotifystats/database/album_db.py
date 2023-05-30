@@ -15,11 +15,23 @@ def add_album(album: alb.Album) -> None:
             else:
                 album.set_artist(i, db_artist)
 
+        tracks = album.get_tracks()
+        for i, track in enumerate(tracks):
+            db_track = db.get_track(track.get_id())
+            if db_track is None:
+                db.add_track(track)
+            else:
+                album.set_track(i, db_track)
+
         album.save()
 
         for artist in album.get_artists():
             artist.add_album(album)
             artist.save()
+
+        for track in album.get_tracks():
+            track.set_album(album)
+            track.save()
 
 
 def get_album(spotify_id: None | str = None, name: None | str = None) -> alb.Album:

@@ -19,6 +19,7 @@ class Artist(NamedDocument):
     albums = ListField(ReferenceField("Album"))
     tracks = ListField(ReferenceField("Track"))
     rankings = ListField(ReferenceField("ArtistRanking"))
+    meta = {"collection": "artists"}
 
     @classmethod
     def from_spotify_response(cls, response) -> Artist:

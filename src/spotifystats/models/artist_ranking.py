@@ -11,6 +11,7 @@ from spotifystats.util.lists import NamedDocumentList
 
 class ArtistRanking(Ranking):
     artists = ListField(ReferenceField("Artist"))
+    meta = {"collection": "artist_rankings"}
 
     @classmethod
     def from_spotify_response(cls, rank_dict: Dict[str, Any]) -> ArtistRanking:

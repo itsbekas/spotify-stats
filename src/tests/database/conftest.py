@@ -2,9 +2,14 @@ from os import environ
 
 import pytest
 from dotenv import load_dotenv
-from mongoengine.connection import get_db
 
 import spotifystats.database as db
+import spotifystats.models.album as alb
+import spotifystats.models.artist as art
+import spotifystats.models.artist_ranking as a_rnk
+import spotifystats.models.play as play
+import spotifystats.models.track as trk
+import spotifystats.models.track_ranking as t_rnk
 
 
 @pytest.fixture(scope="package")
@@ -34,6 +39,10 @@ def clear_db(mongo):
     mongodb_name = environ.get("SPOTIFYSTATS_MONGODB_DB_NAME")
     if mongodb_name is None:
         raise ValueError("SPOTIFYSTATS_MONGODB_DB_NAME is not set")
-    # clear the database using mongoengine
-    get_db().connection.drop_database(mongodb_name + "-test")
     yield
+    alb.Album.drop_collection()
+    art.Artist.drop_collection()
+    a_rnk.ArtistRanking.drop_collection()
+    play.Play.drop_collection()
+    trk.Track.drop_collection()
+    t_rnk.TrackRanking.drop_collection()

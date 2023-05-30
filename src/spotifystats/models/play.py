@@ -9,6 +9,7 @@ from spotifystats.models.dated_document import DatedDocument
 
 class Play(DatedDocument):
     track = ReferenceField("Track")
+    meta = {"collection": "plays"}
 
     @classmethod
     def from_spotify_response(cls, response) -> Play:
