@@ -28,5 +28,9 @@ jobs:
           pip install -r requirements.txt -e .
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@1.9.0
+      - name: Set up environment variables
+        env:
+          SPOTIFYSTATS_MONGODB_DB_NAME: spotify-stats
+          SPOTIFYSTATS_MONGODB_URI: mongodb://localhost:27017/
       - name: Run tests
         run: pytest
