@@ -10,7 +10,7 @@ from spotifystats.util.lists import NamedDocumentList
 
 
 class TrackRanking(Ranking):
-    tracks = ListField(ReferenceField("Track"))
+    tracks: List[trk.Track] = ListField(ReferenceField("Track"))
     meta = {"collection": "track_rankings"}
 
     @classmethod

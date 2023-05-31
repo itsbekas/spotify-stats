@@ -14,11 +14,11 @@ if TYPE_CHECKING:
 
 
 class Artist(NamedDocument):
-    popularity = IntField(default=-1)
-    genres = ListField(StringField())
-    albums = ListField(ReferenceField("Album"))
-    tracks = ListField(ReferenceField("Track"))
-    rankings = ListField(ReferenceField("ArtistRanking"))
+    popularity: int = IntField(default=-1)
+    genres: List[str] = ListField(StringField())
+    albums: List[alb.Album] = ListField(ReferenceField("Album"))
+    tracks: List[trk.Track] = ListField(ReferenceField("Track"))
+    rankings: List[a_rnk.ArtistRanking] = ListField(ReferenceField("ArtistRanking"))
     meta = {"collection": "artists"}
 
     @classmethod

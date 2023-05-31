@@ -8,7 +8,7 @@ from spotifystats.models.dated_document import DatedDocument
 
 
 class Play(DatedDocument):
-    track = ReferenceField("Track")
+    track: trk.Track = ReferenceField("Track")
     meta = {"collection": "plays"}
 
     @classmethod

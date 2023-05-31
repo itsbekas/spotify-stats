@@ -20,11 +20,11 @@ from spotifystats.util.lists import (
 
 
 class Track(NamedDocument):
-    album = ReferenceField("Album")
-    artists = ListField(ReferenceField("Artist"))
-    popularity = IntField(default=-1)
-    plays = ListField(ReferenceField("Play"))
-    rankings = ListField(ReferenceField("TrackRanking"))
+    album: alb.Album = ReferenceField("Album")
+    artists: List[art.Artist] = ListField(ReferenceField("Artist"))
+    popularity: int = IntField(default=-1)
+    plays: List(pl.Play) = ListField(ReferenceField("Play"))
+    rankings: List[t_rnk.TrackRanking] = ListField(ReferenceField("TrackRanking"))
     meta = {"collection": "tracks"}
 
     @classmethod
@@ -60,7 +60,7 @@ class Track(NamedDocument):
     def set_album(self, album: alb.Album) -> None:
         self.album = album
 
-    def get_artists(self) -> art.Artist:
+    def get_artists(self) -> List[art.Artist]:
         return NamedDocumentList(self.artists)
 
     def set_artist(self, index: int, artist: art.Artist) -> None:

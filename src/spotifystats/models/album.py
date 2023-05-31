@@ -11,10 +11,10 @@ from spotifystats.util.lists import NamedDocumentList
 
 
 class Album(NamedDocument):
-    popularity = IntField(default=-1)
-    genres = ListField(StringField())
-    artists = ListField(ReferenceField("Artist"))
-    tracks = ListField(ReferenceField("Track"))
+    popularity: int = IntField(default=-1)
+    genres: List[str] = ListField(StringField())
+    artists: List[art.Artist] = ListField(ReferenceField("Artist"))
+    tracks: List[trk.Track] = ListField(ReferenceField("Track"))
     meta = {"collection": "albums"}
 
     @classmethod

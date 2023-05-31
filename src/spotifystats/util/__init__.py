@@ -4,6 +4,7 @@ from spotifystats.util.lists import (
     PlayDocumentList,
     RankingDocumentList,
 )
+from spotifystats.util.setup import setup
 
 __all__ = [
     "iso_to_datetime",
@@ -11,4 +12,5 @@ __all__ = [
     "NamedDocumentList",
     "PlayDocumentList",
     "RankingDocumentList",
+    "setup",
 ]
