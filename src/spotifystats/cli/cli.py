@@ -3,6 +3,7 @@ import time
 import click
 import schedule
 
+from spotifystats.service.import_history import import_streaming_history
 from spotifystats.service.spotifystats_service import SpotifyStatsService
 
 
@@ -30,10 +31,11 @@ def start():
 
 
 @cli.command("import")
-@click.argument("file_path")
-def import_history(file_path):
+@click.argument("directory")
+def import_history(directory):
     """Import data from a file."""
-    click.echo(f"Importing data from {file_path}...")
+    click.echo(f"Importing streaming history from {directory}...")
+    import_streaming_history(directory)
 
 
 if __name__ == "__main__":
