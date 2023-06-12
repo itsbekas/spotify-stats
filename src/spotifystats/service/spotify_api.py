@@ -54,9 +54,24 @@ class SpotifyAPI:
 
         return result.get("items", []) if result else {}
 
-    def find_track(self, track: str, artist: str) -> Dict[str, Any] | None:
+    def search_track(self, track: str, artist: str) -> Dict[str, Any] | None:
+
+        query = f"track:{track} artist:{artist}"
+
         result = self._sp.search(
-            q=f"track:{track} artist:{artist}", limit=1, type="track"
+            q=query, limit=1, type="track"
         )
 
-        return result.get("tracks", {}).get("items", []) if result else {}
+        return {
+            "track": result.get("tracks", {}).get("items", []),
+            "next": result.get("tracks", {}).get("next")
+        }
+
+    
+    def get_next(self, result) -> Dict[str, Any] | None:
+        result = self._sp.next(result)
+
+        return {
+            "track": result.get("tracks", {}).get("items", []),
+            "next": result.get("tracks", {}).get("next")
+        }

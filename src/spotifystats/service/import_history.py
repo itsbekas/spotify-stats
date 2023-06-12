@@ -7,6 +7,41 @@ from spotifystats.service.spotify_api import SpotifyAPI
 from spotifystats.service.spotifystats_service import SpotifyStatsService
 
 
+def verify_track(response, track, artist):
+
+    if response["track"][0]["name"].lower() != track.lower():
+        print(f"Found {response['name']} instead of {track}")
+        return False
+    
+    if response["track"][0]["artists"][0]["name"].lower() != artist.lower():
+        print(f"Found {response['artists'][0]['name']} instead of {artist}")
+        return False
+    
+    return True
+
+
+def try_alternatives(api, track, artist):
+    track = track.replace("'", "")
+    response = api.search_track(track, artist)
+
+    if response["track"] != []:
+        return response
+
+def import_track(api, track, artist):
+    response = api.search_track(track, artist)
+
+    if response["track"] == []:
+        print(f"Could not find {track} by {artist}.")
+        response = try_alternatives(api, track, artist)
+        if response is None:
+            return None
+    
+    while not verify_track(response, track, artist):
+        response = api.get_next(response)
+
+    return response
+
+
 def parse_streaming_history(directory: str):
     files = glob.glob(f"{directory}/StreamingHistory*.json")
 
@@ -30,34 +65,37 @@ def parse_streaming_history(directory: str):
     return results
 
 
+def get_unique_tracks(history) -> dict:
+    unique = {}
+    for play in history:
+        artist = play["artistName"]
+        track = play["trackName"]
+        if artist not in unique:
+            unique[artist] = {}
+        if track not in unique[artist]:
+            unique[artist][track] = None
+    return unique
+
+
 def get_tracks_from_history(history):
     api = SpotifyAPI()
     # little hack to connect to the database
     SpotifyStatsService()
 
-    # count tracks to be found
-    test = []
-    for play in history:
-        id = play["artistName"] + play["trackName"]
-        if id not in test:
-            test.append(id)
-    print(f"{len(test)} tracks to be found.")
+    tracks = get_unique_tracks(history)
 
-    # do something
-    tracks = {}
+    unique_count = len([track for artist in tracks for track in tracks[artist]])
+    print(f"Found {unique_count} unique tracks")
+
     count = 0
-    for play in history:
-        artist = play["artistName"]
-        track = play["trackName"]
-        if artist not in tracks:
-            tracks[artist] = {}
-        if track not in tracks[artist]:
-            tracks[artist][track] = api.find_track(track, artist)
-            if count == 44:
-                print(artist, track)
+    for artist in tracks:
+        for track in tracks[artist]:
+            response = import_track(api, track, artist)
+            if response is None:
+                raise Exception(f"Could not find track {track} by {artist}")
+
+            tracks[artist][track] = response
             count += 1
-            if count % 100 == 0:
-                print(f"{count} tracks found.")
 
     print(f"{count} tracks found.")
 
@@ -72,7 +110,7 @@ def save_streaming_history(results):
 
 def import_streaming_history(directory: str = "MyData"):
     print("This might take a while...")
-    history = parse_streaming_history(directory)
+    history = parse_streaming_history(directory)[:200]
     if history is None:
         return
 
@@ -83,4 +121,4 @@ def import_streaming_history(directory: str = "MyData"):
 
     save_streaming_history(history)
 
-    print(f"Finished! Imported {len(history)} plays with {len(tracks)} tracks.")
+    print(f"Finished! Imported {len(history)} plays with {len(tracks)} tracks")
