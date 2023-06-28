@@ -8,15 +8,14 @@ from spotifystats.service.spotifystats_service import SpotifyStatsService
 
 
 def verify_track(response, track, artist):
-
     if response["track"][0]["name"].lower() != track.lower():
         print(f"Found {response['name']} instead of {track}")
         return False
-    
+
     if response["track"][0]["artists"][0]["name"].lower() != artist.lower():
         print(f"Found {response['artists'][0]['name']} instead of {artist}")
         return False
-    
+
     return True
 
 
@@ -27,6 +26,7 @@ def try_alternatives(api, track, artist):
     if response["track"] != []:
         return response
 
+
 def import_track(api, track, artist):
     response = api.search_track(track, artist)
 
@@ -35,7 +35,7 @@ def import_track(api, track, artist):
         response = try_alternatives(api, track, artist)
         if response is None:
             return None
-    
+
     while not verify_track(response, track, artist):
         response = api.get_next(response)
 
