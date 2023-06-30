@@ -2,10 +2,9 @@ from __future__ import annotations
 
 from typing import List
 
-from mongoengine.fields import IntField, ListField, ReferenceField, StringField
-
 import spotifystats.models.artist as art
 import spotifystats.models.track as trk
+from mongoengine.fields import IntField, ListField, ReferenceField, StringField
 from spotifystats.models.named_document import NamedDocument
 from spotifystats.util.lists import NamedDocumentList
 

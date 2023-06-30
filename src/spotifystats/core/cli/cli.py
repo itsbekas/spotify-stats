@@ -2,7 +2,6 @@ import time
 
 import click
 import schedule
-
 from spotifystats.service.import_history import import_streaming_history
 from spotifystats.service.spotifystats_service import SpotifyStatsService
 

@@ -1,5 +1,4 @@
 from mongoengine import connect, disconnect
-
 from spotifystats.database.album_db import add_album, get_album
 from spotifystats.database.artist_db import add_artist, get_artist
 from spotifystats.database.play_db import add_play, get_latest_timestamp, get_play

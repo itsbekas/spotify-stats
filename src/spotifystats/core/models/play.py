@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-from mongoengine.fields import ReferenceField
-
 import spotifystats.models.track as trk
 import spotifystats.util as util
+from mongoengine.fields import ReferenceField
 from spotifystats.models.dated_document import DatedDocument
 
 
