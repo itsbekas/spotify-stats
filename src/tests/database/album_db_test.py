@@ -1,7 +1,7 @@
 import pytest
 
-import spotifystats.database as db
-import spotifystats.models.album as alb
+import spotifystats.core.database as db
+import spotifystats.core.models.album as alb
 
 
 def test_add_album(album_LOVE_DIVE):

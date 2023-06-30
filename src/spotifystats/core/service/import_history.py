@@ -1,10 +1,10 @@
 import glob
 import json
 
-import spotifystats.database as db
-import spotifystats.models.play as pl
-from spotifystats.service.spotify_api import SpotifyAPI
-from spotifystats.service.spotifystats_service import SpotifyStatsService
+import spotifystats.core.database as db
+import spotifystats.core.models.play as pl
+from spotifystats.core.service.spotify_api import SpotifyAPI
+from spotifystats.core.service.spotifystats_service import SpotifyStatsService
 
 
 def verify_track(response, track, artist):

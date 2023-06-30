@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-import spotifystats.database as db
+import spotifystats.core.database as db
 
 if TYPE_CHECKING:
-    import spotifystats.models.artist_ranking as a_rnk
-    import spotifystats.models.track_ranking as t_rnk
+    import spotifystats.core.models.artist_ranking as a_rnk
+    import spotifystats.core.models.track_ranking as t_rnk
 
 
 def add_artist_ranking(ranking: a_rnk.ArtistRanking) -> None:

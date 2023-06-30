@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-import spotifystats.models.track as trk
-import spotifystats.util as util
 from mongoengine.fields import ReferenceField
-from spotifystats.models.dated_document import DatedDocument
+
+import spotifystats.core.models.track as trk
+import spotifystats.core.util as util
+from spotifystats.core.models.dated_document import DatedDocument
 
 
 class Play(DatedDocument):

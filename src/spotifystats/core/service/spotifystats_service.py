@@ -1,11 +1,11 @@
 from datetime import datetime
 from os import environ
 
-import spotifystats.database as db
-import spotifystats.models.artist_ranking as a_rnk
-import spotifystats.models.play as pl
-import spotifystats.models.track_ranking as t_rnk
-from spotifystats.service.spotify_api import SpotifyAPI
+import spotifystats.core.database as db
+import spotifystats.core.models.artist_ranking as a_rnk
+import spotifystats.core.models.play as pl
+import spotifystats.core.models.track_ranking as t_rnk
+from spotifystats.core.service.spotify_api import SpotifyAPI
 
 
 class SpotifyStatsService:

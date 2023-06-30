@@ -1,7 +1,7 @@
-import spotifystats.models.album as alb
-import spotifystats.models.artist as art
-import spotifystats.models.track as trk
-from spotifystats.util.conversions import int_to_datetime
+import spotifystats.core.models.album as alb
+import spotifystats.core.models.artist as art
+import spotifystats.core.models.track as trk
+from spotifystats.core.util.conversions import int_to_datetime
 
 
 def test_create_album_from_play_response(play_STEREOTYPE):

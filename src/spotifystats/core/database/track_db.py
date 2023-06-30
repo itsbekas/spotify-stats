@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import spotifystats.database as db
-import spotifystats.models.track as trk
+import spotifystats.core.database as db
+import spotifystats.core.models.track as trk
 
 
 def add_track(track: trk.Track) -> None:

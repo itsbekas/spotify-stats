@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import spotifystats.database as db
-import spotifystats.models.album as alb
+import spotifystats.core.database as db
+import spotifystats.core.models.album as alb
 
 
 def add_album(album: alb.Album) -> None:

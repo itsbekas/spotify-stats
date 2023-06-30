@@ -1,7 +1,8 @@
 from datetime import datetime
 
 from mongoengine import DateTimeField, Document
-from spotifystats.util.conversions import int_to_datetime
+
+from spotifystats.core.util.conversions import int_to_datetime
 
 
 class Config(Document):

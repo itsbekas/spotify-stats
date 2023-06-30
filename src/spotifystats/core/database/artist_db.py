@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import spotifystats.models.artist as art
+import spotifystats.core.models.artist as art
 
 
 def add_artist(artist: art.Artist) -> None:

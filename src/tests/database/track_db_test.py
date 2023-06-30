@@ -1,7 +1,7 @@
 import pytest
 
-import spotifystats.database as db
-import spotifystats.models.track as trk
+import spotifystats.core.database as db
+import spotifystats.core.models.track as trk
 
 
 def test_add_track(track_STEREOTYPE):

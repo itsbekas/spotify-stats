@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
-import spotifystats.models.artist as art
 from mongoengine.fields import ListField, ReferenceField
-from spotifystats.models.ranking import Ranking
-from spotifystats.util.lists import NamedDocumentList
+
+import spotifystats.core.models.artist as art
+from spotifystats.core.models.ranking import Ranking
+from spotifystats.core.util.lists import NamedDocumentList
 
 
 class ArtistRanking(Ranking):

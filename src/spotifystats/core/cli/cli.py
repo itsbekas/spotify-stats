@@ -2,8 +2,9 @@ import time
 
 import click
 import schedule
-from spotifystats.service.import_history import import_streaming_history
-from spotifystats.service.spotifystats_service import SpotifyStatsService
+
+from spotifystats.core.service.import_history import import_streaming_history
+from spotifystats.core.service.spotifystats_service import SpotifyStatsService
 
 
 # Create a click group

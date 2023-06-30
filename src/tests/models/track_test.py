@@ -1,11 +1,11 @@
 from datetime import timedelta
 
-import spotifystats.models.album as alb
-import spotifystats.models.artist as art
-import spotifystats.models.play as pl
-import spotifystats.models.track as trk
-import spotifystats.models.track_ranking as t_rnk
-from spotifystats.util.conversions import int_to_datetime
+import spotifystats.core.models.album as alb
+import spotifystats.core.models.artist as art
+import spotifystats.core.models.play as pl
+import spotifystats.core.models.track as trk
+import spotifystats.core.models.track_ranking as t_rnk
+from spotifystats.core.util.conversions import int_to_datetime
 
 
 def test_create_track_from_play_response(play_STEREOTYPE):

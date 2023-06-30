@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import datetime as dt
 
-import spotifystats.database as db
-import spotifystats.models.play as pl
+import spotifystats.core.database as db
+import spotifystats.core.models.play as pl
 
 
 def add_play(play: pl.Play) -> None:

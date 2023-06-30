@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from spotifystats.models.config import Config
+from spotifystats.core.models.config import Config
 
 
 def get_config() -> Config:

@@ -1,4 +1,4 @@
-import spotifystats.models.artist_ranking as a_rnk
+import spotifystats.core.models.artist_ranking as a_rnk
 
 
 def test_create_artist_ranking_from_response(ranking_artist_long):

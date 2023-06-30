@@ -3,13 +3,14 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, List
 
 from mongoengine.fields import IntField, ListField, ReferenceField, StringField
-from spotifystats.models.named_document import NamedDocument
-from spotifystats.util.lists import NamedDocumentList, RankingDocumentList
+
+from spotifystats.core.models.named_document import NamedDocument
+from spotifystats.core.util.lists import NamedDocumentList, RankingDocumentList
 
 if TYPE_CHECKING:
-    import spotifystats.models.album as alb
-    import spotifystats.models.artist_ranking as a_rnk
-    import spotifystats.models.track as trk
+    import spotifystats.core.models.album as alb
+    import spotifystats.core.models.artist_ranking as a_rnk
+    import spotifystats.core.models.track as trk
 
 
 class Artist(NamedDocument):

@@ -3,13 +3,13 @@ from os import environ
 import pytest
 from dotenv import load_dotenv
 
-import spotifystats.database as db
-import spotifystats.models.album as alb
-import spotifystats.models.artist as art
-import spotifystats.models.artist_ranking as a_rnk
-import spotifystats.models.play as play
-import spotifystats.models.track as trk
-import spotifystats.models.track_ranking as t_rnk
+import spotifystats.core.database as db
+import spotifystats.core.models.album as alb
+import spotifystats.core.models.artist as art
+import spotifystats.core.models.artist_ranking as a_rnk
+import spotifystats.core.models.play as play
+import spotifystats.core.models.track as trk
+import spotifystats.core.models.track_ranking as t_rnk
 
 
 @pytest.fixture(scope="package")

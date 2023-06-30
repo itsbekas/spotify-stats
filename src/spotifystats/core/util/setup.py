@@ -1,6 +1,6 @@
 from os import environ
 
-import spotifystats.database as db
+import spotifystats.core.database as db
 
 
 def setup() -> None:

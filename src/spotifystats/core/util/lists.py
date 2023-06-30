@@ -3,9 +3,9 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    import spotifystats.models.play as pl
-    import spotifystats.models.ranking as rnk
-    from spotifystats.models.named_document import NamedDocument
+    import spotifystats.core.models.play as pl
+    import spotifystats.core.models.ranking as rnk
+    from spotifystats.core.models.named_document import NamedDocument
 
 
 class NamedDocumentList(list):

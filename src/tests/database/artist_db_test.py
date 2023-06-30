@@ -1,7 +1,7 @@
 import pytest
 
-import spotifystats.database as db
-import spotifystats.models.artist as art
+import spotifystats.core.database as db
+import spotifystats.core.models.artist as art
 
 
 def test_add_artist(artist_STAYC):

@@ -2,11 +2,12 @@ from datetime import datetime
 from os import environ
 from typing import Any, Dict
 
-import spotifystats.util as util
 from dotenv import load_dotenv
 from spotipy import Spotify
 from spotipy.cache_handler import CacheFileHandler
 from spotipy.oauth2 import SpotifyPKCE
+
+import spotifystats.core.util as util
 
 
 class SpotifyAPI:

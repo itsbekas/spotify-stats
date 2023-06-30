@@ -1,6 +1,6 @@
-import spotifystats.models.play as pl
-import spotifystats.models.track as trk
-import spotifystats.util as util
+import spotifystats.core.models.play as pl
+import spotifystats.core.models.track as trk
+import spotifystats.core.util as util
 
 
 def test_create_play_from_response(play_STEREOTYPE):

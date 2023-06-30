@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
-import spotifystats.models.track as trk
 from mongoengine.fields import ListField, ReferenceField
-from spotifystats.models.ranking import Ranking
-from spotifystats.util.lists import NamedDocumentList
+
+import spotifystats.core.models.track as trk
+from spotifystats.core.models.ranking import Ranking
+from spotifystats.core.util.lists import NamedDocumentList
 
 
 class TrackRanking(Ranking):

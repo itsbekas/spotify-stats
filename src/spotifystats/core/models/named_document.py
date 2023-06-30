@@ -3,8 +3,9 @@ from __future__ import annotations
 from datetime import datetime
 
 from mongoengine.fields import DateTimeField, StringField
-from spotifystats.models.spotifystats_document import SpotifyStatsDocument
-from spotifystats.util.conversions import int_to_datetime
+
+from spotifystats.core.models.spotifystats_document import SpotifyStatsDocument
+from spotifystats.core.util.conversions import int_to_datetime
 
 
 class NamedDocument(SpotifyStatsDocument):

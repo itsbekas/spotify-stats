@@ -2,11 +2,12 @@ from __future__ import annotations
 
 from typing import List
 
-import spotifystats.models.artist as art
-import spotifystats.models.track as trk
 from mongoengine.fields import IntField, ListField, ReferenceField, StringField
-from spotifystats.models.named_document import NamedDocument
-from spotifystats.util.lists import NamedDocumentList
+
+import spotifystats.core.models.artist as art
+import spotifystats.core.models.track as trk
+from spotifystats.core.models.named_document import NamedDocument
+from spotifystats.core.util.lists import NamedDocumentList
 
 
 class Album(NamedDocument):

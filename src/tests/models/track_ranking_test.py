@@ -1,4 +1,4 @@
-import spotifystats.models.track_ranking as t_rnk
+import spotifystats.core.models.track_ranking as t_rnk
 
 
 def test_create_track_ranking_from_response(ranking_track_long):

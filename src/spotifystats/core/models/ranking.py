@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 from mongoengine.fields import StringField
-from spotifystats.models.dated_document import DatedDocument
+
+from spotifystats.core.models.dated_document import DatedDocument
 
 
 class Ranking(DatedDocument):
