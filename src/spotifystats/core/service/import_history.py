@@ -7,74 +7,45 @@ from spotifystats.core.service.spotify_api import SpotifyAPI
 from spotifystats.core.service.spotifystats_service import SpotifyStatsService
 
 
-def verify_track(response, track, artist):
-    if response["track"][0]["name"].lower() != track.lower():
-        print(f"Found {response['name']} instead of {track}")
-        return False
-
-    if response["track"][0]["artists"][0]["name"].lower() != artist.lower():
-        print(f"Found {response['artists'][0]['name']} instead of {artist}")
-        return False
-
-    return True
-
-
-def try_alternatives(api, track, artist):
-    track = track.replace("'", "")
-    response = api.search_track(track, artist)
-
-    if response["track"] != []:
-        return response
-
-
-def import_track(api, track, artist):
-    response = api.search_track(track, artist)
-
-    if response["track"] == []:
-        print(f"Could not find {track} by {artist}.")
-        response = try_alternatives(api, track, artist)
-        if response is None:
-            return None
-
-    while not verify_track(response, track, artist):
-        response = api.get_next(response)
-
-    return response
-
-
-def parse_streaming_history(directory: str):
-    files = glob.glob(f"{directory}/StreamingHistory*.json")
-
-    results = []
-    for file in files:
-        with open(file, "r") as f:
-            history = json.load(f)
-            results.extend(history)
-
-    if not results:
-        print("No plays found.")
-        return
-    else:
-        print(f"Found {len(results)} plays.")
-
-    # snake case for compatibility with spotipy
-    for result in results:
-        result["played_at"] = result.pop("endTime")
-        result["ms_played"] = result.pop("msPlayed")
-
-    return results
-
-
-def get_unique_tracks(history) -> dict:
-    unique = {}
+def parse_streaming_history(history):
+    parsed_history = []
     for play in history:
-        artist = play["artistName"]
-        track = play["trackName"]
-        if artist not in unique:
-            unique[artist] = {}
-        if track not in unique[artist]:
-            unique[artist][track] = None
-    return unique
+        track_uri = play["spotify_track_uri"]
+        # Podcast episodes don't have a track uri
+        if track_uri is None:
+            continue
+        parsed_history.append(
+            {
+                "track_id": track_uri.split(":")[-1],
+                "played_at": play["ts"],
+            }
+        )
+
+    return parsed_history
+
+
+def get_streaming_history(directory: str):
+    files = glob.glob(f"{directory}/Streaming_History_Audio_*.json")
+
+    sorted_files = sorted(files, key=lambda x: int(x.split("_")[-1].split(".")[0]))
+
+    history = []
+    for file in sorted_files:
+        with open(file, "r") as f:
+            _history = json.load(f)
+            history.extend(_history)
+
+    if not history:
+        print("No plays found.")
+        return []
+    else:
+        print(f"Found {len(history)} plays.")
+
+    return parse_streaming_history(history)
+
+
+def get_unique_tracks(history):
+    return list(set([play["track_id"] for play in history]))
 
 
 def get_tracks_from_history(history):
@@ -82,43 +53,49 @@ def get_tracks_from_history(history):
     # little hack to connect to the database
     SpotifyStatsService()
 
-    tracks = get_unique_tracks(history)
+    track_ids = get_unique_tracks(history)
 
-    unique_count = len([track for artist in tracks for track in tracks[artist]])
-    print(f"Found {unique_count} unique tracks")
+    print(f"Found {len(track_ids)} unique tracks")
 
-    count = 0
-    for artist in tracks:
-        for track in tracks[artist]:
-            response = import_track(api, track, artist)
-            if response is None:
-                raise Exception(f"Could not find track {track} by {artist}")
+    track_count = len(track_ids)
 
-            tracks[artist][track] = response
-            count += 1
+    # get batches of 50 from track_ids
+    track_ids = [track_ids[i : i + 50] for i in range(0, len(track_ids), 50)]  # noqa
 
-    print(f"{count} tracks found.")
+    tracks = {}
+    for batch in track_ids:
+        response = api.get_tracks_by_ids(batch)
+
+        for track in response:
+            tracks[track["id"]] = track
+
+        print(f"\rRetrieved {len(tracks.keys())}/{track_count} tracks", end="")
+
+    print(f"\rRetrieved {len(tracks.keys())} tracks.{' '*20}")
 
     return tracks
 
 
-def save_streaming_history(results):
-    for result in results:
-        play = pl.Play.from_spotify_response(result)
+def save_streaming_history(history, tracks):
+    for count, _play in enumerate(history):
+        play = pl.Play.from_spotify_response(
+            {"played_at": _play["played_at"], "track": tracks[_play["track_id"]]}
+        )
         db.add_play(play)
+
+        print(f"\rSaved {count+1}/{len(history)} plays", end="")
+
+    print(f"\rSaved {len(history)} plays.{' '*20}")
 
 
 def import_streaming_history(directory: str = "MyData"):
     print("This might take a while...")
-    history = parse_streaming_history(directory)[:200]
+    history = get_streaming_history(directory)[:10]
     if history is None:
         return
 
     tracks = get_tracks_from_history(history)
 
-    for play in history:
-        play["track"] = tracks[play["artistName"]][play["trackName"]]
-
-    save_streaming_history(history)
+    save_streaming_history(history, tracks)
 
     print(f"Finished! Imported {len(history)} plays with {len(tracks)} tracks")

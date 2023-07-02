@@ -44,17 +44,27 @@ class SpotifyAPI:
 
         return result.get("items", []) if result else {}
 
-    def get_user_top_artists(self, range_type: str) -> Dict[str, Any] | None:
+    def get_user_top_artists(self, range_type: str) -> Dict[str, Any]:
         result = self._sp.current_user_top_artists(limit=50, time_range=range_type)
 
         return result.get("items", []) if result else {}
 
-    def get_user_top_tracks(self, range_type: str) -> Dict[str, Any] | None:
+    def get_user_top_tracks(self, range_type: str) -> Dict[str, Any]:
         result = self._sp.current_user_top_tracks(limit=50, time_range=range_type)
 
         return result.get("items", []) if result else {}
 
-    def search_track(self, track: str, artist: str) -> Dict[str, Any] | None:
+    def get_track_by_id(self, track_id: str) -> Dict[str, Any]:
+        result = self._sp.track(track_id)
+
+        return result if result else {}
+
+    def get_tracks_by_ids(self, track_ids: list[str]) -> list[Dict[str, Any]]:
+        result = self._sp.tracks(track_ids)
+
+        return result.get("tracks", []) if result else []
+
+    def search_track(self, track: str, artist: str) -> Dict[str, Any]:
         query = f"track:{track} artist:{artist}"
 
         result = self._sp.search(q=query, limit=1, type="track")
