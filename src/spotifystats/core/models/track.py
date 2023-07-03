@@ -4,7 +4,6 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import List
-    import spotifystats.core.models.play as pl
     import spotifystats.core.models.track_ranking as t_rnk
 
 from mongoengine.fields import IntField, ListField, ReferenceField
@@ -12,18 +11,14 @@ from mongoengine.fields import IntField, ListField, ReferenceField
 import spotifystats.core.models.album as alb
 import spotifystats.core.models.artist as art
 from spotifystats.core.models.named_document import NamedDocument
-from spotifystats.core.util.lists import (
-    NamedDocumentList,
-    PlayDocumentList,
-    RankingDocumentList,
-)
+from spotifystats.core.util.lists import NamedDocumentList, RankingDocumentList
 
 
 class Track(NamedDocument):
     album: alb.Album = ReferenceField("Album")
     artists: List[art.Artist] = ListField(ReferenceField("Artist"))
     popularity: int = IntField(default=-1)
-    plays: List(pl.Play) = ListField(ReferenceField("Play"))
+    plays = IntField(default=0)
     rankings: List[t_rnk.TrackRanking] = ListField(ReferenceField("TrackRanking"))
     meta = {"collection": "tracks"}
 
@@ -69,14 +64,8 @@ class Track(NamedDocument):
     def get_popularity(self) -> int:
         return self.popularity
 
-    def get_plays(self) -> List[pl.Play]:
-        return PlayDocumentList(self.plays)
-
-    def add_play(self, play: pl.Play) -> None:
-        # Check if play corresponds to the track
-        if self.get_id() == play.get_track().get_id():
-            if play not in self.get_plays():
-                self.plays.append(play)
+    def increment_plays(self) -> None:
+        self.plays += 1
 
     def get_rankings(self) -> List[t_rnk.TrackRanking]:
         return RankingDocumentList(self.rankings)

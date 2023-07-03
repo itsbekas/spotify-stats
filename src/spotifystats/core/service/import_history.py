@@ -66,8 +66,10 @@ def get_tracks_from_history(history):
     for batch in track_ids:
         response = api.get_tracks_by_ids(batch)
 
-        for track in response:
-            tracks[track["id"]] = track
+        for index, track in enumerate(response):
+            # Use request's id to ignore track relinking:
+            # https://developer.spotify.com/documentation/web-api/concepts/track-relinking
+            tracks[batch[index]] = track
 
         print(f"\rRetrieved {len(tracks.keys())}/{track_count} tracks", end="")
 
@@ -77,20 +79,23 @@ def get_tracks_from_history(history):
 
 
 def save_streaming_history(history, tracks):
+    print_counter = len(history) // 100
+
     for count, _play in enumerate(history):
         play = pl.Play.from_spotify_response(
             {"played_at": _play["played_at"], "track": tracks[_play["track_id"]]}
         )
         db.add_play(play)
 
-        print(f"\rSaved {count+1}/{len(history)} plays", end="")
+        if count % print_counter == 0:
+            print(f"\rSaved {int(count/len(history)*100)}% of the plays", end="")
 
     print(f"\rSaved {len(history)} plays.{' '*20}")
 
 
 def import_streaming_history(directory: str = "MyData"):
     print("This might take a while...")
-    history = get_streaming_history(directory)[:10]
+    history = get_streaming_history(directory)[:10000]
     if history is None:
         return
 
