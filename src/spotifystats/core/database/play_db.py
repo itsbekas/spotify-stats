@@ -19,7 +19,7 @@ def add_play(play: pl.Play) -> None:
 
         # Add play to track
         track = play.get_track()
-        track.increment_plays()
+        track.increment_play_count()
         track.save()
 
 

@@ -18,7 +18,7 @@ class Track(NamedDocument):
     album: alb.Album = ReferenceField("Album")
     artists: List[art.Artist] = ListField(ReferenceField("Artist"))
     popularity: int = IntField(default=-1)
-    plays = IntField(default=0)
+    play_count = IntField(default=0)
     rankings: List[t_rnk.TrackRanking] = ListField(ReferenceField("TrackRanking"))
     meta = {"collection": "tracks"}
 
@@ -64,8 +64,11 @@ class Track(NamedDocument):
     def get_popularity(self) -> int:
         return self.popularity
 
-    def increment_plays(self) -> None:
-        self.plays += 1
+    def get_play_count(self) -> int:
+        return self.play_count
+
+    def increment_play_count(self) -> None:
+        self.play_count += 1
 
     def get_rankings(self) -> List[t_rnk.TrackRanking]:
         return RankingDocumentList(self.rankings)

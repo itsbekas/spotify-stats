@@ -1,8 +1,5 @@
-from datetime import timedelta
-
 import spotifystats.core.models.album as alb
 import spotifystats.core.models.artist as art
-import spotifystats.core.models.play as pl
 import spotifystats.core.models.track as trk
 import spotifystats.core.models.track_ranking as t_rnk
 from spotifystats.core.util.conversions import int_to_datetime
@@ -23,7 +20,7 @@ def test_create_track_from_play_response(play_STEREOTYPE):
         assert isinstance(artist, art.Artist)
         assert track.get_artists()[0].get_id() == track_response["artists"][i]["id"]
 
-    assert track.get_plays() == []
+    assert track.get_play_count() == 0
     assert track.get_rankings() == []
 
 
@@ -40,7 +37,7 @@ def test_create_track_from_track_response(track_STEREOTYPE):
     for i, artist in enumerate(track.get_artists()):
         assert isinstance(artist, art.Artist)
         assert track.get_artists()[0].get_id() == track_STEREOTYPE["artists"][i]["id"]
-    assert track.get_plays() == []
+    assert track.get_play_count() == 0
     assert track.get_rankings() == []
 
 
@@ -53,7 +50,7 @@ def test_set_album(track_STEREOTYPE, album_STEREOTYPE):
     assert track.get_album().get_id() == album.get_id()
 
 
-# Th3 track's album is already checked when adding it to an album
+# The track's album is already checked when adding it to an album
 # def test_set_invalid_album(track_STEREOTYPE, album_STEREOTYPE, album_LOVE_DIVE):
 #     track = trk.Track.from_spotify_response(track_STEREOTYPE)
 #     album1 = alb.Album.from_spotify_response(album_STEREOTYPE)
@@ -67,52 +64,12 @@ def test_set_album(track_STEREOTYPE, album_STEREOTYPE):
 #     assert track.get_album().get_id() == album1.get_id()
 
 
-def test_add_play(track_STEREOTYPE, play_STEREOTYPE):
+def test_increment_play_count(track_STEREOTYPE):
     track = trk.Track.from_spotify_response(track_STEREOTYPE)
-    play = pl.Play.from_spotify_response(play_STEREOTYPE)
 
-    track.add_play(play)
+    track.increment_play_count()
 
-    assert len(track.get_plays()) == 1
-    assert play in track.get_plays()
-
-
-def test_add_invalid_play(track_STEREOTYPE, play_Hype_Boy):
-    track = trk.Track.from_spotify_response(track_STEREOTYPE)
-    play = pl.Play.from_spotify_response(play_Hype_Boy)
-
-    track.add_play(play)
-
-    assert len(track.get_plays()) == 0
-    assert play not in track.get_plays()
-
-
-def test_two_plays(track_STEREOTYPE, play_STEREOTYPE):
-    track = trk.Track.from_spotify_response(track_STEREOTYPE)
-    play1 = pl.Play.from_spotify_response(play_STEREOTYPE)
-    play2 = pl.Play.from_spotify_response(play_STEREOTYPE)
-
-    play2.timestamp = play2.timestamp + timedelta(seconds=1)
-
-    track.add_play(play1)
-    track.add_play(play2)
-
-    assert len(track.get_plays()) == 2
-    assert play1 in track.get_plays()
-    assert play2 in track.get_plays()
-
-
-def test_duplicate_plays(track_STEREOTYPE, play_STEREOTYPE):
-    track = trk.Track.from_spotify_response(track_STEREOTYPE)
-    play1 = pl.Play.from_spotify_response(play_STEREOTYPE)
-    play2 = pl.Play.from_spotify_response(play_STEREOTYPE)
-
-    track.add_play(play1)
-    track.add_play(play2)
-
-    assert len(track.get_plays()) == 1
-    assert play1 in track.get_plays()
-    assert play2 in track.get_plays()
+    assert track.get_play_count() == 1
 
 
 def test_add_ranking(track_STEREOTYPE, ranking_track_short):

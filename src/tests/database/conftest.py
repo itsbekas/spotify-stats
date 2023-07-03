@@ -26,7 +26,7 @@ def mongo():
 
     db.connect(
         db=mongodb_name + "-test",
-        host=mongodb_uri,
+        host=mongodb_uri + "-test",
         uuidRepresentation="standard",
     )
     yield
