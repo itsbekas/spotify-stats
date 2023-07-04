@@ -27,6 +27,12 @@ def get_play(timestamp: dt.datetime) -> pl.Play:
     return pl.Play.objects(timestamp=timestamp).first()
 
 
+def get_plays_in_range(start: dt.datetime, end: dt.datetime) -> list[pl.Play]:
+    return pl.Play.objects(timestamp__gte=start, timestamp__lte=end).order_by(
+        "-timestamp"
+    )
+
+
 # todo: test to make sure order is correct
 # add older, add latest, add older then check if latest is the first one
 def get_latest_timestamp() -> dt.datetime:

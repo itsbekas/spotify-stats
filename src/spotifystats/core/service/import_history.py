@@ -95,7 +95,7 @@ def save_streaming_history(history, tracks):
 
 def import_streaming_history(directory: str = "MyData"):
     print("This might take a while...")
-    history = get_streaming_history(directory)[:10000]
+    history = get_streaming_history(directory)
     if history is None:
         return
 

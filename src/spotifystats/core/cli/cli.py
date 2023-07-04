@@ -38,5 +38,14 @@ def import_history(directory):
     import_streaming_history(directory)
 
 
+@cli.command("run-api")
+def run_web():
+    """Run the web app."""
+    click.echo("Running web app...")
+    from spotifystats.api.app import app
+
+    app.run()
+
+
 if __name__ == "__main__":
     cli()
