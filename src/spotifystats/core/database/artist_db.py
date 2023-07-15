@@ -7,9 +7,7 @@ def add_artist(artist: art.Artist) -> None:
     """
     Checks if artist is already in the database, adding it if it's not.
     """
-
-    if get_artist(spotify_id=artist.get_id()) is None:
-        artist.save()
+    artist.save()
 
 
 def get_artist(spotify_id: None | str = None, name: None | str = None) -> art.Artist:
