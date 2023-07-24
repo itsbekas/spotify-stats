@@ -1,9 +1,13 @@
 from os import environ
 
+from dotenv import load_dotenv
+
 import spotifystats.core.database as db
 
 
 def setup() -> None:
+    load_dotenv()
+
     mongodb_name = environ.get("SPOTIFYSTATS_MONGODB_DB_NAME")
     if mongodb_name is None:
         raise ValueError("SPOTIFYSTATS_MONGODB_DB_NAME is not set")

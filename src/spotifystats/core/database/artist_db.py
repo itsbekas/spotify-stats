@@ -21,3 +21,7 @@ def get_artist(spotify_id: None | str = None, name: None | str = None) -> art.Ar
         raise ValueError("At least one argument must be provided.")
 
     return art.Artist.objects(**query).first()
+
+
+def get_top_artists(limit: int = 50) -> list[art.Artist]:
+    return art.Artist.objects().order_by("-play_count").limit(limit)

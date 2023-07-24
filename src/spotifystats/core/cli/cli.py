@@ -5,6 +5,7 @@ import schedule
 
 from spotifystats.core.service.import_history import import_streaming_history
 from spotifystats.core.service.spotifystats_service import SpotifyStatsService
+from spotifystats.core.util import setup
 
 
 # Create a click group
@@ -41,8 +42,12 @@ def import_history(directory):
 @cli.command("run-api")
 def run_web():
     """Run the web app."""
-    click.echo("Running web app...")
+
     from spotifystats.api.app import app
+
+    setup()
+
+    click.echo("Running web app...")
 
     app.run()
 

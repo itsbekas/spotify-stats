@@ -22,6 +22,10 @@ def add_play(play: pl.Play) -> None:
         track.increment_play_count()
         track.save()
 
+        for artist in track.get_artists():
+            artist.increment_play_count()
+            artist.save()
+
 
 def get_play(timestamp: dt.datetime) -> pl.Play:
     return pl.Play.objects(timestamp=timestamp).first()

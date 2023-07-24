@@ -15,11 +15,12 @@ if TYPE_CHECKING:
 
 class Artist(NamedDocument):
     popularity: int = IntField(default=-1)
+    play_count: int = IntField(default=0)
     genres: List[str] = ListField(StringField())
     albums: List[alb.Album] = ListField(ReferenceField("Album"))
     tracks: List[trk.Track] = ListField(ReferenceField("Track"))
     rankings: List[a_rnk.ArtistRanking] = ListField(ReferenceField("ArtistRanking"))
-    meta = {"collection": "artists"}
+    meta = {"collection": "artists", "indexes": ["play_count"]}
 
     @classmethod
     def from_spotify_response(cls, response) -> Artist:
@@ -72,3 +73,9 @@ class Artist(NamedDocument):
 
     def set_popularity(self, popularity: int) -> None:
         self.popularity = popularity
+
+    def get_play_count(self) -> int:
+        return self.play_count
+
+    def increment_play_count(self) -> None:
+        self.play_count += 1

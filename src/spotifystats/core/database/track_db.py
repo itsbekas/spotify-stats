@@ -48,3 +48,7 @@ def get_track(
         raise ValueError("At least one argument must be provided.")
 
     return trk.Track.objects(**query).first()
+
+
+def get_top_tracks(limit: int = 50) -> list[trk.Track]:
+    return trk.Track.objects().order_by("play_count").limit(limit)
