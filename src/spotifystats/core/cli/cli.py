@@ -1,3 +1,4 @@
+import os
 import time
 
 import click
@@ -49,7 +50,10 @@ def run_web():
 
     click.echo("Running web app...")
 
-    app.run()
+    host = os.environ.get("SPOTIFYSTATS_WEB_HOST")
+    port = os.environ.get("SPOTIFYSTATS_WEB_PORT")
+
+    app.run(host=host, port=port)
 
 
 if __name__ == "__main__":
