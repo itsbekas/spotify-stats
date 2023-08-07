@@ -9,9 +9,9 @@ from spotifystats.core.util.conversions import int_to_datetime
 
 
 class NamedDocument(SpotifyStatsDocument):
-    meta = {"abstract": True, "indexes": ["spotify_id", "name"]}
+    meta = {"abstract": True, "indexes": ["name"]}
 
-    spotify_id: str = StringField(required=True)
+    spotify_id: str = StringField(primary_key=True, required=True)
     name: str = StringField(required=True)
     last_retrieved: datetime = DateTimeField(default=int_to_datetime(0))
 
