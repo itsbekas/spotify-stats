@@ -25,10 +25,6 @@ def add_album(album: alb.Album) -> None:
 
         album.save()
 
-        for artist in album.get_artists():
-            artist.add_album(album)
-            artist.save()
-
         for track in album.get_tracks():
             track.set_album(album)
             track.save()

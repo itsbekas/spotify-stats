@@ -5,20 +5,16 @@ from typing import TYPE_CHECKING, List
 from mongoengine.fields import IntField, ListField, ReferenceField, StringField
 
 from spotifystats.core.models.named_document import NamedDocument
-from spotifystats.core.util.lists import NamedDocumentList, RankingDocumentList
+from spotifystats.core.util.lists import RankingDocumentList
 
 if TYPE_CHECKING:
-    import spotifystats.core.models.album as alb
     import spotifystats.core.models.artist_ranking as a_rnk
-    import spotifystats.core.models.track as trk
 
 
 class Artist(NamedDocument):
     popularity: int = IntField(default=-1)
     play_count: int = IntField(default=0)
     genres: List[str] = ListField(StringField())
-    albums: List[alb.Album] = ListField(ReferenceField("Album"))
-    tracks: List[trk.Track] = ListField(ReferenceField("Track"))
     rankings: List[a_rnk.ArtistRanking] = ListField(ReferenceField("ArtistRanking"))
     meta = {"collection": "artists", "indexes": ["play_count"]}
 
@@ -33,26 +29,6 @@ class Artist(NamedDocument):
             popularity=popularity,
             genres=genres,
         )
-
-    def get_albums(self) -> List[alb.Album]:
-        return NamedDocumentList(self.albums)
-
-    def add_album(self, album: alb.Album) -> None:
-        # Check if artist already has this album
-        if album not in self.get_albums():
-            # Check if artist is part of the album
-            if self in album.get_artists():
-                self.albums.append(album)
-
-    def get_tracks(self) -> List[trk.Track]:
-        return NamedDocumentList(self.tracks)
-
-    def add_track(self, track: trk.Track) -> None:
-        # Check if artist already has this track
-        if track not in self.get_tracks():
-            # Check if artist is part of the track
-            if self in track.get_artists():
-                self.tracks.append(track)
 
     def get_rankings(self) -> List[a_rnk.ArtistRanking]:
         return RankingDocumentList(self.rankings)

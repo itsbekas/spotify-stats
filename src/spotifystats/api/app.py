@@ -1,16 +1,12 @@
 from datetime import datetime
 
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 import spotifystats.core.database as db
 
 app = Flask(__name__)
-
-
-# route: /api/v1/top-artists
-# method: GET
-# parameters
-#   - limit: int
+CORS(app)
 
 
 @app.route("/api/v1/top-artists", methods=["GET"])

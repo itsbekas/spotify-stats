@@ -25,10 +25,6 @@ def add_track(track: trk.Track) -> None:
 
         track.save()
 
-        for artist in track.get_artists():
-            artist.add_track(track)
-            artist.save()
-
         album = track.get_album()
         if album is not None:
             album.add_track(track)
