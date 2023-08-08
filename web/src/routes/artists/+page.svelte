@@ -1,24 +1,16 @@
-<script lang="ts">
-	import type { PageData } from "./$types";
+<script>
+  import { onMount } from 'svelte';
+  import { getArtists } from '../api';
 
-    export let data: PageData
+  let artists = [];
 
-    $: ({ artists } = data);
+  onMount(async () => {
+    artists = await getArtists(50);
+  });
 </script>
 
-<section>
-    <table class="table-auto">
-        <tr>
-            <th>Name</th>
-            <th>Listen Count</th>
-            <th>Last Listened</th>
-        </tr>
-        {#each artists as artist}
-            <tr>
-                <td>{artist.name}</td>
-                <td>{artist.count}</td>
-                <td>{artist.last_listened}</td>
-            </tr>
-        {/each}
-    </table>
-</section>
+<ul>
+  {#each artists as artist (artist.id)}
+    <li>{artist.name}</li>
+  {/each}
+</ul>
