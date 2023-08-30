@@ -31,9 +31,13 @@ def get_play(timestamp: dt.datetime) -> pl.Play:
     return pl.Play.objects(timestamp=timestamp).first()
 
 
-def get_plays_in_range(start: dt.datetime, end: dt.datetime) -> list[pl.Play]:
-    return pl.Play.objects(timestamp__gte=start, timestamp__lte=end).order_by(
-        "-timestamp"
+def get_plays_in_range(
+    start: dt.datetime, end: dt.datetime, limit: int = 0
+) -> list[pl.Play]:
+    return (
+        pl.Play.objects(timestamp__gte=start, timestamp__lte=end)
+        .order_by("-timestamp")
+        .limit(limit)
     )
 
 

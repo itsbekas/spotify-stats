@@ -47,4 +47,4 @@ def get_track(
 
 
 def get_top_tracks(limit: int = 50) -> list[trk.Track]:
-    return trk.Track.objects().order_by("play_count").limit(limit)
+    return trk.Track.objects().order_by("-play_count").limit(limit)
