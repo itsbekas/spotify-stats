@@ -50,8 +50,8 @@ def run_web():
 
     click.echo("Running web app...")
 
-    host = os.environ.get("SPOTIFYSTATS_WEB_HOST")
-    port = os.environ.get("SPOTIFYSTATS_WEB_PORT")
+    host = os.environ.get("SPOTIFYSTATS_WEB_HOST", "0.0.0.0")
+    port = int(os.environ.get("SPOTIFYSTATS_WEB_PORT", "5000"))
 
     app.run(host=host, port=port)
 
