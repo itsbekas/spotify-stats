@@ -1,10 +1,10 @@
 from datetime import datetime
-from os import environ
 
 import spotifystats.core.database as db
 import spotifystats.core.models.artist_ranking as a_rnk
 import spotifystats.core.models.play as pl
 import spotifystats.core.models.track_ranking as t_rnk
+import spotifystats.core.util as util
 from spotifystats.core.service.spotify_api import SpotifyAPI
 
 
@@ -14,34 +14,7 @@ class SpotifyStatsService:
     def __init__(self):
         self.api = SpotifyAPI()
 
-        mongodb_user = environ["SPOTIFYSTATS_MONGODB_USER"]
-        if mongodb_user is None:
-            raise ValueError("SPOTIFYSTATS_MONGODB_USER is not set")
-
-        mongodb_password = environ.get("SPOTIFYSTATS_MONGODB_PASSWORD")
-        if mongodb_password is None:
-            raise ValueError("SPOTIFYSTATS_MONGODB_PASSWORD is not set")
-        
-        mongodb_host = environ.get("SPOTIFYSTATS_MONGODB_HOST")
-        if mongodb_host is None:
-            raise ValueError("SPOTIFYSTATS_MONGODB_HOST is not set")
-
-        mongodb_port = environ.get("SPOTIFYSTATS_MONGODB_PORT")
-        if mongodb_port is None:
-            raise ValueError("SPOTIFYSTATS_MONGODB_PORT is not set")
-
-        mongodb_db_name = environ.get("SPOTIFYSTATS_MONGODB_DB_NAME")
-        if mongodb_name is None:
-            raise ValueError("SPOTIFYSTATS_MONGODB_DB_NAME is not set")
-
-
-        mongodb_uri = f"mongodb://{mongodb_user}:{mongodb_password}@{mongodb_host}:{mongodb_port}/{mongodb_db_name}"
-
-        db.connect(
-            name=mongodb_name,
-            host=mongodb_uri,
-            uuidRepresentation="standard",
-        )
+        util.setup()
 
     def update(self) -> None:
         self.timestamp = datetime.now()

@@ -2,7 +2,7 @@ version: '3'
 
 services:
   update:
-    build: .
+    image: spotify-stats:dev
     env_file:
       - .env
     networks:
@@ -10,7 +10,7 @@ services:
     command: ["spotifystats", "start"]
 
   rest-api:
-    build: .
+    image: spotify-stats:dev
     stop_signal: SIGINT # Flask requires SIGINT to stop gracefully
     env_file:
       - .env
