@@ -35,9 +35,13 @@ class SpotifyAPI:
         cache_handler = CacheFileHandler(cache_path=environ["SPOTIPY_CACHE_PATH"])
         auth = SpotifyPKCE(scope=scope, open_browser=False, cache_handler=cache_handler)
 
-        authorization_url = auth.get_authorize_url()
-
-        util.wait_for_auth(authorization_url)
+        # If the user is not authenticated, loads a flask app to authenticate the user
+        if not auth.get_cached_token() or auth.is_token_expired(
+            auth.get_cached_token()
+        ):
+            authorization_url = auth.get_authorize_url()
+            auth_url = util.wait_for_auth(authorization_url)
+            auth.get_access_token(auth.parse_response_code(auth_url))
 
         return Spotify(auth_manager=auth)
 

@@ -1,13 +1,10 @@
-import threading
+from multiprocessing import Process, Queue
+from time import sleep
 
-from flask import Flask
-
-callback_reached = False
+from flask import Flask, request
 
 
-def wait_for_auth(authorization_url: str):
-    callback_reached = False
-
+def run_auth_flask(authorization_url: str, queue):
     app = Flask(__name__)
 
     @app.route("/")
@@ -16,16 +13,21 @@ def wait_for_auth(authorization_url: str):
 
     @app.route("/callback", methods=["GET"])
     def callback():
-        global callback_reached
-        callback_reached = True
+        # Add the URL to the queue
+        queue.put(request.url)
         return "Authentication received"
 
-    flask_thread = threading.Thread(target=app.run)
-    flask_thread.start()
+    app.run(host="0.0.0.0", port=5000)
 
-    while not callback_reached:
-        pass
 
-    flask_thread.join()
+def wait_for_auth(authorization_url: str):
+    queue = Queue()
+    flask_process = Process(target=run_auth_flask, args=(authorization_url, queue))
+    flask_process.start()
 
-    print("Authentication received")
+    # Monitor the queue for signals
+    while True:
+        if not queue.empty():
+            flask_process.terminate()
+            return queue.get()
+        sleep(1)
