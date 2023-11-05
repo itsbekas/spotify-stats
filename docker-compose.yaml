@@ -9,6 +9,8 @@ services:
     networks:
       - mongo
     command: ["spotifystats", "start"]
+    volumes:
+      - ./data:/app/data
 
   rest-api:
     image: spotify-stats:dev
