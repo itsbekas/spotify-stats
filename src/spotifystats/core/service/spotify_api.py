@@ -16,7 +16,7 @@ class SpotifyAPI:
         self._sp = self._auth(scope)
 
     def _auth(self, scope: list[str] | str) -> Spotify:
-        load_dotenv()
+        load_dotenv(".env")
         if not all(
             env in environ
             for env in [

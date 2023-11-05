@@ -1,0 +1,20 @@
+# Spotify Stats
+MyData/
+
+# Cache
+__pycache__/
+
+# Package
+*.egg-info/
+
+# Tests
+.pytest_cache/
+.cache
+.coverage
+
+# Environments
+.env
+venv/
+
+# VSCode
+.vscode

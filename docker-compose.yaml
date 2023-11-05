@@ -3,8 +3,6 @@ version: '3'
 services:
   update:
     image: spotify-stats:dev
-    env_file:
-      - .env
     networks:
       - mongo
     command: ["spotifystats", "start"]
@@ -12,13 +10,11 @@ services:
   rest-api:
     image: spotify-stats:dev
     stop_signal: SIGINT # Flask requires SIGINT to stop gracefully
-    env_file:
-      - .env
     ports:
       - "5000:5000"
     networks:
       - mongo
-    command: ["spotifystats", "run-api"]
+    command: ['spotifystats', 'run-api']
 
 networks:
   mongo:

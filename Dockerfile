@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . /app
 
-COPY ./.env /app/.env
+COPY ./docker.env /app/.env
 
 RUN pip install -r requirements.txt
 

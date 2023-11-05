@@ -6,9 +6,9 @@ import spotifystats.core.database as db
 
 
 def setup() -> None:
-    load_dotenv()
+    load_dotenv(".env")
 
-    mongodb_user = environ["SPOTIFYSTATS_MONGODB_USER"]
+    mongodb_user = environ.get("SPOTIFYSTATS_MONGODB_USER")
     if mongodb_user is None:
         raise ValueError("SPOTIFYSTATS_MONGODB_USER is not set")
 
