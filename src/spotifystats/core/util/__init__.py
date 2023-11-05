@@ -1,4 +1,5 @@
 from spotifystats.core.util.conversions import datetime_to_int, iso_to_datetime
+from spotifystats.core.util.flask_auth import wait_for_auth
 from spotifystats.core.util.lists import (
     NamedDocumentList,
     PlayDocumentList,
@@ -13,4 +14,5 @@ __all__ = [
     "PlayDocumentList",
     "RankingDocumentList",
     "setup",
+    "wait_for_auth",
 ]

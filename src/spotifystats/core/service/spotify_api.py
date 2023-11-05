@@ -33,8 +33,12 @@ class SpotifyAPI:
             )
 
         cache_handler = CacheFileHandler(cache_path=environ["SPOTIPY_CACHE_PATH"])
-        auth = SpotifyPKCE(scope=scope, open_browser=True, cache_handler=cache_handler)
-        auth.get_access_token()
+        auth = SpotifyPKCE(scope=scope, open_browser=False, cache_handler=cache_handler)
+
+        authorization_url = auth.get_authorize_url()
+
+        util.wait_for_auth(authorization_url)
+
         return Spotify(auth_manager=auth)
 
     def get_user_history(self, after: datetime) -> Dict[str, Any]:

@@ -3,6 +3,8 @@ version: '3'
 services:
   update:
     image: spotify-stats:dev
+    ports:
+      - "5050:5000"
     networks:
       - mongo
     command: ["spotifystats", "start"]
